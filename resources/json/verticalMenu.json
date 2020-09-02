@@ -1,0 +1,36 @@
+{
+    "menu": [
+        {
+            "url": "home",
+            "name": "Home",
+            "slug": "dashboard",
+            "badge": "",
+            "badgeClass": "badge badge-warning badge-pill float-right",
+            "icon": "feather icon-home"
+        },
+        {
+            "url": "customer-index",
+            "name": "Deposit",
+            "icon": "fa fa-credit-card"
+        },
+        {
+            "url": "type-index",
+            "name": "Setting Lucky code",
+            "icon": "fa fa-cogs"
+        },
+        {
+            "url": "",
+            "name": "UserManagement",
+            "icon": "feather icon-users",
+            "submenu": [
+                {
+                    "url": "user",
+                    "name": "List"
+                }
+
+            ]
+        }
+        
+    ]
+
+}
