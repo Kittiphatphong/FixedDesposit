@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     protected $fillable = [
-        'idAccount', 'contact', 'start','end','interest','amount','amountWord','receiveInterest','user_id','customer_id','typeDisposit_id','employee_id'
+        'idAccount', 'start','end','interest','amount','amountWord','receiveInterest','user_id','customer_id','typeDisposit_id','employee_id'
     ];
     public function users(){
         return $this->belongsTo(User::class,'user_id');

@@ -1,16 +1,6 @@
-@extends('layouts/fullLayoutMaster')
+@extends('layouts/fullNewApp')
 
-@section('title', 'Dashboard Analytics')
-
-@section('vendor-style')
-<!-- vendor css files -->
-<link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
-@endsection
-@section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-    <style>body{font-family:"Phetsarath OT";}</style>
-@endsection
+@section('title', 'Create Account')
 
 @section('content')
 <div class ="container">
@@ -44,7 +34,7 @@
                       <span>ເລກ​ບັນ​ຊີ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text"  class="form-control" name="idAccount" placeholder="ເລກ​ບັນ​ຊີ">
+                                              <input type="number"  class="form-control" name="idAccount" placeholder="ເລກ​ບັນ​ຊີ">
                                           </div>
                                       </div>
                                   </div>
@@ -55,9 +45,9 @@
                                           </div>
                                           <div class="col-md-2">
                                           <label>ໄລ​ຍະ</label>
-                                          <select class="form-control" name="idAccount">
+                                          <select class="form-control" name="typeDisposit_id">
                                           @foreach($types as $type)
-		                                  <option>{{$type->period}} @if($type->yearOrMonth=="year") ປີ @endIf @if($type->yearOrMonth=="month") ເດືອນ @endIf</option>
+		                                  <option value="{{$type->id}}">{{$type->period}} @if($type->yearOrMonth=="year") ປີ @endIf @if($type->yearOrMonth=="month") ເດືອນ @endIf</option>
                                           @endForeach
 		                                  </select>
                                           </div>
@@ -78,7 +68,7 @@
                       <span>ດອກ​ເບ້ຍ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" class="form-control" name="interest" placeholder="ຈຳ​ນວນ​ດອກ​ເບ້ຍ %/ ປີ">
+                                              <input type="number" class="form-control" name="interest" placeholder="ຈຳ​ນວນ​ດອກ​ເບ້ຍ %/ ປີ">
                                           </div>
                                       </div>
                                   </div>
@@ -109,18 +99,33 @@
                       <span>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</span>
                     </div>
                                           <div class="col-md-8">
-                                          <select class="form-control" name="idAccount">                          
-		                                  <option>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</option>
-                                          <option>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</option> 
-                                          <option>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ</option>
-                                          <option>ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</option>
-                                          <option>ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</option>
-                                          <option>ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</option>                                                  
+                                          <select class="form-control" name="receiveInterest">                          
+		                                  <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</option> 
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ">ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</option>                                                  
 		                                  </select>
                                           </div>
                                       </div>
                                   </div>
+                                  <div class="col-12">
+                                      <div class="form-group row">
+                                          <div class="col-md-4">
+                      <span>ພະ​ນັກ​ງານ​ແນະ​ນຳ</span>
+                    </div>
+                                          <div class="col-md-8">
+                                          <select class="select2 form-control" name="employee_id">  
+                                          @foreach($employees as $employee)                        
+		                                  <option value="{{$employee->id}}">{{$employee->company}} - {{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</option>
+                                          @endForeach
+                                          </select>
+                                          </div>
+                                      </div>
+                                  </div>
                                   <div class="form-group col-md-8 offset-md-4">
+
 
                 </div>
                 <div class="col-md-8 offset-md-4">
@@ -136,22 +141,15 @@
       </div>
 </section>
 </div>
-@endsection
 
-@section('vendor-script')
-<!-- vendor files -->
-<script src="{{ asset(mix('vendors/js/charts/apexcharts.min.js')) }}"></script>
-@endsection
-@section('page-script')
-<!-- Page js files -->
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+        <!-- BEGIN: Vendor JS-->
+        <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="../../../app-assets/js/scripts/datatables/datatable.js"></script>
+    <script src="../../../app-assets/js/scripts/forms/select/form-select2.js"></script>
 @endsection

@@ -22,32 +22,32 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('customer.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; Add new customer</a>
+                                        <a href="{{route('customer.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; New customer</a>
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id</th>
-                                                        <th>Full name</th>
-                                                        <th>Type</th>
-                                                        <th>Amount</th>
-                                                        <th>Contact</th>
-                                                        <!-- <th>Lucky number</th>
-                                                        <th>Recomment</th> -->
-                                                        <th>Address</th>
-                                                        <th>Action</th>
+                                                        <th>ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
+                                                        <th>ຈຳ​ນວນ​ບັນ​ຊີ</th>
+                                                        <th>ບັນ​ຊີ</th>
+                                                        <th>ບັດ​ປະ​ຈຳ​ໂຕ</th>
+                                                        <th>ເບີ​ໂທ</th>
+                                                        <th>ທີ່​ຢູ່</th>                                                  
+                                                        <th>ຈັດ​ການ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($customers as $customer)
                                                 <tr>
-                                                <th>{{$customer->id}}</th>
                                                 <th>{{$customer->fname}} {{$customer->lname}}</th>
-                                                <th>2 Year</th>
-                                                <th>2000000</th>
+                                                <th>{{$customer->accounts->count()}}</th>
+                                                <th>@foreach($customer->accounts as $account)
+                                                <p>{{$account->idAccount}}</p>
+                                                @endforeach
+                                                </th>
+                                                <th>{{$customer->idNumber}}</th>
                                                 <th>{{$customer->contact}}</th>
-                                                <th>{{$customer->address}}</th>
-                                               
+                                                <th>{{$customer->address}}</th>                                                                         
                                                         <th class="d-flex justify-content-start">
                                                         <a href="{{route('account.create',$customer->id)}}" class="btn btn-link" value=""><span class="fa fa-money"></span></a>
                                                         <a href="" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>

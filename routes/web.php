@@ -59,3 +59,13 @@ Route::post('account-store/{id}','AccountController@store')->name('account.store
 Route::get('type-index','TypeController@index')->name('type.index');
 Route::get('type-create','TypeController@create')->name('type.create');
 Route::post('type-store','TypeController@store')->name('type.store');
+
+// !Employee
+Route::get('employee-index','EmployeeController@index')->name('employee.index');
+Route::get('employee-create','EmployeeController@create')->name('employee.create');
+Route::post('employee-store','EmployeeController@store')->name('employee.store');
+
+// !Lucky code
+Route::get('show-lucky-code','LuckyCodeController@show')->name('lucky.show');
+Route::get('index-lucky-code','LuckyCodeController@index')->name('lucky.index');
+Route::post('generate-lucky-code/{id}','LuckyCodeController@store')->name('lucky.store');

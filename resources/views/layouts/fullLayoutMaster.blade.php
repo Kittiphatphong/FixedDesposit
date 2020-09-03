@@ -31,13 +31,32 @@ $configData = Helper::applClasses();
 
     <!-- BEGIN: Header-->
     <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
+    <div class="header-navbar-shadow"> </div>
 
     <!-- BEGIN: Content-->
     <div class="app-content content">
         <div class="content-wrapper">
 
             <div class="content-body">
+            @if(Session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ Session()->get('success') }}
+                        </div>
+            @endif
+            @if(Session()->has('warning'))
+                        <div class="alert alert-danger">
+                            {{Session()->get('warning')}}
+                        </div>    
+            @endif 
+            @if($errors->any())
+                        <div class="alert alert-danger">
+                        <ul class="list-group">
+             @foreach($errors->all() as $error)
+                        <li class="list-group-item">{{$error }}</li>
+             @endforeach
+                        </ul>
+                        </div>
+             @endif
                 {{-- Include Page Content --}}
                 @yield('content')
             </div>

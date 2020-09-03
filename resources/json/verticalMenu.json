@@ -14,6 +14,16 @@
             "icon": "fa fa-credit-card"
         },
         {
+            "url": "index-lucky-code",
+            "name": "Report lucky code",
+            "icon": "fa fa-folder-open"
+        },
+        {
+            "url": "employee-index",
+            "name": "Employees",
+            "icon": "feather icon-users"
+        },
+        {
             "url": "type-index",
             "name": "Setting Lucky code",
             "icon": "fa fa-cogs"
@@ -21,7 +31,7 @@
         {
             "url": "",
             "name": "UserManagement",
-            "icon": "feather icon-users",
+            "icon": "fa fa-user",
             "submenu": [
                 {
                     "url": "user",

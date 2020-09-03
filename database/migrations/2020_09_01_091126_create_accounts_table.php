@@ -16,13 +16,13 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('idAccount');
-            $table->string('contact');
             $table->date('start');
             $table->date('end');
-            $table->decimal('interest', 5, 2);
+            $table->decimal('interest', 5, 0);
             $table->double('amount');
-            $table->double('amountWord');
-            $table->string('receiveInterest');	
+            $table->string('amountWord');
+            $table->string('receiveInterest');
+            $table->boolean('generate')->default(0);	
             $table->integer('user_id');
             $table->integer('customer_id');
             $table->integer('typeDisposit_id');
