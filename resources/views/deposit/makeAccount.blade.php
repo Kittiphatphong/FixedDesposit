@@ -34,7 +34,7 @@
                       <span>ເລກ​ບັນ​ຊີ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number"  class="form-control" name="idAccount" placeholder="ເລກ​ບັນ​ຊີ">
+                                              <input type="number"  class="form-control" name="idAccount" placeholder="ເລກ​ບັນ​ຊີ" value="{{old('idAccount',$account->idAccount)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -47,17 +47,17 @@
                                           <label>ໄລ​ຍະ</label>
                                           <select class="form-control" name="typeDisposit_id">
                                           @foreach($types as $type)
-		                                  <option value="{{$type->id}}">{{$type->period}} @if($type->yearOrMonth=="year") ປີ @endIf @if($type->yearOrMonth=="month") ເດືອນ @endIf</option>
+		                                  <option value="{{$type->id}}" @if(old('typeDisposit_id',$account->typeDisposit_id)==$type->id) selected @endif>{{$type->period}} @if($type->yearOrMonth=="year") ປີ @endIf @if($type->yearOrMonth=="month") ເດືອນ @endIf</option>
                                           @endForeach
 		                                  </select>
                                           </div>
                                           <div class="col-md-3">
                                           <label>ເລີ່ມ​ວັນ​ທີ</label>
-                                          <input type="date"  class="form-control" name="start" placeholder="ເລີ່ມ​ວັນ​ທີ">
+                                          <input type="date"  class="form-control" name="start" placeholder="ເລີ່ມ​ວັນ​ທີ" value="{{old('start',$account->start)}}">
                                           </div>
                                           <div class="col-md-3">
                                           <label>ຖີງ​ວັນ​ທີ</label>
-                                          <input type="date" class="form-control" name="end" placeholder="ເຖີງ​ວັນ​ທີ">
+                                          <input type="date" class="form-control" name="end" placeholder="ເຖີງ​ວັນ​ທີ" value="{{old('end',$account->end)}}">
                                           </div>
 
                                       </div>
@@ -68,7 +68,7 @@
                       <span>ດອກ​ເບ້ຍ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" class="form-control" name="interest" placeholder="ຈຳ​ນວນ​ດອກ​ເບ້ຍ %/ ປີ">
+                                              <input type="number" class="form-control" name="interest" placeholder="ຈຳ​ນວນ​ດອກ​ເບ້ຍ %/ ປີ" value="{{old('interest',$account->interest)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -79,7 +79,7 @@
                       <span>ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="amount" class="form-control" name="amount" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ">
+                                              <input type="number" id="amount" class="form-control" name="amount" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ" value="{{old('amount',$account->amount)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -89,7 +89,7 @@
                       <span>ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ໜັງ​ສື</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="amountWord" class="form-control" name="amountWord" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ໜັງ​ສື">
+                                              <input type="text" id="amountWord" class="form-control" name="amountWord" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ໜັງ​ສື" value="{{old('amountWord',$account->amountWord)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -100,12 +100,12 @@
                     </div>
                                           <div class="col-md-8">
                                           <select class="form-control" name="receiveInterest">                          
-		                                  <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</option>
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</option> 
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ</option>
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</option>
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</option>
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ">ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</option>                                                  
+		                                  <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</option> 
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</option>
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</option>                                                  
 		                                  </select>
                                           </div>
                                       </div>
@@ -118,7 +118,7 @@
                                           <div class="col-md-8">
                                           <select class="select2 form-control" name="employee_id">  
                                           @foreach($employees as $employee)                        
-		                                  <option value="{{$employee->id}}">{{$employee->company}} - {{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</option>
+		                                  <option value="{{$employee->id}}" @if(old('employee_id',$account->employee_id)==$employee->id) selected @endif>{{$employee->company}} - {{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</option>
                                           @endForeach
                                           </select>
                                           </div>

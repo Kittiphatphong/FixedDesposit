@@ -10,7 +10,8 @@ class EmployeeController extends Controller
         return view('employee.index')->with('employees',Employee::all());
     }
     public function create(){
-        return view('employee.create');
+        $employee = new Employee(); 
+        return view('employee.create')->with('employee',$employee);
     }
     public function store(Request $request){
         

@@ -29,6 +29,13 @@ class LuckyCodeController extends Controller
             // PDF::MultiCell(40, 5, 'เดือน/ปี', 1, 'C',0, 1, '', '', true);
             // PDF::Output('PDF-Report.pdf','I');
         return view('luckyCode.show');
+        // $view = \view::make('luckyCode.show');
+        // $html_content = $view->render();
+        // PDF::SetTitle('Print certificate');
+        // PDF::SetFont('phetsarathot', '', 10);
+        // PDF::AddPage('L', 'A4');
+        // PDF::writeHTML($html_content,true,false,true,false,'');
+        // PDF::Output(uniqid().'SamplePDF.pdf','D');
     }
     public function store($id){
 

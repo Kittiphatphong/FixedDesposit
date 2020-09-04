@@ -32,14 +32,14 @@
                       <span>ໄລ​ຍະ​ເວ​ລາ</span>
                     </div>
                                           <div class="col-md-4">
-                                              <input type="number" class="form-control" name="period" placeholder="ຈຳ​ນວນ">
+                                              <input type="number" class="form-control" name="period" placeholder="ຈຳ​ນວນ" value="{{old('period',$type->period)}}">
                                           </div>
                                           <div class="col-md-4">
                                           <ul class="list-unstyled mb-0">
               <li class="d-inline-block mr-2">
                 <fieldset>
                   <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" name="yearOrMonth" id="customRadio1" value="year" checked>
+                    <input type="radio" class="custom-control-input" name="yearOrMonth" id="customRadio1" value="year" checked @if(old('yearOrMonth',$type->yearOrMonth)=="year") checked @else unchecked @endif>
                     <label class="custom-control-label" for="customRadio1"><b>ປີ</b></label>
                   </div>
                 </fieldset>
@@ -47,7 +47,7 @@
               <li class="d-inline-block mr-2">
                 <fieldset>
                   <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" name="yearOrMonth" id="customRadio2" value="month">
+                    <input type="radio" class="custom-control-input" name="yearOrMonth" id="customRadio2" value="month" @if(old('yearOrMonth',$type->yearOrMonth)=="month") checked @else unchecked @endif>
                     <label class="custom-control-label" for="customRadio2"><b>ເດືອນ</b></label>
                   </div>
                 </fieldset>
@@ -65,11 +65,11 @@
                                           </div>
                                           <div class="col-md-4">
                                           <select class="form-control" name="ticket">
-		                                  <option value="1">1 ລະ​ຫັດ</option>
-                                          <option value="2">2 ລະ​ຫັດ</option>
-                                          <option value="3">3 ລະ​ຫັດ</option>
-                                          <option value="4">4 ລະ​ຫັດ</option>
-                                          <option value="5">5 ລະ​ຫັດ</option>
+		                                  <option value="1" @if(old('ticket',$type->ticket)==1) selected @endif>1 ລະ​ຫັດ</option>
+                                          <option value="2" @if(old('ticket',$type->ticket)==2) selected @endif>2 ລະ​ຫັດ</option>
+                                          <option value="3" @if(old('ticket',$type->ticket)==3) selected @endif>3 ລະ​ຫັດ</option>
+                                          <option value="4" @if(old('ticket',$type->ticket)==4) selected @endif>4 ລະ​ຫັດ</option>
+                                          <option value="5" @if(old('ticket',$type->ticket)==5) selected @endif>5 ລະ​ຫັດ</option>
 		                                  </select>
                                           </div>
 
@@ -81,7 +81,7 @@
                       <span>ຈຳ​ນວນເງີນ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" class="form-control" name="money" placeholder="ຈຳ​ນວນ">
+                                              <input type="number" class="form-control" name="money" placeholder="ຈຳ​ນວນ" value="{{old('money',$type->money)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -91,7 +91,7 @@
                       <span>ລະ​ຫັດ​ລັບ​ປະ​ເພດ​ເງີນ​ຝາກ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" class="form-control" name="type" placeholder="EX : A B C">
+                                              <input type="text" class="form-control" name="type" placeholder="EX : A B C" value="{{old('type',$type->type)}}">
                                           </div>
                                       </div>
                                   </div>

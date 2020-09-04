@@ -10,7 +10,8 @@ class TypeController extends Controller
         return view('type.index')->with('types',TypeDisposit::all());
     }
     public function create(){
-        return view('type.create');
+        $type = New TypeDisposit();
+        return view('type.create')->with('type',$type);
     }
     public function store(Request $request){
         

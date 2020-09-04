@@ -18,10 +18,12 @@ class AccountController extends Controller
     }
     
     public function create($id){
+        $account = new Account();
         return view ('deposit.makeAccount')
         ->with('customer',Customer::find($id))
         ->with('types',TypeDisposit::all())
-        ->with('employees',Employee::all());
+        ->with('employees',Employee::all())
+        ->with('account',$account);
     }
     public function store(Request $request,$id){
         $this->validate($request,[

@@ -32,7 +32,7 @@
                       <span>ຊື່</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="first-name" class="form-control" name="fname" placeholder="ຊື່">
+                                              <input type="text" id="first-name" class="form-control" name="fname" placeholder="ຊື່" value="{{old('fname',$employee->fname)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -42,7 +42,7 @@
                       <span>ນາມ​ສະ​ກຸນ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="last-name" class="form-control" name="lname" placeholder="ນາມ​ສະ​ກຸນ">
+                                              <input type="text" id="last-name" class="form-control" name="lname" placeholder="ນາມ​ສະ​ກຸນ" value="{{old('lname',$employee->lname)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -52,7 +52,7 @@
                       <span>ຊື່​ຫຼິ້ນ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text"  class="form-control" name="nname" placeholder="ຊື່​ຫຼິ້ນ">
+                                              <input type="text"  class="form-control" name="nname" placeholder="ຊື່​ຫຼິ້ນ" value="{{old('nname',$employee->nname)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -63,8 +63,8 @@
                     </div>
                                           <div class="col-md-8">
                                           <select class="form-control" name="company">                          
-		                                  <option value="NCF">NCF</option>
-                                          <option value="NCC">NCC</option>
+		                                  <option value="NCF" @if(old('company',$employee->company=="NCF")) selected @endIF>NCF</option>
+                                          <option value="NCC" @if(old('company',$employee->company=="NCC")) selected @endIF>NCC</option>
                                           </select>
                                           </div>
                                       </div>
@@ -75,7 +75,7 @@
                       <span>ພະ​ແໜກ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text"  class="form-control" name="department" placeholder="ພະ​ແໜກ">
+                                              <input type="text"  class="form-control" name="department" placeholder="ພະ​ແໜກ" value="{{old('department',$employee->department)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -85,7 +85,7 @@
                       <span>ຕຳ​ແໜ່ງ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text"  class="form-control" name="position" placeholder="ຕຳ​ແໜ່ງ">
+                                              <input type="text"  class="form-control" name="position" placeholder="ຕຳ​ແໜ່ງ" value="{{old('position',$employee->position)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -95,7 +95,7 @@
                       <span>ເບີ​ໂທ​ລະ​ສັບ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="contact-info" class="form-control" name="contact" placeholder="ເບີ​ໂທ​ລະ​ສັບ">
+                                              <input type="number" id="contact-info" class="form-control" name="contact" placeholder="ເບີ​ໂທ​ລະ​ສັບ" value="{{old('contact',$employee->contact)}}">
                                           </div>
                                       </div>
                                   </div>

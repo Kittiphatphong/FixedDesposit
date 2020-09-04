@@ -32,7 +32,7 @@
                       <span>ຊື່</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="first-name" class="form-control" name="fname" placeholder="ຊື່">
+                                              <input type="text" id="first-name" class="form-control" name="fname" placeholder="ຊື່" value="{{old('fname',$customer->fname)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -42,7 +42,7 @@
                       <span>ນາມ​ສະ​ກຸນ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="last-name" class="form-control" name="lname" placeholder="ນາມ​ສະ​ກຸນ">
+                                              <input type="text" id="last-name" class="form-control" name="lname" placeholder="ນາມ​ສະ​ກຸນ" value="{{old('lname',$customer->lname)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -52,7 +52,7 @@
                       <span>ເບີ​ໂທ​ລະ​ສັບ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="contact-info" class="form-control" name="contact" placeholder="ເບີ​ໂທ​ລະ​ສັບ">
+                                              <input type="number" id="contact-info" class="form-control" name="contact" placeholder="ເບີ​ໂທ​ລະ​ສັບ" value="{{old('contact',$customer->contact)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -62,7 +62,7 @@
                       <span>ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="idNumber" class="form-control" name="idNumber" placeholder="ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ">
+                                              <input type="text" id="idNumber" class="form-control" name="idNumber" placeholder="ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ" value="{{old('idNumber',$customer->idNumber)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -72,7 +72,7 @@
                       <span>ທີ່​ຢູ່</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="address" class="form-control" name="address" placeholder="ທີ່​ຢູ່">
+                                              <input type="text" id="address" class="form-control" name="address" placeholder="ທີ່​ຢູ່" value="{{old('address',$customer->address)}}">
                                           </div>
                                       </div>
                                   </div>

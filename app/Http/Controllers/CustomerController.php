@@ -10,7 +10,8 @@ class CustomerController extends Controller
         return view('deposit.customer')->with('customers',Customer::all());
     }
     public function create(){
-        return view('deposit.createCustomer');
+        $customer = new Customer();
+        return view('deposit.createCustomer')->with('customer',$customer);
     }
     public function store(Request $request){
         $this->validate($request,[

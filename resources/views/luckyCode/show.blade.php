@@ -43,19 +43,51 @@
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
     <!-- END: Custom CSS-->
     <style>body{font-family:"Phetsarath OT";}
+    .containerj{
+        /* height: 1263px; */
+        height: 1240px;
+        width: 892.5px;
+        /* width: 892.5px; */
+        padding:0;
+        margin:auto;
+        
+    }
     .bg{
-        background-color:#4B0082;
+        
+        background-image:url("../../../app-assets/images/pages/bgCustomer.png");
+        height: 2520px;
+        width: 1785px;
     }
     .font{
-        font-size:16px;
+        font-size:36px;
     }
     .fontHead{
         color:yellow;
         font-size:36px;
     }
     .fontSize{
-      font size:28px;
+      font size:30px;
     }
+    .fontHead24{
+        color:yellow;
+        font-size:53px;
+    }
+    .fontHead24b{
+        color:black;
+        font-size:53px;
+    }
+    .fontyellow{
+        color:yellow;
+    }
+    .heightj{
+        height: 450px;
+        border-radius:50px;
+        padding-top:10px;
+    }
+    .marginT{
+        margin-top:500px;  
+    }
+    
     </style>
 </head>
 <!-- END: Head-->
@@ -63,32 +95,172 @@
 <!-- BEGIN: Body-->
 
 <body >
-<div class="container bg round">
+<!-- <button onClick="window.print()">Print this page</button> -->
+<div class="containerj bg round ">
 <div class="d-flex justify-content-between">
-<div class="form-group d-flex justify-content-start">
-<img class="round "src="{{asset('images/logo/ncf.png') }}" alt="avatar" height="80" width="80" />
-<span class="text-white mt-1">ສະ​ຖາ​ບັນ ​ການ​ເງີນຈຸ​ລະ​ພາກ​ ທີ່​ຮັບ​ເງີນະ​ຝາກ ນິ​ວ​ຄອນ​ເຊັບ ຈຳ​ກັດ <br>
-New Concept Microfinance Institution Company Limited <br>
-T:(021) 264177, E:info@ncclaos.com <i class="fa fa-phone-square"></i>1448 <i class="fa fa-whatsapp"></i> 77771448
-</span>
 </div>
-<div class="form-group">
-<!-- <div class="d-inline p-2 bg-dark text-white"></div> -->
-<p class="btn btn-primary btn-sm mt-1 font col-5 text-right"><b>ເລກ​ທີ​/NO</b> </p>
-<p class="btn btn-white btn-sm mt-1  font col-6">.............................</p><br>
-<p class="btn btn-primary btn-sm mt-0 font col-5 text-right"><b>ວັນ​ທີ</b> </p>
-<p class="btn btn-white btn-sm mt-0  font col-6">.............................</p>
+
+<div class="ml-5 col-12 marginT">
+<p class="btn btn-primary btn-lg  col-2 text-right font">ຊື່​ບັນ​ຊີ:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">ກິດ​ຕິ​ພັດ​ພົງ</p>
 </div>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right font">ເລກ​ບັນ​ຊີ:</p>
+<p class="btn btn-white btn col-9 text-left font">1222345678</p>
 </div>
-<h1 class="text-center fontHead"><b>ໃບ​ຢັ້ງ​ຢືນ​ເງີນ​ຝາກ​ມີ​ກຳ​ນົດ</b></h1>
-<h2 class="text-center text-white "><b>CERTIFICATE OF FIXED DEPOSIT</b></h2><br>
-<div class="ml-4">
-<p class="btn btn-primary btn-sm col-2 text-right font">ຊື່​ບັນ​ຊີ:</p>
-<p class="btn btn-white btn-sm col-9 text-left font">ກິດ​ຕິ​ພັດ​ພົງ</p>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right font">ທິ່​ຢູ່:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">ວຽງ​ຈະ​ເລີນ</p>
 </div>
-<div class="ml-4">
-<p class="btn btn-primary btn-sm col-2 text-right font">ເລກ​ບັນ​ຊີ:</p>
-<p class="btn btn-white btn-sm col-9 text-left font">1222345678</p>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
+<p class="btn btn-white btn-lg col-3 text-left font">.</p>
+<p class="btn btn-primary btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ</p>
+<p class="btn btn-white btn-lg col-4 text-left font">123456</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">02056777445</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
+<p class="btn btn-white btn-lg col-2 text-left font">1 ປີ</p>
+<p class="btn btn-primary btn-lg col-2 text-right font">ເລີ່ມ​ທີ:</p>
+<p class="btn btn-white btn-lg col-2 text-left font">4-09-2020</p>
+<p class="btn btn-primary btn-lg col-1 text-right font pl-0">ເຖີງ​ທີ:</p>
+<p class="btn btn-white btn-lg col-2 text-left font">4-09-2020</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right font">ອັດ​ຕາ​ດອກ​ເບ້ຍ:</p>
+<p class="btn btn-white btn-lg col-4 text-left font">12 % ​<span class="float-right">ຕໍ່​ປີ</span> </p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-primary btn-lg col-2 text-right fontHead24 pl-0">ຈຳ​ນວນ​ເງີນ:</p>
+<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b> 2.000.000 </b>​<span class="float-right"><b>ກີບ</b></span></p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-primary col-2 text-right fontHead24 pl-0">ເປັນ​ໂຕ​ໜັງ​ສື:</p>
+<p class="btn btn-white col-6 text-left fontHead24b"><b>ສອງ​ລ້ານ​ກີບ</b> </p>
+</div>
+<br><br>
+
+<div class="row ml-5">
+  <div class="col-sm-7 ">
+    <div class="border-white heightj">
+      <div class="card-body">
+      <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>
+<ul class="list-unstyled m-0">
+                                            <li class="d-inline-block col-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" checked  disabled>
+                                                        <span class="vs-checkbox vs-checkbox-lg">
+                                                            <span class="vs-checkbox--check ">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</span>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                            <li class="d-inline-block mr-0">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" disabled>
+                                                        <span class="vs-checkbox vs-checkbox-lg">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3ເດືອນ</span>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                        </ul><br>
+                                <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block col-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox"  disabled>
+                                                        <span class="vs-checkbox vs-checkbox-lg">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check "></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</span>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                            <li class="d-inline-block mr-0">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" disabled>
+                                                        <span class="vs-checkbox vs-checkbox-lg">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6ເດືອນ</span>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                </ul><br>
+                                <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block col-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox"  disabled>
+                                                        <span class="vs-checkbox vs-checkbox-lg">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</span>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                            <li class="d-inline-block mr-0 ">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" disabled>
+                                                        <span class="vs-checkbox vs-checkbox-lg">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ12ເດືອນ</span>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                </ul>
+      </div>
+    </div>
+  </div> 
+  <div class="col-sm-4 ml-0">
+    <div class="border-white heightj pl-2">
+      <div class="card-body pl-0 pr-0">
+       
+      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງີນຝາລຸ້ນໂຊກ</b></p><br>
+<div class="col-12">
+<p class="btn btn-primary  col-4 text-right font">ວັນ​ທີ:</p>
+<p class="btn btn-white  col-6 text-left font">09.09.2020</p>
+</div>
+<div class="col-12">
+<p class="btn btn-primary  col-4 text-right font">ເຖີງ​:</p>
+<p class="btn btn-white  col-6 text-left font">09.09.2021</p>
+</div>
+<div class="col-12">
+<p class="btn btn-primary  col-4 text-right font pr-0">ໝາຍ​ເລກ:</p>
+<p class="btn btn-white  col-6 text-left font">A100001</p>
+</div>
+<div class="col-12">
+<p class="btn btn-primary  col-4 text-right font pr-0">ເຖີງ​​ເລກ:</p>
+<p class="btn btn-white  col-6 text-left font">A100012</p>
+</div>
+
+      </div>
+    </div>
+  </div>
 </div>
 </div>
    
