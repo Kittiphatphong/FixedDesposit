@@ -2605,6 +2605,8 @@ a.btn.disabled, fieldset:disabled a.btn {
   box-shadow : 0 0 0 0.2rem rgba(136, 126, 242, 0.5);
 }
 
+
+
 .btn-secondary {
   color : #2A2E30;
   background-color : #B8C2CC;
@@ -10628,3 +10630,107 @@ a.text-dark:hover, a.text-dark:focus {
     border-color : #F8F8F8;
   }
 }
+
+/* Bootstrap-J design  */
+
+.btn-j {
+  color : #FFFFFF;
+  background-color : #8F489C;
+  border-color : #8F489C;
+}
+.btn-j:hover {
+  color : #FFFFFF;
+  background-color : #7809ac;
+  border-color : #7809ac;
+}
+.btn-j:focus, .btn-j.focus {
+  box-shadow : 0 0 0 0.2rem rgba(136, 126, 242, 0.5);
+}
+.btn-j.disabled, .btn-j:disabled {
+  color : #FFFFFF;
+  background-color : #7367F0;
+  border-color : #7367F0;
+}
+.btn-j:not(:disabled):not(.disabled):active, .btn-j:not(:disabled):not(.disabled).active, .show > .btn-j.dropdown-toggle {
+  color : #FFFFFF;
+  background-color : #4839EB;
+  border-color : #3E2DEA;
+}
+.btn-j:not(:disabled):not(.disabled):active:focus, .btn-j:not(:disabled):not(.disabled).active:focus, .show > .btn-j.dropdown-toggle:focus {
+  box-shadow : 0 0 0 0.2rem rgba(136, 126, 242, 0.5);
+}
+
+
+.colJ-4,.colJ2-4, .colJ-2, .colJ2-2, .colJ-12, .colJ-sm-8 {
+  position : relative;
+  width : 100%;
+  padding-right : 10px;
+  padding-left : 14px;
+}
+
+.colJ-4 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 33.33333%;
+      -ms-flex : 0 0 33.33333%;
+          flex : 0 0 33.33333%;
+  max-width : 32.858%;
+}
+.colJ2-4 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 33.33333%;
+      -ms-flex : 0 0 33.33333%;
+          flex : 0 0 33.33333%;
+  max-width : 43.858%;
+}
+.colJ-2 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 16.66667%;
+      -ms-flex : 0 0 16.66667%;
+          flex : 0 0 16.66667%;
+  max-width : 11.97767%;
+}
+.colJ2-2 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 16.66667%;
+      -ms-flex : 0 0 16.66667%;
+          flex : 0 0 16.66667%;
+  max-width : 17.83667%;
+}
+.colJ-sm-8 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 66.66667%;
+      -ms-flex : 0 0 66.66667%;
+          flex : 0 0 66.66667%;
+  max-width : 62.15667%;
+}
+
+
+
+
+
+.checkbox-xl .custom-control-label::before, 
+.checkbox-xl .custom-control-label::after {
+  top: 1.2rem;
+  width: 3.85rem;
+  height: 3.85rem;
+  
+} 
+
+.checkbox-xl .custom-control-label {
+  padding-top: 23px;
+  padding-left: 40px;
+  
+
+}
+.custom-checkbox .custom-control-input:checked + .custom-control-label:after {
+
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  
+  background-color: #f3c90c!important;
+  border:1px solid #f3c90c;
+  opacity:1;
+  
+}
+
+

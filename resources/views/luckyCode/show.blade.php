@@ -42,20 +42,27 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
     <!-- END: Custom CSS-->
-    <style>body{font-family:"Phetsarath OT";}
-    .containerj{
-        /* height: 1263px; */
-        height: 1240px;
-        width: 892.5px;
-        /* width: 892.5px; */
+    <style>body{font-family:"Phetsarath OT";
+                zoom:0.67;
+}
+    .containerJ{
+ 
         padding:0;
         margin:auto;
+        width:20%;
+        
         
     }
-    .bg{
+    .bgS{
+        
+        background-image:url("../../../app-assets/images/pages/bgStaff.png");
+        height: 2510px;
+        width: 1785px;
+    }
+    .bgC{
         
         background-image:url("../../../app-assets/images/pages/bgCustomer.png");
-        height: 2520px;
+        height: 2510px;
         width: 1785px;
     }
     .font{
@@ -69,7 +76,7 @@
       font size:30px;
     }
     .fontHead24{
-        color:yellow;
+        color:#fdcf09;
         font-size:53px;
     }
     .fontHead24b{
@@ -77,185 +84,152 @@
         font-size:53px;
     }
     .fontyellow{
-        color:yellow;
+        color:#fdcf09;
     }
-    .heightj{
+    .heightJ{
         height: 450px;
         border-radius:50px;
         padding-top:10px;
+        border:7px solid white;
     }
     .marginT{
         margin-top:500px;  
     }
+    .marginJ{
+        margin-top:585px;  
+        left:210px;
+    }
     
+    
+    
+    @media print { 
+               .no-print { 
+                  visibility: hidden; 
+               } 
+            } 
     </style>
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-
+@if($account)
 <body >
-<!-- <button onClick="window.print()">Print this page</button> -->
-<div class="containerj bg round ">
+<button onClick="window.print()" class="btn btn-primary btn-lg float-left no-print font">Print</button>
+<a href="{{route('account.index')}}" class="float-right no-print btn btn-dark btn-lg font">Back</a>
+<div class="containerJ bgC round ">
 <div class="d-flex justify-content-between">
 </div>
 
 <div class="ml-5 col-12 marginT">
-<p class="btn btn-primary btn-lg  col-2 text-right font">ຊື່​ບັນ​ຊີ:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">ກິດ​ຕິ​ພັດ​ພົງ</p>
+<p class="btn btn-j btn-lg  colJ2-2 text-right font">ຊື່​ບັນ​ຊີ:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->fname}} {{$account->customers->lname}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right font">ເລກ​ບັນ​ຊີ:</p>
-<p class="btn btn-white btn col-9 text-left font">1222345678</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ເລກ​ບັນ​ຊີ:</p>
+<p class="btn btn-white btn btn-lg col-9 text-left font">{{$account->idAccount}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right font">ທິ່​ຢູ່:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">ວຽງ​ຈະ​ເລີນ</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ທີ່ຢູ່:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
-<p class="btn btn-white btn-lg col-3 text-left font">.</p>
-<p class="btn btn-primary btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ</p>
-<p class="btn btn-white btn-lg col-4 text-left font">123456</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
+<p class="btn btn-white btn-lg col-3 text-left font">@if(round($account->customers->idNumber)>999999) {{$account->customers->idNumber}} @else . @endIf</p>
+<p class="btn btn-j btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ:</p>
+<p class="btn btn-white btn-lg colJ-4 text-left font">@if(round($account->customers->idNumber)<=999999) {{$account->customers->idNumber}} @else . @endIf</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">02056777445</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->contact}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
-<p class="btn btn-white btn-lg col-2 text-left font">1 ປີ</p>
-<p class="btn btn-primary btn-lg col-2 text-right font">ເລີ່ມ​ທີ:</p>
-<p class="btn btn-white btn-lg col-2 text-left font">4-09-2020</p>
-<p class="btn btn-primary btn-lg col-1 text-right font pl-0">ເຖີງ​ທີ:</p>
-<p class="btn btn-white btn-lg col-2 text-left font">4-09-2020</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year")ປີ@endif @if($account->typeDisposits->yearOrMonth == "month")ເດືອນ@endif</p>
+<p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->start}}</p>
+<p class="btn btn-j btn-lg colJ-2 text-right font pl-0">ເຖິງວັນ​ທີ:</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->end}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right font">ອັດ​ຕາ​ດອກ​ເບ້ຍ:</p>
-<p class="btn btn-white btn-lg col-4 text-left font">12 % ​<span class="float-right">ຕໍ່​ປີ</span> </p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ອັດ​ຕາ​ດອກ​ເບ້ຍ:</p>
+<p class="btn btn-white btn-lg col-4 text-left font">{{$account->interest}} % ​<span class="float-right"><b>/ຕໍ່​ປີ</b></span> </p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary btn-lg col-2 text-right fontHead24 pl-0">ຈຳ​ນວນ​ເງີນ:</p>
-<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b> 2.000.000 </b>​<span class="float-right"><b>ກີບ</b></span></p>
+<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24 ">ຈຳ​ນວນ​ເງິນ:</p>
+<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{number_format($account->amount)}} </b>​<span class="float-right"><b>ກີບ</b></span></p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-primary col-2 text-right fontHead24 pl-0">ເປັນ​ໂຕ​ໜັງ​ສື:</p>
-<p class="btn btn-white col-6 text-left fontHead24b"><b>ສອງ​ລ້ານ​ກີບ</b> </p>
+<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24">ເປັນ​ໂຕ​ໜັງ​ສື:</p>
+<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{$account->amountWord}}</b> </p>
 </div>
 <br><br>
 
 <div class="row ml-5">
-  <div class="col-sm-7 ">
-    <div class="border-white heightj">
+  <div class="colJ-sm-8">
+    <div class="heightJ">
       <div class="card-body">
       <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>
+
 <ul class="list-unstyled m-0">
-                                            <li class="d-inline-block col-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" checked  disabled>
-                                                        <span class="vs-checkbox vs-checkbox-lg">
-                                                            <span class="vs-checkbox--check ">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</span>
-                                                    </div>
-                                                </fieldset>
+                                            <li class="d-inline-block col-6">                              
+                                            <div class="custom-control custom-checkbox checkbox-xl">
+                                            <input type="checkbox" class="custom-control-input " @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</label>
+                                            </div>
+                                               
                                             </li>
                                             <li class="d-inline-block mr-0">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" disabled>
-                                                        <span class="vs-checkbox vs-checkbox-lg">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3ເດືອນ</span>
-                                                    </div>
-                                                </fieldset>
+                                            <div class="custom-control custom-checkbox checkbox-xl">
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</label>
                                             </li>
                                         </ul><br>
                                 <ul class="list-unstyled mb-0">
                                             <li class="d-inline-block col-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox"  disabled>
-                                                        <span class="vs-checkbox vs-checkbox-lg">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check "></i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</span>
-                                                    </div>
-                                                </fieldset>
+                                            <div class="custom-control custom-checkbox checkbox-xl">
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</label>
                                             </li>
                                             <li class="d-inline-block mr-0">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" disabled>
-                                                        <span class="vs-checkbox vs-checkbox-lg">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6ເດືອນ</span>
-                                                    </div>
-                                                </fieldset>
-                                            </li>
+                                            <div class="custom-control custom-checkbox checkbox-xl" >
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</label>
                                 </ul><br>
                                 <ul class="list-unstyled mb-0">
                                             <li class="d-inline-block col-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox"  disabled>
-                                                        <span class="vs-checkbox vs-checkbox-lg">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</span>
-                                                    </div>
-                                                </fieldset>
+                                            <div class="custom-control custom-checkbox checkbox-xl" >
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</label>
                                             </li>
                                             <li class="d-inline-block mr-0 ">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" disabled>
-                                                        <span class="vs-checkbox vs-checkbox-lg">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="text-white font">ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ12ເດືອນ</span>
-                                                    </div>
-                                                </fieldset>
+                                            <div class="custom-control custom-checkbox checkbox-xl"X >
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ12ເດືອນ</label>
                                             </li>
                                 </ul>
       </div>
     </div>
   </div> 
   <div class="col-sm-4 ml-0">
-    <div class="border-white heightj pl-2">
+    <div class="heightJ pl-2 ">
       <div class="card-body pl-0 pr-0">
        
-      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງີນຝາລຸ້ນໂຊກ</b></p><br>
+      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>
 <div class="col-12">
-<p class="btn btn-primary  col-4 text-right font">ວັນ​ທີ:</p>
+<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>
 <p class="btn btn-white  col-6 text-left font">09.09.2020</p>
 </div>
 <div class="col-12">
-<p class="btn btn-primary  col-4 text-right font">ເຖີງ​:</p>
+<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>
 <p class="btn btn-white  col-6 text-left font">09.09.2021</p>
 </div>
 <div class="col-12">
-<p class="btn btn-primary  col-4 text-right font pr-0">ໝາຍ​ເລກ:</p>
-<p class="btn btn-white  col-6 text-left font">A100001</p>
+<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
+<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}</p>
 </div>
 <div class="col-12">
-<p class="btn btn-primary  col-4 text-right font pr-0">ເຖີງ​​ເລກ:</p>
-<p class="btn btn-white  col-6 text-left font">A100012</p>
+<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
+<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</p>
 </div>
 
       </div>
@@ -263,9 +237,143 @@
   </div>
 </div>
 </div>
-   
-  
+          </body>
 
+
+
+<!-- page2 -->
+@if($account->employees->id != 1)
+<body>
+<div class="containerJ bgS round ">
+<div class="d-flex justify-content-between">
+  <p></p>
+</div>
+
+<div class="ml-5 col-12 marginT">
+<p class="btn btn-j btn-lg  colJ2-2 text-right font">ຊື່​ບັນ​ຊີ:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->fname}} {{$account->customers->lname}}</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ເລກ​ບັນ​ຊີ:</p>
+<p class="btn btn-white btn btn-lg col-9 text-left font">{{$account->idAccount}}</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ທີ່ຢູ່:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
+<p class="btn btn-white btn-lg col-3 text-left font">@if(round($account->customers->idNumber)>999999) {{$account->customers->idNumber}} @else . @endIf</p>
+<p class="btn btn-j btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ:</p>
+<p class="btn btn-white btn-lg colJ-4 text-left font">@if(round($account->customers->idNumber)<=999999) {{$account->customers->idNumber}} @else . @endIf</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->contact}}</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year")ປີ@endif @if($account->typeDisposits->yearOrMonth == "month")ເດືອນ@endif</p>
+<p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->start}}</p>
+<p class="btn btn-j btn-lg colJ-2 text-right font pl-0">ເຖິງວັນ​ທີ:</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->end}}</p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg colJ2-2 text-right font">ອັດ​ຕາ​ດອກ​ເບ້ຍ:</p>
+<p class="btn btn-white btn-lg col-4 text-left font">{{$account->interest}} % ​<span class="float-right"><b>/ຕໍ່​ປີ</b></span> </p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24 ">ຈຳ​ນວນ​ເງິນ:</p>
+<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{number_format($account->amount)}} </b>​<span class="float-right"><b>ກີບ</b></span></p>
+</div>
+<div class="ml-5 col-12">
+<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24">ເປັນ​ໂຕ​ໜັງ​ສື:</p>
+<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{$account->amountWord}}</b> </p>
+</div>
+<br><br>
+
+<div class="row ml-5">
+  <div class="colJ-sm-8">
+    <div class="heightJ">
+      <div class="card-body">
+      <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>
+
+<ul class="list-unstyled m-0">
+                                            <li class="d-inline-block col-6">                              
+                                            <div class="custom-control custom-checkbox checkbox-xl">
+                                            <input type="checkbox" class="custom-control-input " @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</label>
+                                            </div>
+                                               
+                                            </li>
+                                            <li class="d-inline-block mr-0">
+                                            <div class="custom-control custom-checkbox checkbox-xl">
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</label>
+                                            </li>
+                                        </ul><br>
+                                <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block col-6">
+                                            <div class="custom-control custom-checkbox checkbox-xl">
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</label>
+                                            </li>
+                                            <li class="d-inline-block mr-0">
+                                            <div class="custom-control custom-checkbox checkbox-xl" >
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</label>
+                                </ul><br>
+                                <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block col-6">
+                                            <div class="custom-control custom-checkbox checkbox-xl" >
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</label>
+                                            </li>
+                                            <li class="d-inline-block mr-0 ">
+                                            <div class="custom-control custom-checkbox checkbox-xl"X >
+                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ") checked @endIf>
+                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ12ເດືອນ</label>
+                                            </li>
+                                </ul>
+      </div>
+    </div>
+  </div> 
+  <div class="col-sm-4 ml-0">
+    <div class="heightJ pl-2 ">
+      <div class="card-body pl-0 pr-0">
+       
+      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>
+<div class="col-12">
+<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>
+<p class="btn btn-white  col-6 text-left font">09.09.2020</p>
+</div>
+<div class="col-12">
+<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>
+<p class="btn btn-white  col-6 text-left font">09.09.2021</p>
+</div>
+<div class="col-12">
+<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
+<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}</p>
+</div>
+<div class="col-12">
+<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
+<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</p>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ml-5 col-12 marginJ">
+
+<p class="col-9 text-left font "><b>{{$account->employees->fname}} {{$account->employees->lname}} </b></p>
+</div>
+</div>
+          </div>
+
+</body> 
+@endif
     <!-- BEGIN: Vendor JS-->
     <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
     
@@ -303,5 +411,5 @@
 
 </body>
 <!-- END: Body-->
-
+@endIf
 </html>

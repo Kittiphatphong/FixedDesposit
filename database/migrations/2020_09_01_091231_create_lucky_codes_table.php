@@ -15,7 +15,7 @@ class CreateLuckyCodesTable extends Migration
     {
         Schema::create('lucky_codes', function (Blueprint $table) {
             $table->id();
-            $table->integer('idCode');
+            $table->integer('idCode')->nullable();
             $table->integer('account_id');
             $table->timestamps();
         });

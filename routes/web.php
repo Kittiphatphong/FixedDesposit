@@ -50,10 +50,12 @@ Route::resource('user', 'UserController');
 Route::get('customer-index','CustomerController@index')->name('customer.index');
 Route::get('customer-create','CustomerController@create')->name('customer.create');
 Route::post('customer-store','CustomerController@store')->name('customer.store');
+Route::post('customer-destroy/{id}','CustomerController@destroy')->name('customer.destroy');
 
 // !Account
 Route::get('account-create/{id}','AccountController@create')->name('account.create');
 Route::post('account-store/{id}','AccountController@store')->name('account.store');
+Route::get('account-index','AccountController@index')->name('account.index');
 
 // !Type
 Route::get('type-index','TypeController@index')->name('type.index');
@@ -67,5 +69,6 @@ Route::post('employee-store','EmployeeController@store')->name('employee.store')
 
 // !Lucky code
 Route::get('show-lucky-code','LuckyCodeController@show')->name('lucky.show');
+Route::get('view-lucky-code/{id}','LuckyCodeController@view')->name('lucky.view');
 Route::get('index-lucky-code','LuckyCodeController@index')->name('lucky.index');
 Route::post('generate-lucky-code/{id}','LuckyCodeController@store')->name('lucky.store');

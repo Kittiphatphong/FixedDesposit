@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Customer;
+use App\Account;
 use Illuminate\Http\Request;
-
+use DB;
 class CustomerController extends Controller
 {
     public function index(){
@@ -18,7 +19,7 @@ class CustomerController extends Controller
          'fname' =>'required',
          'lname' =>'required',
          'contact' => 'required',
-         'idNumber' => 'required',
+         'idNumber' => 'required|unique:customers',
          'address' => 'required'
         ]);
     Customer::create([
@@ -28,7 +29,8 @@ class CustomerController extends Controller
          'idNumber' => $request->get('idNumber'),
          'address' => $request->get('address'),
     ]);
-    return back()->with('success','ເພີ້ມ​ລູກ​ຄ້າ​ສຳ​ເລັດ');
+    $idCustomer = DB::table('customers')->max('id');
+    return redirect()->route('account.create',$idCustomer);
     }
 
     public function edit($id){
@@ -40,7 +42,13 @@ class CustomerController extends Controller
     }
 
     public function destroy($id){
-
+        $customer = Customer::find($id);
+         $accountCustomer = Account::where('customer_id','=',$id);
+         if($accountCustomer->count()>0){
+             return back()->with('warning','ທ່າ​ນ​ບໍ່​ສາ​ມາດ​ລືບ​ລູກ​ຄ້າ​ທີ່​ມີ​ບັນ​ຊີ​ເງິນຝາກໄດ້');
+         }
+         $customer->delete();
+         return back()->with('success','ລຶບ​ລູກ​ຄ້າ​ສຳ​ເລັດ');
     }
     
 }

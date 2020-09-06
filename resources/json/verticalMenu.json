@@ -14,9 +14,14 @@
             "icon": "fa fa-credit-card"
         },
         {
+            "url": "account-index",
+            "name": "Account",
+            "icon": "fa fa-address-card"
+        },
+        {
             "url": "index-lucky-code",
-            "name": "Report lucky code",
-            "icon": "fa fa-folder-open"
+            "name": "Lucky code",
+            "icon": "fa fa-list-ol"
         },
         {
             "url": "employee-index",
@@ -26,7 +31,7 @@
         {
             "url": "type-index",
             "name": "Setting Lucky code",
-            "icon": "fa fa-cogs"
+            "icon": "fa fa-wrench"
         },
         {
             "url": "",

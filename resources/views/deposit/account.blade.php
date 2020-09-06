@@ -22,43 +22,48 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('customer.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ລູກ​ຄ້າ​ໃໝ່</a>
+                                        <a href="{{route('customer.index')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ບັນ​ຊີ</a>
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
-                                                        <th>ຈຳ​ນວນ​ບັນ​ຊີ</th>
-                                                        <th>ບັນ​ຊີ</th>
-                                                        <th>ບັດ​ປະ​ຈຳ​ໂຕ</th>
-                                                        <th>ເບີ​ໂທ</th>
-                                                        <th>ທີ່​ຢູ່</th>                                                  
+                                                        <th>ເລກ​ບັນ​ຊີ</th>
+                                                        <th>ຊື່​ບັນ​ຊີ</th>
+                                                        <th>ໄລ​ຍະ​ຝາກ</th>
+                                                        <th>ມື້​ຝາກ​</th>
+                                                        <th>ດອກ​ເບ້ຍ</th>
+                                                        <th>ຈຳ​ນວນ​ເງີນ</th>
+                                                        <th>ເປັນ​ໂຕ​ໜັງ​ສື</th> 
+                                                        <th>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</th>
+                                                        <th>ເລກ​ໝາຍລຸ້ນ​ໂຊກ</th> 
+                                                        <th>ພະ​ນັກ​ງານ​ແນະ​ນຳ</th>                                                
                                                         <th>ຈັດ​ການ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($customers as $customer)
+                                                @foreach($accounts as $account)
                                                 <tr>
-                                                <th>{{$customer->fname}} {{$customer->lname}}</th>
-                                                <th>{{$customer->accounts->count()}}</th>
-                                                <th>@foreach($customer->accounts as $account)
-                                                <p>{{$account->idAccount}}</p>
-                                                @endforeach
-                                                </th>
-                                                <th>{{$customer->idNumber}}</th>
-                                                <th>{{$customer->contact}}</th>
-                                                <th>{{$customer->address}}</th>                                                                         
+                                                        <th>{{$account->idAccount}}</th>
+                                                        <th>{{$account->customers->fname}} {{$account->customers->lname}}</th>
+                                                        <th>{{$account->typeDisposits->period}} @if($account->typeDisposits->yearOrMonth=="year")ປີ @else ເດືອນ @endIf​</th>
+                                                        <th>{{$account->start}}</th>
+                                                        <th>{{$account->interest}} %</th>
+                                                        <th>{{number_format($account->amount)}}</th>
+                                                        <th>{{$account->amountWord}}</th> 
+                                                        <th>{{$account->receiveInterest}}</th>
+                                                        <th>{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}} - {{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</th> 
+                                                        <th>{{$account->employees->fname}} {{$account->employees->lname}}</th>                                                       
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="{{route('account.create',$customer->id)}}" class="btn btn-link ml-0 pl-0" value=""><span class="fa fa-money"></span></a>
-                                                        <a href="" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="{{route('customer.destroy',$customer->id)}}"  method="post" class="delete_form">
+                                                        <a href="{{route('lucky.view',$account->id)}}" class="btn btn-link ml-0 pl-0" value="" ><span class="fa fa-eye"></span></a>
+                                                        <a href="" class="btn btn-link" value="" ><span class="fa fa-pencil"></span></a>
+                                                        <form action=""  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         <!-- <input type="hidden" name="_method" value="DELETE"> -->
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>
                                                         </th>                                                   
                                                      </tr>
-                                                 @endForeach   
+                                                @endForeach  
                                                 </tbody>
                                             </table>
                                         </div>

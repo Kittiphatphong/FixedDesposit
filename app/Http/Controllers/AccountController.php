@@ -17,6 +17,10 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
     
+    public function index(){
+        return view('deposit.account')->with('accounts',Account::all());
+    }
+
     public function create($id){
         $account = new Account();
         return view ('deposit.makeAccount')
@@ -34,6 +38,7 @@ class AccountController extends Controller
             'amount' => 'required|numeric',
             'amountWord' => 'required'  
         ]);
+        //! Create Account
         Account::create([
             'idAccount' => $request->get('idAccount'),
             'start' => $request->get('start'),
@@ -47,22 +52,31 @@ class AccountController extends Controller
             'typeDisposit_id'=>$request->get('typeDisposit_id'),
             'employee_id' => $request->get('employee_id')
         ]);
+        //! generate Id
         $idAccount = DB::table('accounts')->max('id');
         $account = Account::find($idAccount);
+        //! validation account is generated 
         if($account->generate==1){
-            return back()->with('warning','un');
-        }
-        $luckyCodeAmount = ROUND($account->amount / $account->typeDisposits->money)* $account->typeDisposits->ticket;
-        $account->generate = 1;
-        $account->save();
-        for($i=0;$i<$luckyCodeAmount;$i++){
-        $idLuckyCode = DB::table('lucky_codes')->max('id')+1000001;
-           LuckyCode::create([
-            'idCode' => $idLuckyCode,
-            'account_id' => $account->id
-           ]);
+            return back()->with('warning','This account is generated');
         }
         
-        return redirect()->route('lucky.index');
+        $luckyCodeAmount = ROUND($account->amount / $account->typeDisposits->money - 0.5)* $account->typeDisposits->ticket;
+        //! LOOP LUCKY CODE 
+        for($i=0;$i<$luckyCodeAmount;$i++){
+           LuckyCode::create([
+            'account_id' => $account->id
+           ]);
+           $idLuckyCode = DB::table('lucky_codes')->max('id');
+           $LuckyCode = LuckyCode::find($idLuckyCode);
+           $LuckyCode->idCode = 1000000 + $idLuckyCode;
+           $LuckyCode->save();
+        }
+
+        $account->generate = 1;
+        $account->save();
+        return redirect()->route('lucky.show');
+    }
+    public function destroy($id){
+
     }
 }
