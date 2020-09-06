@@ -1,28 +1,18 @@
-@extends('layouts/contentLayoutMaster')
-
-@section('title', 'Create customer')
-
-@section('vendor-style')
-<!-- vendor css files -->
-<link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
-@endsection
-@section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-    <style>body{font-family:"Phetsarath OT";}</style>
-@endsection
-
+@extends('layouts/fullNewApp')
+@section('title', 'Create Account')
 @section('content')
 <section id="add-row" >
                     <div class="row ">
                         <div class="col-12">
+                        
                             <div class="card">
               <div class="card-header">
-                  <h4 class="card-title">​​<b>ສະ​ມັກ​ລູກ​ຄ້າ​ໃໝ່</b></h4>
+                  <h4 class="card-title">​​<b>ແກ້​ໄຂ​ຂໍ້​ມູນ​ລູກ​ຄ້າ</b></h4>
+                  <a href="{{route('customer.index')}}" class="btn btn-dark mr-1 mb-1 float-right">ກັບ​ຄືນ</a>
               </div>
               <div class="card-content col-7">
                   <div class="card-body">
-                      <form class="form form-horizontal" action="{{route('customer.store')}}"  method="post">
+                  <form class="form form-horizontal" action="{{route('customer.update',$customer->id)}}"  method="post">
                       @csrf
                           <div class="form-body">
                               <div class="row">
@@ -78,7 +68,7 @@
                                   </div>
 
                 <div class="col-md-8 offset-md-4">
-                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ສະ​ມັກ</button>
+                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ແກ້​ໄຂ</button>
                                       <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ້​ມ​ໃໝ່</button>
                                   </div>
                               </div>
@@ -90,22 +80,4 @@
       </div>
 </section>
 
-@endsection
-
-@section('vendor-script')
-<!-- vendor files -->
-<script src="{{ asset(mix('vendors/js/charts/apexcharts.min.js')) }}"></script>
-@endsection
-@section('page-script')
-<!-- Page js files -->
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="../../../app-assets/js/scripts/datatables/datatable.js"></script>
 @endsection

@@ -11,7 +11,7 @@ $configData = Helper::applClasses();
           <img class="round"
                     src="{{asset('images/logo/logoncf.png') }}" alt="avatar" height="60"
                     width="60" />
-          <h2 class="brand-text mb-0">NCF</h2>
+          <h2 class="brand-text mb-0">NCM</h2>
         </a></li>
       <li class="nav-item nav-toggle">
         <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">

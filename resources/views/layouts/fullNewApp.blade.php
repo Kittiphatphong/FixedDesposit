@@ -48,14 +48,10 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="content-left-sidebar" data-layout="dark-layout">
-    <main class="main">
+<body>
     @auth
-        <div class="app-content content">
-        <div class="content-wrapper">
-
-            <div class="content-header row">
-            </div>
+    <a href="{{route('home')}}"><img src="{{asset('images/logo/ncf.png') }}" class="float-left" width="150px" ></a>
+            <div class="container">
             @if(Session()->has('success'))
                         <div class="alert alert-success">
                             {{ Session()->get('success') }}
@@ -75,16 +71,23 @@
                         </ul>
                         </div>
              @endif
-            <div class="content-body">
+             </div>
+             <div class="container">
                 <!-- users edit start -->
                 @yield('content')
             </div>
-        </div>
+            <footer class="footer footer-static footer-light">
+        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="text-bold-800 grey darken-2" href="#" target="_blank">Kittiphatphong</a>All rights Reserved</span><span class="float-md-right d-none d-md-block">NCC & NCM IT team<i class="feather icon-heart pink"></i></span>
+            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+        </p>
+    </footer>
     </div>
     @else
     @yield('content')
+
+    
     @endAuth
-    </main>
+
 
     <!-- BEGIN: Vendor JS-->
     <script src="../../../app-assets/vendors/js/vendors.min.js"></script>

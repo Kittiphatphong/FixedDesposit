@@ -34,11 +34,27 @@ class CustomerController extends Controller
     }
 
     public function edit($id){
-
+        $customer = Customer::find($id);
+        return view('deposit.editCustomer')->with('customer',$customer);
+    
     }
 
     public function update(Request $request,$id){
-
+        $this->validate($request,[
+            'fname' =>'required',
+            'lname' =>'required',
+            'contact' => 'required',
+            'idNumber' => 'required',
+            'address' => 'required'
+           ]);
+           Customer::find($id)->update([
+            'fname' =>$request->get('fname'),
+            'lname' =>$request->get('lname'),
+            'contact' => $request->get('contact'),
+            'idNumber' => $request->get('idNumber'),
+            'address' => $request->get('address'),
+       ]); 
+       return redirect()->route('customer.index')->with('success','ແກ້ໄຂ​ຂໍ໊​ມູນ​ລູກ​ຄ້າ​ສຳ​ເລັດ');
     }
 
     public function destroy($id){

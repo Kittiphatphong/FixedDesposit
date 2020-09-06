@@ -1,16 +1,14 @@
 @extends('layouts/fullNewApp')
-
 @section('title', 'Create Account')
-
 @section('content')
-<div class ="container">
 <section id="add-row" >
                     <div class="row ">
                         <div class="col-12">
-                        <a href="{{route('customer.index')}}" class="btn btn-outline-primary mr-1 mb-1 ">ກັບ​ຄືນ</a>
+                        
                             <div class="card">
               <div class="card-header">
                   <h4 class="card-title">​​<b>ເປີດ​ບັນ​ຊີ​ໃໝ່</b></h4>
+                  <a href="{{route('customer.index')}}" class="btn btn-dark mr-1 mb-1 float-right">ກັບ​ຄືນ</a>
               </div>
               <div class="card-content col-7">
                   <div class="card-body">
@@ -140,7 +138,7 @@
           </div>
       </div>
 </section>
-</div>
+
 
         <!-- BEGIN: Vendor JS-->
         <script src="../../../app-assets/vendors/js/vendors.min.js"></script>

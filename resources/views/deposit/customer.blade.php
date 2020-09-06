@@ -50,7 +50,7 @@
                                                 <th>{{$customer->address}}</th>                                                                         
                                                         <th class="d-flex justify-content-start">
                                                         <a href="{{route('account.create',$customer->id)}}" class="btn btn-link ml-0 pl-0" value=""><span class="fa fa-money"></span></a>
-                                                        <a href="" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>
+                                                        <a href="{{route('customer.edit',$customer->id)}}" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>
                                                         <form action="{{route('customer.destroy',$customer->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         <!-- <input type="hidden" name="_method" value="DELETE"> -->
