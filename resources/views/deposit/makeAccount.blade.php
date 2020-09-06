@@ -12,7 +12,7 @@
               </div>
               <div class="card-content col-7">
                   <div class="card-body">
-                      <form class="form form-horizontal" action="{{route('account.store',$customer->id)}}"  method="post">
+                      <form class="form form-horizontal" action="{{isset($check)?'':route('account.store',$customer->id)}}"  method="post">
                       @csrf
                           <div class="form-body">
                               <div class="row">
@@ -22,7 +22,7 @@
                       <span>ຊື່​ບັນ​ຊີ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" class="form-control" name="accountName" placeholder="ຊື່​ບັນ​ຊີ" value="{{$customer->fname}} {{$customer->lname}}" readonly>
+                                              <input type="text" class="form-control" name="accountName" placeholder="ຊື່​ບັນ​ຊີ" value="@if(isset($check)){{$account->customers->fname}} {{$account->customers->lname}}@else{{$customer->fname}} {{$customer->lname}} @endif" readonly>
                                           </div>
                                       </div>
                                   </div>

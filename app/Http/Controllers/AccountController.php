@@ -29,6 +29,14 @@ class AccountController extends Controller
         ->with('employees',Employee::all())
         ->with('account',$account);
     }
+    public function edit($id){
+        $account = Account::find($id);
+        return view ('deposit.makeAccount')
+        ->with('customer',Customer::find($id))
+        ->with('types',TypeDisposit::all())
+        ->with('employees',Employee::all())
+        ->with('account',$account)->with('check','check');
+    }
     public function store(Request $request,$id){
         $this->validate($request,[
             'idAccount' => 'required|unique:accounts|min:9|max:9',

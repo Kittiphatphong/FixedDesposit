@@ -58,6 +58,7 @@ Route::post('customer-update/{id}','CustomerController@update')->name('customer.
 Route::get('account-create/{id}','AccountController@create')->name('account.create');
 Route::post('account-store/{id}','AccountController@store')->name('account.store');
 Route::get('account-index','AccountController@index')->name('account.index');
+Route::get('account-edit/{id}','AccountController@edit')->name('account.edit');
 
 // !Type
 Route::get('type-index','TypeController@index')->name('type.index');
