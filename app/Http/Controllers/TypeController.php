@@ -7,6 +7,10 @@ use App\TypeDisposit;
 use App\Account;
 class TypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }  
     public function index(){
         return view('type.index')->with('types',TypeDisposit::all());
     }

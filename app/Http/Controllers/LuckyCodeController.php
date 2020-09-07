@@ -9,6 +9,10 @@ use App\LuckyCode;
 use PDF;
 class LuckyCodeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }  
     public function index(){
         return view('luckyCode.index')->with('luckyCodes',LuckyCode::all());
     }

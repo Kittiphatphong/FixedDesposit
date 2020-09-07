@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use DB;
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }  
     public function index(){
         return view('deposit.customer')->with('customers',Customer::all());
     }
