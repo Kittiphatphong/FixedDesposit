@@ -1,13 +1,14 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Dashboard Analytics')
+@section('title', 'Users')
 
 @section('vendor-style')
 <!-- vendor css files -->
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
 @endsection
 @section('page-style')
-<!-- Page css files -->
+<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
+<style>body{font-family:"Phetsarath OT";}</style>
 @endsection
 
 @section('content')
@@ -16,20 +17,20 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Users</h4>
+                                    <h4 class="card-title"><b>​ລາຍ​ກາມ​ຜູ້​ໃຊ້​ລະ​ບົບຜູ້​ໃຊ້</b></h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="#" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; Add new user</a>
+                                        <a href="{{route('user.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ຜູ້​ໃຊ້​ລະ​ບົບ</a>
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Role</th>
-                                                        <th>Action</th>
+                                                        <th>ໄອ​ດີ</th>
+                                                        <th>ຊື່​</th>
+                                                        <th>ອີ​ເມ​ວ</th>
+                                                        <th>ໜ້າ​ທີ່</th>
+                                                        <th>ຈັດ​ການ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -38,13 +39,11 @@
                                                 <th>{{$user->id}}</th>
                                                 <th>{{$user->name}}</th>
                                                 <th>{{$user->email}}</th>
-                                                <!-- <td>@foreach($user->roles as $role) [{{$role->name}}] @endforeach</td> -->
-                                                <th>admin</th>
+                                                <td>@foreach($user->roles as $role) [{{$role->name}}] @endforeach</td>                                               
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="{{route('user.edit',$user->id)}}" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="#"  method="post" class="delete_form">
+                                                        <a href="{{route('user.edit',$user->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
+                                                        <form action="{{route('user.destroy',$user->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
-                                                        <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>
                                                         </th>                                                   

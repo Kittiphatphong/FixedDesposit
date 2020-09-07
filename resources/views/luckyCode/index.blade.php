@@ -28,22 +28,18 @@
                                                 <thead>
                                                     <tr>
                                                         <th>ໄອ​ດີ</th>
-                                                        <th>ຊື່​ບັນ​ຊີ</th>
-                                                        <th>ເລກ​ບັນ​ຊີ</th>
-                                                        <th>ລະ​ຫັດ​ຊຽງ​ໂຊກ</th>
-                                                        <th>ເບີ​ໂທ​</th>
-                                                        <th>ທີ່​ຢູ່</th>                                                    
+                                                        <th>ລະ​ຫັດ​ຊຽງ​ໂຊກ</th>   
+                                                        <th>ເລກ​ບັນ​ຊີ</th> 
+                                                        <th>ຊື່​ບັນ​ຊີ</th>                                                                                                  
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($luckyCodes->sortBy('idCode') as $luckyCode)
                                                 <tr>
                                                         <th>{{$luckyCode->id}}</th>
-                                                        <th>{{$luckyCode->accounts->customers->fname}} {{$luckyCode->accounts->customers->lname}}</th>
+                                                        <th>{{$luckyCode->accounts->typeDisposits->type}}{{$luckyCode->idCode}}</th>   
                                                         <th>{{$luckyCode->accounts->idAccount}}</th>
-                                                        <th>{{$luckyCode->accounts->typeDisposits->type}}{{$luckyCode->idCode}}</th>
-                                                        <th>{{$luckyCode->accounts->customers->contact}}</th>
-                                                        <th>{{$luckyCode->accounts->customers->address}}</th>       
+                                                        <th>{{$luckyCode->accounts->customers->fname}} {{$luckyCode->accounts->customers->lname}}</th>
                                                      </tr>
                                                 @endForeach
                                                 </tbody>

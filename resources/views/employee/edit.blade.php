@@ -1,7 +1,5 @@
-
-@extends('layouts/contentLayoutMaster')
+@extends('layouts/fullNewApp')
 @section('title', 'Employees')
-
 @section('vendor-style')
 <!-- vendor css files -->
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
@@ -18,11 +16,12 @@
                         <div class="col-12">
                             <div class="card">
               <div class="card-header">
-                  <h4 class="card-title">​​<b>ເພີ່​ມ​ພະ​ນັກ​ງານ</b></h4>
+                  <h4 class="card-title">​​<b>ແກ້​​ໄຂ​ຂໍ້​ມູນ​ພະ​ນັກ​ງານ</b></h4>
+                  <a href="{{route('employee.index')}}" class="btn btn-dark float-right">ກັບ​ຄືນ</a>
               </div>
               <div class="card-content col-7">
                   <div class="card-body">
-                      <form class="form form-horizontal" action="{{route('employee.store')}}"  method="post">
+                      <form class="form form-horizontal" action="{{route('employee.update',$employee->id)}}"  method="post">
                       @csrf
                           <div class="form-body">
                               <div class="row">
@@ -101,7 +100,7 @@
                                   </div>
 
                 <div class="col-md-8 offset-md-4">
-                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ເພີ່ມ</button>
+                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ແກ້​ໄຂ</button>
                                       <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ້​ມ​ໃໝ່</button>
                                   </div>
                               </div>

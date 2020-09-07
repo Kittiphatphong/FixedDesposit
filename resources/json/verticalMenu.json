@@ -6,41 +6,57 @@
             "slug": "dashboard",
             "badge": "",
             "badgeClass": "badge badge-warning badge-pill float-right",
-            "icon": "feather icon-home"
+            "icon": "feather icon-home",
+            "permission" : ""
+            
         },
         {
             "url": "customer-index",
             "name": "Deposit",
-            "icon": "fa fa-credit-card"
+            "icon": "fa fa-credit-card",
+            "permission" : "Deposit"
         },
         {
             "url": "account-index",
             "name": "Account",
-            "icon": "fa fa-address-card"
+            "icon": "fa fa-address-card",
+            "permission" : "Account"
         },
         {
             "url": "index-lucky-code",
             "name": "Lucky code",
-            "icon": "fa fa-list-ol"
+            "icon": "fa fa-list-ol",
+            "permission" : "LuckyCode"
         },
         {
             "url": "employee-index",
             "name": "Employees",
-            "icon": "feather icon-users"
+            "icon": "feather icon-users",
+            "permission" : "Employee"
         },
         {
             "url": "type-index",
             "name": "Setting Lucky code",
-            "icon": "fa fa-wrench"
+            "icon": "fa fa-wrench",
+            "permission" : "SettingLuckyCode"
+            
         },
         {
             "url": "",
             "name": "UserManagement",
             "icon": "fa fa-user",
+            "permission" : "User",
             "submenu": [
                 {
-                    "url": "user",
-                    "name": "List"
+                    "url": "user-index",
+                    "name": "List",
+                    "permissionSub" : "User"
+                },
+                {
+                    "url": "role-index",
+                    "name": "Role",
+                    "permissionSub" : "Role"
+
                 }
 
             ]

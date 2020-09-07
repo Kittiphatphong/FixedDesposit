@@ -37,6 +37,26 @@ class AccountController extends Controller
         ->with('employees',Employee::all())
         ->with('account',$account)->with('check','check');
     }
+    public function update(Request $request, $id){
+        $this->validate($request,[
+            'idAccount' => 'required|min:9|max:9',
+            'interest' => 'required|numeric',
+            'amount' => 'required|numeric',
+            'amountWord' => 'required'  
+        ]);
+        $account = Account::find($id);
+        $account->update([
+            'idAccount' => $request->get('idAccount'),
+            'interest' => $request->get('interest'),
+            'amount' => $request->get('amount'),
+            'amountWord' => $request->get('amountWord'),
+            'receiveInterest' => $request->get('receiveInterest'),
+            'user_id' => Auth::user()->id,
+            'employee_id' => $request->get('employee_id')
+        ]);
+        return redirect()->route('account.index')->with('success','ທ່າ​ນ​ໄດ້​ແກ້​ໄຂ​ຂໍ້​ມູນ​ບັນ​ຊີ​ລູກ​ຄ້າ​ສຳ​ເລັດ');
+            
+    }
     public function store(Request $request,$id){
         $this->validate($request,[
             'idAccount' => 'required|unique:accounts|min:9|max:9',

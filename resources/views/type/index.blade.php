@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Customer')
+@section('title', 'Types Deposit')
 
 @section('vendor-style')
 <!-- vendor css files -->
@@ -27,7 +27,6 @@
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>ໄອ​ດີ</th>
                                                         <th>ໄລ​ຍະ​ຝາກ</th>
                                                         <th>ຕໍ່​ຈຳ​ນວນ​ເງີນ</th>
                                                         <th>ຈນ ລະ​ຫັດຊຽງ​ໂຊກ​</th>
@@ -38,17 +37,15 @@
                                                 <tbody>
                                                 @foreach($types as $type)
                                                 <tr>
-                                                       <th>{{$type->id}}</th>
                                                         <th>{{$type->period}} @if($type->yearOrMonth == "year")ປີ@endif @if($type->yearOrMonth == "month")ເດືອນ@endif</th>
                                                         <th>{{number_format($type->money,0)}} ກີບ</th>
                                                         <th>{{$type->ticket}} ລະ​ຫັດ</th>
                                                         <th>{{$type->type}}</th>
 
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="#"  method="post" class="delete_form">
+                                                        <a href="{{route('type.edit',$type->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
+                                                        <form action="{{route('type.destroy',$type->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
-                                                        <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>
                                                         </th>                                                   

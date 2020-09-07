@@ -1,10 +1,9 @@
-@extends('layouts/contentLayoutMaster')
+@extends('layouts/fullNewApp')
 
-@section('title', 'Create new type deposit')
+@section('title', '​Edit type deposit')
 
 @section('vendor-style')
 <!-- vendor css files -->
-<link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
 @endsection
 @section('page-style')
 <!-- Page css files -->
@@ -18,11 +17,12 @@
                         <div class="col-12">
                             <div class="card">
               <div class="card-header">
-                  <h4 class="card-title">​​<b>ປະ​ເພດ​ເງີນ​ຟາກ</b></h4>
+                  <h4 class="card-title">​​<b>​ແກ້​ໄຂປະ​ເພດ​ເງີນ​ຟາກ</b></h4>
+                  <a href="{{route('type.index')}}" class="btn btn-dark float-right">ກັບ​ຄືນ</a>
               </div>
               <div class="card-content col-7">
                   <div class="card-body">
-                      <form class="form form-horizontal" action="{{route('type.store')}}"  method="post">
+                      <form class="form form-horizontal" action="{{route('type.update',$type->id)}}"  method="post">
                       @csrf
                           <div class="form-body">
                               <div class="row">
@@ -96,8 +96,8 @@
                                       </div>
                                   </div>
                 <div class="col-md-8 offset-md-4">
-                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ເພີ່​ມ</button>
-                                      <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ້​ມ​ໃໝ່</button>
+                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ແກ້​ໄຂ</button>
+                                      <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ່ມໃໝ່</button>
                                   </div>
                               </div>
                           </div>
@@ -116,14 +116,4 @@
 @endsection
 @section('page-script')
 <!-- Page js files -->
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="../../../app-assets/js/scripts/datatables/datatable.js"></script>
 @endsection

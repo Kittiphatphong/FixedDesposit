@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Customer')
+@section('title', 'Employees')
 
 @section('vendor-style')
 <!-- vendor css files -->
@@ -47,10 +47,9 @@
                                                         <th>{{$employee->position}}</th>
                                                         <th>{{$employee->contact}}</th>
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="#"  method="post" class="delete_form">
+                                                        <a href="{{route('employee.edit',$employee->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
+                                                        <form action="{{route('employee.destroy',$employee->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
-                                                        <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>
                                                         </th>                                                   

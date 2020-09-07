@@ -24,6 +24,7 @@ $configData = Helper::applClasses();
   </div>
   <div class="shadow-bottom"></div>
   <div class="main-menu-content">
+  @auth
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
       {{-- Foreach menu item starts --}}
       @if(isset($menuData[0]))
@@ -42,7 +43,7 @@ $configData = Helper::applClasses();
       $translation = "";
 
       @endphp
-      
+      @if(auth()->user()->can($menu->permission))
       <li class="nav-item {{ (request()->is($menu->url)) ? 'active' : '' }} {{ $custom_classes }}">
         <a href="{{ $menu->url }}">
           <i class="{{ $menu->icon }}"></i>
@@ -52,6 +53,7 @@ $configData = Helper::applClasses();
         @if(isset($menu->submenu))
         @include('panels/submenu', ['menu' => $menu->submenu])
         @endif
+        @endif
       </li>
       
       @endif
@@ -60,6 +62,7 @@ $configData = Helper::applClasses();
       @endif
       {{-- Foreach menu item ends --}}
     </ul>
+    @endAuth  
   </div>
 </div>
 <!-- END: Main Menu-->

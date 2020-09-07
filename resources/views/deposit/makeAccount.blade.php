@@ -7,12 +7,12 @@
                         
                             <div class="card">
               <div class="card-header">
-                  <h4 class="card-title">​​<b>ເປີດ​ບັນ​ຊີ​ໃໝ່</b></h4>
+                  <h4 class="card-title">​​<b>{{isset($check)?'ແກ້​ໄຂ​ຂໍ້​ມູນ​ບັນ​ຊີ​ລູກ​ຄ້າ':'ເປີດ​ບັນ​ຊີ​ໃໝ່'}}</b></h4>
                   <a href="{{route('customer.index')}}" class="btn btn-dark mr-1 mb-1 float-right">ກັບ​ຄືນ</a>
               </div>
               <div class="card-content col-7">
                   <div class="card-body">
-                      <form class="form form-horizontal" action="{{isset($check)?'':route('account.store',$customer->id)}}"  method="post">
+                      <form class="form form-horizontal" action="{{isset($check)?route('account.update',$account->id):route('account.store',$customer->id)}}"  method="post">
                       @csrf
                           <div class="form-body">
                               <div class="row">
@@ -36,6 +36,7 @@
                                           </div>
                                       </div>
                                   </div>
+                                  @if(!isset($check))
                                   <div class="col-12">
                                       <div class="form-group row">
                                           <div class="col-md-4">
@@ -60,6 +61,7 @@
 
                                       </div>
                                   </div>
+                                  @endIF
                                   <div class="col-12">
                                       <div class="form-group row">
                                           <div class="col-md-4">
@@ -127,7 +129,7 @@
 
                 </div>
                 <div class="col-md-8 offset-md-4">
-                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ສ້າງ​ບັນ​ຊີ</button>
+                                      <button type="submit" class="btn btn-primary mr-1 mb-1">{{isset($check)?'ແກ້​ໄຂ':'ສ້າງ​ບັນ​ຊີ'}}</button>
                                       <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ້​ມ​ໃໝ່</button>
                                   </div>
                               </div>

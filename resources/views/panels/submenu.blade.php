@@ -7,14 +7,16 @@
                 $submenuTranslation = $menu->i18n;
             }
         ?>
+        @if(auth()->user()->can($submenu->permissionSub))
     <li class="{{ (request()->is($submenu->url)) ? 'active' : '' }}">
         <a href="{{ $submenu->url }}">
             <i class="{{ isset($submenu->icon) ? $submenu->icon : "" }}"></i>
             <span class="menu-title" data-i18n="{{ $submenuTranslation }}">{{ __('locale.'.$submenu->name) }}</span>
         </a>
+        @endif
         @if (isset($submenu->submenu))
         @include('panels/submenu', ['menu' => $submenu->submenu])
-        @endif
+        @endIf
     </li>
     @endforeach
 </ul>
