@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('type.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ປະ​ເພດ</a>
+                                    @if(Auth::user()->can('AddLuckyCode'))<a href="{{route('type.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ປະ​ເພດ</a>@endIf
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
@@ -31,7 +31,7 @@
                                                         <th>ຕໍ່​ຈຳ​ນວນ​ເງີນ</th>
                                                         <th>ຈນ ລະ​ຫັດຊຽງ​ໂຊກ​</th>
                                                         <th>ປະ​ເພດ</th>
-                                                        <th>ຈັດ​ການ</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -43,11 +43,11 @@
                                                         <th>{{$type->type}}</th>
 
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="{{route('type.edit',$type->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="{{route('type.destroy',$type->id)}}"  method="post" class="delete_form">
+                                                        @if(Auth::user()->can('EditLuckyCode'))<a href="{{route('type.edit',$type->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>@endIF
+                                                        @if(Auth::user()->can('DeleteLuckyCode'))<form action="{{route('type.destroy',$type->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
-                                                        </form>
+                                                        </form>@endIf
                                                         </th>                                                   
                                                      </tr>
                                                 @endForeach

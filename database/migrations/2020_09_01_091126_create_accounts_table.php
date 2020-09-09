@@ -23,10 +23,10 @@ class CreateAccountsTable extends Migration
             $table->string('amountWord');
             $table->string('receiveInterest');
             $table->boolean('generate')->default(0);	
-            $table->integer('user_id');
-            $table->integer('customer_id');
-            $table->integer('typeDisposit_id');
-            $table->integer('employee_id');
+            $table->BigInteger('user_id');
+            $table->BigInteger('customer_id');
+            $table->BigInteger('typeDisposit_id');
+            $table->BigInteger('employee_id');
             $table->timestamps();
         });
     }

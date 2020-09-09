@@ -34,7 +34,8 @@ class RoleController extends Controller
         $revokePermission = Permission::all()->pluck('name')->toArray();
         $role->revokePermissionTo($revokePermission);
         $role->givePermissionTo($givePermission);
-        return redirect()->route('role.index')->with('success','Add permission to role successful !');
+        return redirect()->route('role.index')->with('success','ທ່າ​ນ​ໄດ້​ກຳ​ນົດ​ສິດ​ສຳ​ເລັດ​ແລ້ວ');
+    
     }
 
 }

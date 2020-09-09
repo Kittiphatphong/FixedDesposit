@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('user.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ຜູ້​ໃຊ້​ລະ​ບົບ</a>
+                                    @if(Auth::user()->can('AddUser'))<a href="{{route('user.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ຜູ້​ໃຊ້​ລະ​ບົບ</a>@endIf
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
@@ -30,7 +30,7 @@
                                                         <th>ຊື່​</th>
                                                         <th>ອີ​ເມ​ວ</th>
                                                         <th>ໜ້າ​ທີ່</th>
-                                                        <th>ຈັດ​ການ</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -41,11 +41,11 @@
                                                 <th>{{$user->email}}</th>
                                                 <td>@foreach($user->roles as $role) [{{$role->name}}] @endforeach</td>                                               
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="{{route('user.edit',$user->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
+                                                        @if(Auth::user()->can('EditUser'))<a href="{{route('user.edit',$user->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>@endIf
                                                         <form action="{{route('user.destroy',$user->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
-                                                        <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
-                                                        </form>
+                                                        @if(Auth::user()->can('DeleteUser'))<button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
+                                                        </form>@endIf
                                                         </th>                                                   
                                                      </tr>
                                                     @endforeach

@@ -32,9 +32,8 @@
                                                         <th>ບັນ​ຊີ</th>
                                                         <th>ບັດ​ປະ​ຈຳ​ໂຕ</th>
                                                         <th>ເບີ​ໂທ</th>
-                                                        <th>ທີ່​ຢູ່</th>                                                  
-                                                         <th>@if(Auth::user()->can('AddAccount') && Auth::user()->can('EditCustomer') && Auth::user()->can('DeleteCustomer'))ຈັດ​ການ @endIf</th> 
-                                                        
+                                                        <th>ທີ່​ຢູ່</th> 
+                                                        <th></th>                                                 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -49,7 +48,7 @@
                                                 <th>{{$customer->idNumber}}</th>
                                                 <th>{{$customer->contact}}</th>
                                                 <th>{{$customer->address}}</th>                                                                         
-                                                        <th class="d-flex justify-content-start">
+                                                <th class="d-flex justify-content-start">
                                                         @if(Auth::user()->can('AddAccount'))<a href="{{route('account.create',$customer->id)}}" class="btn btn-link ml-0 pl-0" value=""><span class="fa fa-money"></span></a>@endIf
                                                         @if(Auth::user()->can('EditCustomer'))<a href="{{route('customer.edit',$customer->id)}}" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>@endif
                                                         @if(Auth::user()->can('DeleteCustomer'))<form action="{{route('customer.destroy',$customer->id)}}"  method="post" class="delete_form">
@@ -57,7 +56,7 @@
                                                         <!-- <input type="hidden" name="_method" value="DELETE"> -->
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endIf
-                                                        </th>                                                   
+                                                        </th>                                                  
                                                      </tr>
                                                  @endForeach   
                                                 </tbody>

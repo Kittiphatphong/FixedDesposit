@@ -50,13 +50,9 @@
                                           @endForeach
 		                                  </select>
                                           </div>
-                                          <div class="col-md-3">
+                                          <div class="col-md-6">
                                           <label>ເລີ່ມ​ວັນ​ທີ</label>
                                           <input type="date"  class="form-control" name="start" placeholder="ເລີ່ມ​ວັນ​ທີ" value="{{old('start',$account->start)}}">
-                                          </div>
-                                          <div class="col-md-3">
-                                          <label>ຖີງ​ວັນ​ທີ</label>
-                                          <input type="date" class="form-control" name="end" placeholder="ເຖີງ​ວັນ​ທີ" value="{{old('end',$account->end)}}">
                                           </div>
 
                                       </div>
@@ -79,7 +75,8 @@
                       <span>ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="amount" class="form-control" name="amount" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ" value="{{old('amount',$account->amount)}}">
+                                              <input type="text" class="form-control" name="amount" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ" id="firstNumber" onkeyup="format(this)" value="{{old('amount',$account->amount)}}">
+                                         
                                           </div>
                                       </div>
                                   </div>
@@ -90,7 +87,7 @@
                     </div>
                                           <div class="col-md-8">
                                               <input type="text" id="amountWord" class="form-control" name="amountWord" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ໜັງ​ສື" value="{{old('amountWord',$account->amountWord)}}">
-                                          </div>
+                                            </div>
                                       </div>
                                   </div>
                                   <div class="col-12">
@@ -152,4 +149,20 @@
 
     <!-- BEGIN: Page JS-->
     <script src="../../../app-assets/js/scripts/forms/select/form-select2.js"></script>
+    <script>
+
+    function format(input) {
+  var nStr = input.value + '';  
+  nStr = nStr.replace(/\,/g, "");
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';  
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  input.value = x1 + x2;
+}
+
+    </script>
 @endsection

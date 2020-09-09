@@ -38,7 +38,7 @@
                                   <div class="col-12">
                                       <div class="form-group row">
                                           <div class="col-md-4">
-                      <span>ອີ​ເມ​ວ</span>
+                      <span>ຊື່​ບັນ​ຊີ</span>
                     </div>
                                           <div class="col-md-8">
                                               <input type="text" class="form-control" name="email" placeholder="​ໃສ່ອີ​ເມ​ວ" autocomplete="off" value="{{old('email',$users->email)}}">

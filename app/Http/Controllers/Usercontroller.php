@@ -26,7 +26,7 @@ class UserController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
       $user = new User();
@@ -35,7 +35,7 @@ class UserController extends Controller
        $user->password = Hash::make($request->get('password'));
        $user->save();
        $user->syncRoles($request->get('permission'));
-      
+       return redirect()->route('user.index')->with('success','​ເພີ່ມ​ຂໍ​ມູນ​ຜູ້​ໃຊ້​ສຳ​ເລັດ');
      }
     
     public function edit($id){

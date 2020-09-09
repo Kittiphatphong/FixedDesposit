@@ -1,4 +1,4 @@
-@extends('layouts/contentLayoutMaster')
+@extends('layouts/fullNewApp')
 @section('title','Mangement role')
 @section('vendor-style')
 <!-- vendor css files -->

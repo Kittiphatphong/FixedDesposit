@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('employee.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ພະ​ນັກ​ງານ</a>
+                                    @if(Auth::user()->can('AddEmployee'))<a href="{{route('employee.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ພະ​ນັກ​ງານ</a>@endIf
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
@@ -33,7 +33,9 @@
                                                         <th>ພະ​ແໜກ</th>
                                                         <th>ຕຳ​ແໜ່ງ</th>
                                                         <th>ເບີ​ໂທ​ລະ​ສັບ</th>
-                                                        <th>ຈັດ​ການ</th>
+                                                        <th>ຈ/ນ ລູກ​ຄ້າ</th>
+                                                        <th>ຈຳ​ນວນ​ເງີນ</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -46,12 +48,14 @@
                                                         <th>{{$employee->department}}</th>
                                                         <th>{{$employee->position}}</th>
                                                         <th>{{$employee->contact}}</th>
+                                                        <th>{{$employee->accounts->count()}} ຄົນ</th>
+                                                        <th>{{number_format($employee->accounts->sum('amount'))}} ກີບ</th>
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="{{route('employee.edit',$employee->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="{{route('employee.destroy',$employee->id)}}"  method="post" class="delete_form">
+                                                        @if(Auth::user()->can('EditEmployee'))<a href="{{route('employee.edit',$employee->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>@endIf
+                                                        @if(Auth::user()->can('DeleteEmployee'))<form action="{{route('employee.destroy',$employee->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
-                                                        </form>
+                                                        </form>@endIF
                                                         </th>                                                   
                                                      </tr>
                                                 @endForeach

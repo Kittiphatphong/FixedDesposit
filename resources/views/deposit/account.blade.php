@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('customer.index')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ບັນ​ຊີ</a>
+                                        @if(Auth::user()->can('AddAccount'))<a href="{{route('customer.index')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ບັນ​ຊີ</a>@endif
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
@@ -37,7 +37,7 @@
                                                         <th>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</th>
                                                         <th>ເລກ​ໝາຍລຸ້ນ​ໂຊກ</th> 
                                                         <th>ພະ​ນັກ​ງານ​ແນະ​ນຳ</th>                                                
-                                                        <th>ຈັດ​ການ</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -54,13 +54,12 @@
                                                         <th>{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}} - {{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</th> 
                                                         <th>{{$account->employees->fname}} {{$account->employees->lname}}</th>                                                       
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="{{route('lucky.view',$account->id)}}" class="btn btn-link ml-0 pl-0" value="" ><span class="fa fa-eye"></span></a>
-                                                        <a href="{{route('account.edit',$account->id)}}" class="btn btn-link" value="" ><span class="fa fa-pencil"></span></a>
-                                                        <form action=""  method="post" class="delete_form">
+                                                        @if(Auth::user()->can('ShowAccount'))<a href="{{route('lucky.view',$account->id)}}" class="btn btn-link ml-0 pl-0" value="" ><span class="fa fa-eye"></span></a>@endIF
+                                                        @if(Auth::user()->can('EditAccount'))<a href="{{route('account.edit',$account->id)}}" class="btn btn-link" value="" ><span class="fa fa-pencil"></span></a>@endIf
+                                                        @if(Auth::user()->can('DeleteAccount'))<form action="{{route('account.destroy',$account->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
-                                                        <!-- <input type="hidden" name="_method" value="DELETE"> -->
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
-                                                        </form>
+                                                        </form>@endif
                                                         </th>                                                   
                                                      </tr>
                                                 @endForeach  

@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <a href="{{route('role.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; Add new role</a>
+                                    @if(Auth::user()->can('AddRole'))<a href="{{route('role.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່ມ​ໜ້ານ​ທີ່​ໃໝ່</a>@endif
                                         <div class="table-responsive">
                                             <table class="table add-rows">
                                                 <thead>
@@ -26,7 +26,7 @@
                                                     <th>ໄອ​ດີ</th>
                                                     <th>ໜ້າ​ທີ</th>
                                                     <th>​ສິດ​ທິ</th>
-                                                    <th>ຈັດ​ການ</th>
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -40,10 +40,10 @@
                                                  @endforeach
                                                 </th> 
                                                         <th class="d-flex justify-content-start">
-                                                        <a href="" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>
-                                                        <form action="{{route('role.permission',$role->id)}}"  method="get">
+                                                        @if(Auth::user()->can('EditRole'))<a href="" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>@endif
+                                                        @if(Auth::user()->can('AssignPermission'))<form action="{{route('role.permission',$role->id)}}"  method="get">
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-key"></span> </button>
-                                                        </form>
+                                                        </form>@endif
                                                         </th>                                                   
                                                      </tr>
                                                     @endforeach

@@ -62,7 +62,7 @@
                       <span>ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="text" id="idNumber" class="form-control" name="idNumber" placeholder="ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ" value="{{old('idNumber',$customer->idNumber)}}">
+                                              <input type="number" id="idNumber" class="form-control" name="idNumber" placeholder="ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ" value="{{old('idNumber',$customer->idNumber)}}">
                                           </div>
                                       </div>
                                   </div>

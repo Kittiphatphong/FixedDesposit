@@ -10,6 +10,7 @@ use App\Employee;
 use App\LuckyCode;
 use Auth;
 use DB;
+use Carbon\Carbon;
 class AccountController extends Controller
 {
     public function __construct()
@@ -41,14 +42,19 @@ class AccountController extends Controller
         $this->validate($request,[
             'idAccount' => 'required|min:9|max:9',
             'interest' => 'required|numeric',
-            'amount' => 'required|numeric',
-            'amountWord' => 'required'  
+            'amount' => 'required',
+            'amountWord' => 'required',
+              
         ]);
         $account = Account::find($id);
+        $amount=round(str_replace(',','',$request->get('amount')));
+        if($amount<999){
+            return back()->with('warning','jay');
+        }
         $account->update([
             'idAccount' => $request->get('idAccount'),
             'interest' => $request->get('interest'),
-            'amount' => $request->get('amount'),
+            'amount' => $amount,
             'amountWord' => $request->get('amountWord'),
             'receiveInterest' => $request->get('receiveInterest'),
             'user_id' => Auth::user()->id,
@@ -60,19 +66,29 @@ class AccountController extends Controller
     public function store(Request $request,$id){
         $this->validate($request,[
             'idAccount' => 'required|unique:accounts|min:9|max:9',
-            'start' => 'required',
-            'end' => 'required',
+            'start' => 'required|date',
             'interest' => 'required|numeric',
-            'amount' => 'required|numeric',
+            'amount' => 'required',
             'amountWord' => 'required'  
         ]);
-        //! Create Account
+        // //! Create Account
+        $start = Carbon::create($request->get('start'));
+        $type = TypeDisposit::find($request->get('typeDisposit_id'));
+        if($type->yearOrMonth =="year"){
+        $end =  $start->addYear($type->period)->toDateString();   
+        }else{
+        $end =  $start->addMonth($type->period)->toDateString();
+        }
+        $amount=round(str_replace(',','',$request->get('amount')));
+        if($amount<999){
+            return back()->with('warning','jay');
+        }
         Account::create([
             'idAccount' => $request->get('idAccount'),
             'start' => $request->get('start'),
-            'end' => $request->get('end'),
+            'end' => $end,
             'interest' => $request->get('interest'),
-            'amount' => $request->get('amount'),
+            'amount' => $amount,
             'amountWord' => $request->get('amountWord'),
             'receiveInterest' => $request->get('receiveInterest'),
             'user_id' => Auth::user()->id,
@@ -80,6 +96,7 @@ class AccountController extends Controller
             'typeDisposit_id'=>$request->get('typeDisposit_id'),
             'employee_id' => $request->get('employee_id')
         ]);
+        
         //! generate Id
         $idAccount = DB::table('accounts')->max('id');
         $account = Account::find($idAccount);
@@ -105,6 +122,8 @@ class AccountController extends Controller
         return redirect()->route('lucky.show');
     }
     public function destroy($id){
-
+        $account = Account::find($id);
+        $account->delete();
+        return back()->with('success','ທ່ານໄດ້​ລືບ​ບັນ​ຊີ​ລູກ​ຄ້າ​ສຳ​ເລັດ​ແລ້ວ');
     }
 }

@@ -16,7 +16,9 @@ class CreateLuckyCodesTable extends Migration
         Schema::create('lucky_codes', function (Blueprint $table) {
             $table->id();
             $table->integer('idCode')->nullable();
-            $table->integer('account_id');
+            // $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->unsignedBigInteger('account_id');
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->timestamps();
         });
     }
