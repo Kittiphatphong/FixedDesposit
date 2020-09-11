@@ -43,6 +43,7 @@ Route::get('account-index','AccountController@index')->name('account.index')->mi
 Route::group(['middleware' => ['permission:AddAccount']], function () {
 Route::get('account-create/{id}','AccountController@create')->name('account.create');
 Route::post('account-store/{id}','AccountController@store')->name('account.store');
+Route::get('account-show/{id}','AccountController@show')->name('account.show');
 });
 Route::group(['middleware' => ['permission:EditAccount']], function () {
 Route::get('account-edit/{id}','AccountController@edit')->name('account.edit');
@@ -63,10 +64,13 @@ Route::post('type-update/{id}','TypeController@update')->name('type.update');
 Route::post('type-destroy/{id}','TypeController@destroy')->name('type.destroy')->middleware('permission:DeleteLuckyCode');
 
 // !Employee
-Route::get('employee-index','EmployeeController@index')->name('employee.index')->middleware('permission:Employee');
+Route::group(['middleware' => ['permission:Employee']], function () {
+Route::get('employee-report','EmployeeController@report')->name('employee.report');
+});
 Route::group(['middleware' => ['permission:AddEmployee']], function () {
 Route::get('employee-create','EmployeeController@create')->name('employee.create');
 Route::post('employee-store','EmployeeController@store')->name('employee.store');
+Route::get('employee-view/{id}','EmployeeController@view')->name('employee.view');
 });
 Route::group(['middleware' => ['permission:EditEmployee']], function () {
 Route::get('employee-edit/{id}','EmployeeController@edit')->name('employee.edit');
@@ -109,3 +113,16 @@ Route::post('role-destroy/{id}','RoleController@destroy')->name('role.destroy');
 route::get('add-permission/{id}','RoleController@addPermission')->name('role.permission');
 route::get('store-permission/{id}','RoleController@storePermission')->name('role.storePermission');
 route::get('destroy-permission/{id}','RoleController@destroyPermission')->name('role.destroyPermission');
+
+
+// !TypeDocument
+Route::get('document-index','DocumentController@index')->name('document.index')->middleware('permission:SettingLuckyCode');
+Route::group(['middleware' => ['permission:AddLuckyCode']], function () {
+Route::get('document-create','DocumentController@create')->name('document.create');
+Route::post('document-store','DocumentController@store')->name('document.store');
+});
+Route::group(['middleware' => ['permission:EditLuckyCode']], function () {
+Route::get('document-edit/{id}','DocumentController@edit')->name('document.edit');
+Route::post('document-update/{id}','DocumentController@update')->name('document.update');
+});
+Route::post('document-destroy/{id}','DocumentController@destroy')->name('document.destroy')->middleware('permission:DeleteLuckyCode');

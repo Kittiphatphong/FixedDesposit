@@ -20,5 +20,7 @@ return [
     "Setting Lucky code" => "Setting Lucky code",
     "Employees" => "Employees",
     "Lucky code" => "Lucky code",
-    "Account" => "Account"
+    "Account" => "Account",
+    "Document" => "Document",
+    "Employee report" => "Employee report"
  ];

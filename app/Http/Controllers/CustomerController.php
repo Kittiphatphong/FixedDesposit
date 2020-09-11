@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Account;
 use Illuminate\Http\Request;
+use App\Document;
 use DB;
 class CustomerController extends Controller
 {
@@ -16,21 +17,23 @@ class CustomerController extends Controller
     }
     public function create(){
         $customer = new Customer();
-        return view('deposit.createCustomer')->with('customer',$customer);
+        return view('deposit.createCustomer')->with('customer',$customer)->with('documents',Document::all());
     }
     public function store(Request $request){
         $this->validate($request,[
          'fname' =>'required',
          'lname' =>'required',
          'contact' => 'required',
-         'idNumber' => 'required|unique:customers',
+         'document_id' => 'required',
+         'documentNumber' => 'required|unique:customers',
          'address' => 'required'
         ]);
     Customer::create([
          'fname' =>$request->get('fname'),
          'lname' =>$request->get('lname'),
          'contact' => $request->get('contact'),
-         'idNumber' => $request->get('idNumber'),
+         'document_id' => $request->get('document_id'),
+         'documentNumber' => $request->get('documentNumber'),
          'address' => $request->get('address'),
     ]);
     $idCustomer = DB::table('customers')->max('id');
@@ -39,7 +42,7 @@ class CustomerController extends Controller
 
     public function edit($id){
         $customer = Customer::find($id);
-        return view('deposit.editCustomer')->with('customer',$customer);
+        return view('deposit.editCustomer')->with('customer',$customer)->with('documents',Document::all());
     
     }
 
@@ -48,14 +51,15 @@ class CustomerController extends Controller
             'fname' =>'required',
             'lname' =>'required',
             'contact' => 'required',
-            'idNumber' => 'required',
+            'document_id' => 'required',
+            'documentNumber' => 'required',
             'address' => 'required'
            ]);
            Customer::find($id)->update([
             'fname' =>$request->get('fname'),
             'lname' =>$request->get('lname'),
             'contact' => $request->get('contact'),
-            'idNumber' => $request->get('idNumber'),
+            'documentNumber' => $request->get('documentNumber'),
             'address' => $request->get('address'),
        ]); 
        return redirect()->route('customer.index')->with('success','ແກ້ໄຂ​ຂໍ໊​ມູນ​ລູກ​ຄ້າ​ສຳ​ເລັດ');

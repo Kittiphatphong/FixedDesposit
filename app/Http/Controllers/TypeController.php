@@ -12,6 +12,7 @@ class TypeController extends Controller
         $this->middleware('auth');
     }  
     public function index(){
+        $count = TypeDisposit::all()->count();
         return view('type.index')->with('types',TypeDisposit::all());
     }
     public function create(){

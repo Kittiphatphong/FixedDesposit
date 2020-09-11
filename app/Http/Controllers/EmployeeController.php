@@ -14,6 +14,13 @@ class EmployeeController extends Controller
     public function index(){
         return view('employee.index')->with('employees',Employee::all());
     }
+    public function report(){
+        return view('employee.report')->with('employees',Employee::all());
+    }
+    public function view($id){
+        $employee = Employee::find($id);
+        return view ('employee.view')->with('employee',$employee);
+    }
     public function create(){
         $employee = new Employee(); 
         return view('employee.create')->with('employee',$employee);

@@ -14,7 +14,8 @@ class LuckyCodeController extends Controller
         $this->middleware('auth');
     }  
     public function index(){
-        return view('luckyCode.index')->with('luckyCodes',LuckyCode::all());
+        $count = LuckyCode::all()->count();
+        return view('luckyCode.index')->with('luckyCodes',LuckyCode::all())->with('count',$count);
     }
     public function view($id){
         $account = Account::find($id);

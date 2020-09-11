@@ -59,10 +59,25 @@
                                   <div class="col-12">
                                       <div class="form-group row">
                                           <div class="col-md-4">
-                      <span>ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ</span>
+                      <span>ສຳ​ເນົາ​ຕິດ​ຄັດ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="idNumber" class="form-control" name="idNumber" placeholder="ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ" value="{{old('idNumber',$customer->idNumber)}}">
+                                          @foreach($documents as $document)
+                                          <input type="radio" id="male" name="document_id" value="{{$document->id}}" 
+                                          @if($document->id==1) checked @endif
+                                          @if(old('document_id',$customer->document_id)==$document->id) checked @else unchecked @endif>
+                                          <label for="">{{$document->type}}</label><br>
+                                              @endforeach
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-12">
+                                      <div class="form-group row">
+                                          <div class="col-md-4">
+                      <span>ໝາຍ​ເລກ​ສຳ​ເນົາ</span>
+                    </div>
+                                          <div class="col-md-8">
+                                              <input type="​text" id="contact-info" class="form-control" name="documentNumber" placeholder="ໝາຍ​ເລກ​ສຳ​ເນົາ" value="{{old('documentNumber',$customer->documentNumber)}}">
                                           </div>
                                       </div>
                                   </div>

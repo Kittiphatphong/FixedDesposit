@@ -126,4 +126,9 @@ class AccountController extends Controller
         $account->delete();
         return back()->with('success','ທ່ານໄດ້​ລືບ​ບັນ​ຊີ​ລູກ​ຄ້າ​ສຳ​ເລັດ​ແລ້ວ');
     }
+    public function show($id){
+        $account = Account::find($id);
+     
+        return view('deposit.showAccount')->with('account',$account);
+    }
 }

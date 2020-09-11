@@ -35,9 +35,22 @@
             "permission" : "Employee"
         },
         {
+            "url": "employee-report",
+            "name": "Employee report",
+            "icon": "fa fa-registered",
+            "permission" : "Employee"
+        },
+        {
             "url": "type-index",
             "name": "Setting Lucky code",
             "icon": "fa fa-wrench",
+            "permission" : "SettingLuckyCode"
+            
+        },
+        {
+            "url": "document-index",
+            "name": "Document",
+            "icon": "fa fa-file-text-o",
             "permission" : "SettingLuckyCode"
             
         },

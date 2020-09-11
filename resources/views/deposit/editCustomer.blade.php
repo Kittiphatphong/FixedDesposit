@@ -14,7 +14,7 @@
                   <div class="card-body">
                   <form class="form form-horizontal" action="{{route('customer.update',$customer->id)}}"  method="post">
                       @csrf
-                          <div class="form-body">
+                      <div class="form-body">
                               <div class="row">
                                   <div class="col-12">
                                       <div class="form-group row">
@@ -49,10 +49,25 @@
                                   <div class="col-12">
                                       <div class="form-group row">
                                           <div class="col-md-4">
-                      <span>ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ</span>
+                      <span>ສຳ​ເນົາ​ຕິດ​ຄັດ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="idNumber" class="form-control" name="idNumber" placeholder="ບັດ​ປະ​ຈຳ​ຕົວ ຫຼື ​ສຳ​ມະ​ໂນ​ຄົວ" value="{{old('idNumber',$customer->idNumber)}}">
+                                          @foreach($documents as $document)
+                                          <input type="radio" id="male" name="document_id" value="{{$document->id}}" 
+                                          @if($document->id==1) checked @endif
+                                          @if(old('document_id',$customer->document_id)==$document->id) checked @else unchecked @endif>
+                                          <label for="">{{$document->type}}</label><br>
+                                              @endforeach
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-12">
+                                      <div class="form-group row">
+                                          <div class="col-md-4">
+                      <span>ໝາຍ​ເລກ​ສຳ​ເນົາ</span>
+                    </div>
+                                          <div class="col-md-8">
+                                              <input type="​text" id="contact-info" class="form-control" name="documentNumber" placeholder="ໝາຍ​ເລກ​ສຳ​ເນົາ" value="{{old('documentNumber',$customer->documentNumber)}}">
                                           </div>
                                       </div>
                                   </div>
@@ -68,7 +83,7 @@
                                   </div>
 
                 <div class="col-md-8 offset-md-4">
-                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ແກ້​ໄຂ</button>
+                                      <button type="submit" class="btn btn-primary mr-1 mb-1">ສະ​ມັກ</button>
                                       <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ້​ມ​ໃໝ່</button>
                                   </div>
                               </div>

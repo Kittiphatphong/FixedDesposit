@@ -19,7 +19,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title"><b>ລະ​ຫັດ​ຊ່ຽງ​ໂຊກ</b></h4>
-                                    <h4 class="float-right bg-primary p-1 text-white rounded"><b> ທັງ​ໝົດ {{$luckyCodes->count()}} ລະ​ຫັດ​ </b></h4>
+                                    <h4 class="float-right bg-primary p-1 text-white rounded"><b> ທັງ​ໝົດ {{$count}} ລະ​ຫັດ​ </b></h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">         

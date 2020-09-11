@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Customer')
+@section('title', 'Types Deposit')
 
 @section('vendor-style')
 <!-- vendor css files -->
@@ -18,47 +18,36 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"><b>ລາຍ​ການ​ລູກ​ຄ້າ</b></h4>
+                                    <h4 class="card-title"><b>ແບ​ບ​ເອ​ກະ​ສານ</b></h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                       @if(Auth::user()->can('AddCustomer')) <a href="{{route('customer.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ລູກ​ຄ້າ​ໃໝ່</a> @endIf
+                                    @if(Auth::user()->can('AddLuckyCode'))<a href="{{route('document.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ປະ​ເພດ</a>@endIf
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
-                                                        <th>ຈຳ​ນວນ​ບັນ​ຊີ</th>
-                                                        <th>ບັນ​ຊີ</th>
-                                                        <th>ສຳ​ເນົາ​ຕິດ​ຄັດ</th>
-                                                        <th>ເບີ​ໂທ</th>
-                                                        <th>ທີ່​ຢູ່</th> 
-                                                        <th></th>                                                 
+                                                        <th>​ໄອ​ດີ</th>
+                                                        <th>ປະ​ເພດ</th>
+                                                  
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($customers as $customer)
+                                                @foreach($documents as $document)
                                                 <tr>
-                                                <th>{{$customer->fname}} {{$customer->lname}}</th>
-                                                <th>{{$customer->accounts->count()}}</th>
-                                                <th>@foreach($customer->accounts as $account)
-                                                <p>{{$account->idAccount}}</p>
-                                                @endforeach
-                                                </th>
-                                                <th>{{$customer->documents->type}}:{{$customer->documentNumber}}</th>
-                                                <th>{{$customer->contact}}</th>
-                                                <th>{{$customer->address}}</th>                                                                         
-                                                <th class="d-flex justify-content-start">
-                                                        @if(Auth::user()->can('AddAccount'))<a href="{{route('account.create',$customer->id)}}" class="btn btn-link ml-0 pl-0" value=""><span class="fa fa-money"></span></a>@endIf
-                                                        @if(Auth::user()->can('EditCustomer'))<a href="{{route('customer.edit',$customer->id)}}" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>@endif
-                                                        @if(Auth::user()->can('DeleteCustomer'))<form action="{{route('customer.destroy',$customer->id)}}"  method="post" class="delete_form">
+                                                <th>{{$document->id}}</th>
+                                                        <th>{{$document->type}}</th>
+
+                                                        <th class="d-flex justify-content-start">
+                                                        @if(Auth::user()->can('EditLuckyCode'))<a href="{{route('document.edit',$document->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>@endIF
+                                                        @if(Auth::user()->can('DeleteLuckyCode'))<form action="{{route('document.destroy',$document->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
-                                                        <!-- <input type="hidden" name="_method" value="DELETE"> -->
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endIf
-                                                        </th>                                                  
+                                                        </th>                                                   
                                                      </tr>
-                                                 @endForeach   
+                                                @endForeach
                                                 </tbody>
                                             </table>
                                         </div>

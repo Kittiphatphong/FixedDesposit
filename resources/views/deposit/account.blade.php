@@ -19,6 +19,9 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title"><b>ລາຍ​ການ​ລູກ​ຄ້າ</b></h4>
+                                    @if(Auth::user()->can('DeleteAccount'))
+                                    <h4 class=""><b>ລວມ​ເງິນຝາກທັງ​ໝົດ {{number_format($accounts->sum('amount'))}} ກີບ <br><br>(ຈຳ​ນວນ​ບັນ​ຊີ​ລູກ​ຄ້າທັງ​ໝົດ: {{$accounts->count()}} ບັນ​ຊີ)</b></h4>
+                                    @endif
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -62,7 +65,7 @@
                                                         </form>@endif
                                                         </th>                                                   
                                                      </tr>
-                                                @endForeach  
+                                                @endforeach  
                                                 </tbody>
                                             </table>
                                         </div>

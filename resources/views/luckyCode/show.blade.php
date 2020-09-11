@@ -68,6 +68,9 @@
     .font{
         font-size:36px;
     }
+    .font1{
+        font-size:24px;
+    }
     .fontHead{
         color:yellow;
         font-size:36px;
@@ -116,6 +119,7 @@
 <body>
 <div class="position-fixed justify-content-between">
 <button onClick="window.print()" class="btn btn-primary btn-lg float-left no-print font">Print</button>
+<a href="{{route('account.show',$account->id)}}" class="float-right no-print btn btn-success btn-lg font">Next</a>
 <a href="{{route('account.index')}}" class="float-right no-print btn btn-dark btn-lg font">Back</a>
 </div>
 <div class="containerJ bgC round ">
@@ -135,10 +139,9 @@
 <p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
-<p class="btn btn-white btn-lg col-3 text-left font">@if(round($account->customers->idNumber)>999999) {{$account->customers->idNumber}} @else . @endIf</p>
-<p class="btn btn-j btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ:</p>
-<p class="btn btn-white btn-lg colJ-4 text-left font">@if(round($account->customers->idNumber)<=999999) {{$account->customers->idNumber}} @else . @endIf</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font ml-0 mr-0 pl-0 pr-0">{{$account->customers->documents->type}}:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->documentNumber}}</p>
+
 </div>
 <div class="ml-5 col-12">
 <p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
@@ -261,10 +264,8 @@
 <p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
-<p class="btn btn-white btn-lg col-3 text-left font">@if(round($account->customers->idNumber)>999999) {{$account->customers->idNumber}} @else . @endIf</p>
-<p class="btn btn-j btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ:</p>
-<p class="btn btn-white btn-lg colJ-4 text-left font">@if(round($account->customers->idNumber)<=999999) {{$account->customers->idNumber}} @else . @endIf</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font ml-0 mr-0 pl-0 pr-0">{{$account->customers->documents->type}}:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->documentNumber}}</p>
 </div>
 <div class="ml-5 col-12">
 <p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
@@ -387,10 +388,8 @@
 <p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>
 </div>
 <div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ບັດ​ປະ​ຈຳ​ຕົວ:</p>
-<p class="btn btn-white btn-lg col-3 text-left font">@if(round($account->customers->idNumber)>999999) {{$account->customers->idNumber}} @else . @endIf</p>
-<p class="btn btn-j btn-lg col-2 text-right font pl-0">ສຳ​ມະ​ໂນ​ຄົວ​ເລກ​ທີ:</p>
-<p class="btn btn-white btn-lg colJ-4 text-left font">@if(round($account->customers->idNumber)<=999999) {{$account->customers->idNumber}} @else . @endIf</p>
+<p class="btn btn-j btn-lg colJ2-2 text-right font ml-0 mr-0 pl-0 pr-0">{{$account->customers->documents->type}}:</p>
+<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->documentNumber}}</p>
 </div>
 <div class="ml-5 col-12">
 <p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
