@@ -50,14 +50,14 @@ table, td, th {
                } 
             } 
             td,tr,th,b,p{
-        font-size:24px;
+        font-size:28px;
         color:black;
         padding:0px;
         
         
     }
     h1{
-        font-size:32px;
+        font-size:42px;
         padding:20px;
         color:black;
     }
