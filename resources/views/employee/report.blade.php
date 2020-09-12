@@ -23,6 +23,12 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="table-responsive">
+                                        <div class="col-5 float-left">
+                                        <form action="" method="get">
+                                        <input type="search" class="form-control">
+                                        <input type="submit" value="Search" class="btn btn-sm btn-primary">
+                                        </form>
+                                        </div>
                                             <table class="table table-striped dataex-html5-selectors">
                                                 <thead>
                                                     <tr>
