@@ -39,7 +39,7 @@
                                                         <th>ຕຳ​ແໜ່ງ</th>
                                                         <th>ເບີ​ໂທ​ລະ​ສັບ</th>
                                                         <th>ຈ/ນ ລູກ​ຄ້າ</th>
-                                                        <th></th>
+                                                     
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -52,15 +52,6 @@
                                                         <th>{{$employee->position}}</th>
                                                         <th>{{$employee->contact}}</th>
                                                         <th>{{$employee->accounts->count()}}</th>
-                                                        <th class="d-flex justify-content-start">
-                                                        @if(Auth::user()->can('EditEmployee'))
-                                                        <a href="{{route('employee.view',$employee->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-eye"></span></a>
-                                                        <a href="{{route('employee.edit',$employee->id)}}" class="btn btn-link " value=""><span class="fa fa-pencil"></span></a>@endIf
-                                                        @if(Auth::user()->can('DeleteEmployee'))<form action="{{route('employee.destroy',$employee->id)}}"  method="post" class="delete_form">
-                                                        {{ csrf_field()}}
-                                                        <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
-                                                        </form>@endIF
-                                                        </th>                                                   
                                                      </tr>
                                                 @endForeach
                                                 </tbody>

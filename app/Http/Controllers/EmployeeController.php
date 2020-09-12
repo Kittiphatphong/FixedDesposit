@@ -15,7 +15,12 @@ class EmployeeController extends Controller
         return view('employee.index')->with('employees',Employee::all());
     }
     public function report(){
-        return view('employee.report')->with('employees',Employee::all());
+        $accounts = Account::all()->pluck('employee_id')->toArray();
+        $employees = Employee::all()->intersect(Employee::whereIn('id', $accounts)->get());
+        return view('employee.report')->with('employees',$employees);
+        // $accounts = Account::all();
+        // dd($accounts);
+     
     }
     public function view($id){
         $employee = Employee::find($id);
