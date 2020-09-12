@@ -87,33 +87,33 @@ Route::get('index-lucky-code','LuckyCodeController@index')->name('lucky.index')-
 
 // !User
 // Route::resource('user', 'UserController');
-Route::get('user-index','UserController@index')->name('user.index');
-
-Route::get('user-create','UserController@create')->name('user.create');
-Route::post('user-store','UserController@store')->name('user.store');
-
-
+Route::get('user-index','UserController@index')->name('user.index')->middleware('permission:User');
+Route::group(['middleware' => ['permission:AddUser']],function(){
+  Route::get('user-create','UserController@create')->name('user.create');
+  Route::post('user-store','UserController@store')->name('user.store');
+});
+Route::group(['middleware' => ['permission:EditUser']],function(){
 Route::get('user-edit/{id}','UserController@edit')->name('user.edit');
 Route::post('user-update/{id}','UserController@update')->name('user.update');
-
+});
 Route::post('user-destroy/{id}','UserController@destroy')->name('user.destroy')->middleware('permission:DeleteUser');
 
 // !Role and permission
-Route::get('role-index','RoleController@index')->name('role.index');
-
+Route::get('role-index','RoleController@index')->name('role.index')->middleware('permission:Role');
+Route::group(['middleware' => ['permission:AddRole']],function(){
 Route::get('role-create','RoleController@create')->name('role.create');
 Route::post('role-store','RoleController@store')->name('role.store');
-
-
+});
+Route::group(['middleware' => ['permission:EditRole']],function(){
 Route::get('role-edit/{id}','RoleController@edit')->name('role.edit');
 Route::post('role-update/{id}','RoleController@update')->name('role.update');
-
-Route::post('role-destroy/{id}','RoleController@destroy')->name('role.destroy');
-
+});
+Route::post('role-destroy/{id}','RoleController@destroy')->name('role.destroy')->middleware('permission:DeleteRole');
+Route::group(['middleware' => ['permission:AssignPermission']],function(){
 route::get('add-permission/{id}','RoleController@addPermission')->name('role.permission');
 route::get('store-permission/{id}','RoleController@storePermission')->name('role.storePermission');
 route::get('destroy-permission/{id}','RoleController@destroyPermission')->name('role.destroyPermission');
-
+});
 
 // !TypeDocument
 Route::get('document-index','DocumentController@index')->name('document.index')->middleware('permission:SettingLuckyCode');
