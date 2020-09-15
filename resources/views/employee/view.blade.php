@@ -6,16 +6,17 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"><b>ພະ​ນັກ​ງານ​</b> ({{$employee->fname}}​ {{$employee->lname}})</h4>
-                                    <a href="{{route('employee.index')}}" class="btn btn-dark mr-1 mb-1 float-right">ກັບ​ຄືນ</a>
+                                    <h4 class="card-title"><b>ພະ​ນັກ​ງານ​</b> ({{$accounts->first()->employees->fname}}​ {{$accounts->first()->employees->lname}}​)</h4>
+                                    <a href="{{route('employee.report')}}" class="btn btn-dark mr-1 mb-1 float-right">ກັບ​ຄືນ</a>
                                 </div>
                                 <div class="card-content">
                                 
                                     <div class="card-body">
-                                    <p><b>ຍອດ​: {{number_format($employee->accounts->sum('amount'))}}  ກີບ</b></p>
-                                    <p><b>ຈຳ​ນວນ: {{number_format($employee->accounts->count())}}  ຄົນ</b></p>
+                                    <p><b>ຍອດ​: {{number_format($accounts->sum('amount'))}}  ກີບ</b></p>
+                                    <p><b>ຈຳ​ນວນ: {{number_format($accounts->count())}}  ຄົນ</b></p>
+                                    <p><b>ແຕ່​ວັນ​ທີ {{\Carbon\Carbon::parse($accounts->min('start'))->format('d.m.Y')}} ຫາ​ວັນ​ທີ {{\Carbon\Carbon::parse($accounts->max('start'))->format('d.m.Y')}} </b></p>
                                         <div class="table-responsive">
-                                            <table class="table table-striped dataex-html5-selectors">
+                                            <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>ມື້​ຝາກ</th>
@@ -27,9 +28,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($employee->accounts as $account)
-                                                <tr>
-                                                
+                                                @foreach($accounts as $account)
+                                                <tr>                  
                                                         <th>{{\Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</th>
                                                         <th>{{$account->typeDisposits->period}} @if($account->typeDisposits->yearOrMonth=="year")ປີ @else ເດືອນ @endIf</th>
                                                         <th>{{$account->idAccount}}</th>

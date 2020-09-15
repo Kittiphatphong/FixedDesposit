@@ -22,36 +22,50 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                        <div class="col-5 float-left">
-                                        <form action="" method="get">
-                                        <input type="search" class="form-control">
-                                        <input type="submit" value="Search" class="btn btn-sm btn-primary">
-                                        </form>
+                                    <form action="{{route('employee.search')}}" method="get" >
+                                        <div class="row">
+                                        <div class="col d-flex">
+                                        <b>ແຕ່​</b> 
+                                        <input type="date" id="normal" class="form-control" name="start" required/ value="{{isset($start)?$start:\App\Account::all()->min('start')}}">
+                                        </div> 
+                                        <div class="col d-flex">
+                                        <b>ຫາ:</b> 
+                                        <input type="date" id="scaled" class="form-control" name="end" required/ value="{{isset($end)?$end:\Carbon\Carbon::now()->format('Y-m-d')}}">
                                         </div>
-                                            <table class="table table-striped dataex-html5-selectors">
+                                        <div class="col">
+                                        <input type="submit" value="ຄົ້ນ​ຫາ" class="btn btn btn-primary">
+                                        </div>
+                                             
+                                        </div>
+                                        </form>
+                                        <br>
+                                        <a href="{{route('employee.export')}}" class="float-left"><span class="fa fa-download" style="font-size:40px"></span></a> 
+                                        <br>
+                                        <div class="table-responsive">
+                                            <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>ຈຳ​ນວນ​ເງີນ</th>
+                                                        <th>ຈ/ນ ລູກ​ຄ້າ</th>
                                                         <th>​ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
                                                         <th>ບໍ​ລິ​ສັດ</th>
                                                         <th>ພະ​ແໜກ</th>
                                                         <th>ຕຳ​ແໜ່ງ</th>
-                                                        <th>ເບີ​ໂທ​ລະ​ສັບ</th>
-                                                        <th>ຈ/ນ ລູກ​ຄ້າ</th>
-                                                     
+                                                        <th>ເບີ​ໂທ​ລະ​ສັບ</th>    
+                                                        <th></th>                    
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($employees as $employee)
                                                 <tr>
                                                        <th>{{number_format($employee->accounts->sum('amount'))}}</th>
+                                                       <th>{{$employee->accounts->count()}}</th>
                                                         <th>​{{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</th>
                                                         <th>{{$employee->company}}</th>
                                                         <th>{{$employee->department}}</th>
                                                         <th>{{$employee->position}}</th>
                                                         <th>{{$employee->contact}}</th>
-                                                        <th>{{$employee->accounts->count()}}</th>
+                                                        <th><a href="{{route('employee.view',$employee->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-eye"></span></a></th>
                                                      </tr>
                                                 @endForeach
                                                 </tbody>

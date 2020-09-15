@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 use App\Account;
+use DB;
+use App\Exports\ExcelExport;
+use App\Exports\SearchExport;
+use Maatwebsite\Excel\Facades\Excel;
 class EmployeeController extends Controller
 {
     public function __construct()
@@ -18,14 +22,34 @@ class EmployeeController extends Controller
         $accounts = Account::all()->pluck('employee_id')->toArray();
         $employees = Employee::all()->intersect(Employee::whereIn('id', $accounts)->get());
         return view('employee.report')->with('employees',$employees);
-        // $accounts = Account::all();
-        // dd($accounts);
+
      
     }
-    public function view($id){
-        $employee = Employee::find($id);
-        return view ('employee.view')->with('employee',$employee);
+    public function search(Request $request){
+        $start = $request->start;
+        $end = $request->end;
+        $employees = DB::table('accounts')
+        ->join('employees', 'employees.id', '=', 'accounts.employee_id')
+        ->WhereBetween('accounts.start',[$start,$end])
+        ->select('accounts.employee_id','employees.fname','employees.lname','employees.nname','employees.company','employees.department','employees.position','employees.contact',
+         DB::raw('SUM(amount) as amount'),DB::raw('count(amount) as customer'))
+        ->groupBy('accounts.employee_id','employees.fname','employees.lname','employees.nname','employees.company','employees.department','employees.position','employees.contact')
+        ->get();
+        return view('employee.search')
+        ->with('employees',$employees)
+        ->with('start',$start)
+        ->with('end',$end);
     }
+    public function view(Request $request, $id){
+        if(isset($request->start)){
+            $accounts = Account::all()->where('employee_id','=',$id)
+            ->whereBetween('start', [$request->start, $request->end]);
+            return view ('employee.view')->with('accounts',$accounts);
+        }
+        $accounts = Account::all()->where('employee_id','=',$id);
+        return view ('employee.view')->with('accounts',$accounts);
+    }
+
     public function create(){
         $employee = new Employee(); 
         return view('employee.create')->with('employee',$employee);
@@ -88,5 +112,14 @@ class EmployeeController extends Controller
     $employee = Employee::find($id);
     $employee->delete();
     return back()->with('success','ທ່າ​ນໄດ້​ລຶບ​ພະ​ນັກ​ງານ​ສຳ​ເລັດ');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ExcelExport, 'Staffs.xlsx');
+    }
+    public function query(Request $request) 
+    {
+        return Excel::download(new SearchExport($request->start,$request->end), 'Staffs.xlsx');
     }
 }

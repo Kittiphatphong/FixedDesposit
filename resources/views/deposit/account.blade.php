@@ -49,7 +49,7 @@
                                                         <th>{{$account->idAccount}}</th>
                                                         <th>{{$account->customers->fname}} {{$account->customers->lname}}</th>
                                                         <th>{{$account->typeDisposits->period}} @if($account->typeDisposits->yearOrMonth=="year")ປີ @else ເດືອນ @endIf​</th>
-                                                        <th>{{$account->start}}</th>
+                                                        <th>{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</th>
                                                         <th>{{$account->interest}} %</th>
                                                         <th>{{number_format($account->amount)}}</th>
                                                         <th>{{$account->amountWord}}</th> 

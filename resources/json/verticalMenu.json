@@ -33,6 +33,7 @@
             "name": "Employees",
             "icon": "feather icon-users",
             "permission" : "Employee"
+            
         },
         {
             "url": "employee-report",

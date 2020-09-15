@@ -8,8 +8,9 @@
 @endsection
 @section('page-style')
 <!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+<style>body{font-family:"Phetsarath OT";}
+
+</style>
 @endsection
 
 @section('content')
@@ -18,46 +19,64 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"><b>ລາຍ​ການ​ພະ​ນັກ​ງານ​ບໍ​ລິ​ສັດ</b></h4>
+                                    <h4 class="card-title"><b>​ພະ​ນັກ​ງານ​ບໍ​ລິ​ສັດ</b></h4>
+                                    
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                    @if(Auth::user()->can('AddEmployee'))<a href="{{route('employee.create')}}" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; ເພີ່​ມ​ພະ​ນັກ​ງານ</a>@endIf
-                                        <div class="table-responsive">
+                                    <form action="{{route('employee.search')}}" method="get" >
+                                        <div class="row">
+                                        <div class="col">
+                                        <input type="date" id="normal" class="form-control" name="start" required/ value="{{isset($start)?$start:\App\Account::all()->min('start')}}">
+                                        </div> 
+                                        <div class="col">
+                                        <input type="date" id="scaled" class="form-control" name="end" required/ value="{{isset($end)?$end:\Carbon\Carbon::now()->format('Y-m-d')}}">
+                                        </div>
+                                        
+                                        <div class="col">
+                                        <input type="submit" value="ຄົ້ນ​ຫາ" class="btn btn btn-primary">
+                                        </div>  
+                                        <p><b>ຍອດ​ລວມ: {{number_format($employees->sum('amount'))}} ກີບ</b></p>                                              
+                                        </div>                             
+                                        </form>
+                                        <br>
+                                        <form action="{{route('employee.query')}}" method="get">
+                                                        <input type="hidden" name="start" value="{{$start}}">
+                                                        <input type="hidden" name="end" value="{{$end}}">
+                                                        <button type="submit" class="float-left btn btn-primary btn-sm"> <span class="fa fa-download"></span></button>
+                                                        </form>
+                                        <br>
+                                        <div class="table-responsive">                                                       
                                             <table class="table add-rows table-striped table-bordered">
+                                            
                                                 <thead>
+                                                <tr><th colspan="8" class="text-center">​ວັນ​ທີ {{\Carbon\Carbon::parse($start)->format('d.m.Y')}} ເຖີງ​ວັນ​ທີ {{\Carbon\Carbon::parse($end)->format('d.m.Y')}}</th></tr>
                                                     <tr>
-                                                        <th>ໄອ​ດີ</th>
+                                                        <th>ຈຳ​ນວນ​ເງີນ</th>
+                                                        <th>ຈ/ນ ລູກ​ຄ້າ</th>
                                                         <th>​ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
                                                         <th>ບໍ​ລິ​ສັດ</th>
                                                         <th>ພະ​ແໜກ</th>
                                                         <th>ຕຳ​ແໜ່ງ</th>
                                                         <th>ເບີ​ໂທ​ລະ​ສັບ</th>
-                                                        <th>ຈ/ນ ລູກ​ຄ້າ</th>
-                                                        <th>ຈຳ​ນວນ​ເງີນ</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($employees as $employee)
+                                               @foreach($employees as $employee)
                                                 <tr>
-                                                
-                                                        <th>{{$employee->id}}</th>
+                                                        <th>{{number_format($employee->amount)}}</th>
+                                                        <th>{{$employee->customer}}</th> 
                                                         <th>​{{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</th>
                                                         <th>{{$employee->company}}</th>
                                                         <th>{{$employee->department}}</th>
                                                         <th>{{$employee->position}}</th>
-                                                        <th>{{$employee->contact}}</th>
-                                                        <th>{{$employee->accounts->count()}} ຄົນ</th>
-                                                        <th>{{number_format($employee->accounts->sum('amount'))}} ກີບ</th>
-                                                        <th class="d-flex justify-content-start">
-                                                        @if(Auth::user()->can('EditEmployee'))
-                                                        <a href="{{route('employee.edit',$employee->id)}}" class="btn btn-link " value=""><span class="fa fa-pencil"></span></a>@endIf
-                                                        @if(Auth::user()->can('DeleteEmployee'))<form action="{{route('employee.destroy',$employee->id)}}"  method="post" class="delete_form">
-                                                        {{ csrf_field()}}
-                                                        <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
-                                                        </form>@endIF
-                                                        </th>                                                   
+                                                        <th>{{$employee->contact}}</th>     
+                                                        <th><form action="{{route('employee.view',$employee->employee_id)}}" method="get">
+                                                        <input type="hidden" name="start" value="{{$start}}">
+                                                        <input type="hidden" name="end" value="{{$end}}">
+                                                        <button type="submit" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-eye"></span></button></th>   
+                                                        </form>
                                                      </tr>
                                                 @endForeach
                                                 </tbody>

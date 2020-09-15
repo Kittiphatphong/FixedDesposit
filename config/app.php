@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         
 
         /*
@@ -231,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Helper' => App\Helpers\Helper::class,
         'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

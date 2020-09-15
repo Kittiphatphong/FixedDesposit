@@ -65,8 +65,11 @@ Route::post('type-destroy/{id}','TypeController@destroy')->name('type.destroy')-
 
 // !Employee
 Route::group(['middleware' => ['permission:Employee']], function () {
-  Route::get('employee-index','EmployeeController@index')->name('employee.index');
+Route::get('employee-index','EmployeeController@index')->name('employee.index');
 Route::get('employee-report','EmployeeController@report')->name('employee.report');
+Route::get('employee-search','EmployeeController@search')->name('employee.search');
+Route::get('employee-export', 'EmployeeController@export')->name('employee.export');
+Route::get('employee-search-export', 'EmployeeController@query')->name('employee.query');
 });
 Route::group(['middleware' => ['permission:AddEmployee']], function () {
 Route::get('employee-create','EmployeeController@create')->name('employee.create');
