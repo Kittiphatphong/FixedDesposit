@@ -22,5 +22,9 @@ return [
     "Lucky code" => "Lucky code",
     "Account" => "Account",
     "Document" => "Document",
-    "Employee report" => "Employee report"
+    "Employee report" => "Employee report",
+    "Random" => "Random",
+    "Function" => "Function",
+    "Winning random" => "Winning random",
+
  ];

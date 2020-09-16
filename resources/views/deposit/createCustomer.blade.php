@@ -52,7 +52,7 @@
                       <span>ເບີ​ໂທ​ລະ​ສັບ</span>
                     </div>
                                           <div class="col-md-8">
-                                              <input type="number" id="contact-info" class="form-control" name="contact" placeholder="ເບີ​ໂທ​ລະ​ສັບ" value="{{old('contact',$customer->contact)}}">
+                                              <input type="text" id="contact-info" class="form-control" name="contact" placeholder="ເບີ​ໂທ​ລະ​ສັບ" value="{{old('contact',$customer->contact)}}">
                                           </div>
                                       </div>
                                   </div>

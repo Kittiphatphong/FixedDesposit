@@ -15,14 +15,8 @@
 
 // Route url
 Route::get('/', 'DashboardController@dashboardAnalytics');
-
-
-
-
 // locale Route
 Route::get('lang/{locale}',[LanguageController::class,'swap']);
-
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -130,3 +124,11 @@ Route::get('document-edit/{id}','DocumentController@edit')->name('document.edit'
 Route::post('document-update/{id}','DocumentController@update')->name('document.update');
 });
 Route::post('document-destroy/{id}','DocumentController@destroy')->name('document.destroy')->middleware('permission:DeleteLuckyCode');
+
+
+// !Random
+Route::get('random-index','RandomController@index')->name('random.index');
+Route::get('random-random','RandomController@random')->name('random.random');
+Route::get('random-list','RandomController@list')->name('random.list');
+Route::get('random-win','RandomController@win')->name('random.win');
+Route::post('random-destroy/{id}','RandomController@destroy')->name('random.destroy');

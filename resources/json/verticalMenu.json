@@ -57,6 +57,32 @@
         },
         {
             "url": "",
+            "name": "Random",
+            "icon": "fa fa-random",
+            "permission" : "User",
+            "submenu": [
+                {
+                    "url": "random-index",
+                    "name": "Function",
+                    "permissionSub" : "User"
+                },
+                {
+                    "url": "random-list",
+                    "name": "List",
+                    "permissionSub" : "User"
+
+                },
+                {
+                    "url": "random-win",
+                    "name": "Winning random",
+                    "permissionSub" : "User"
+
+                }
+
+            ]
+        },
+        {
+            "url": "",
             "name": "UserManagement",
             "icon": "fa fa-user",
             "permission" : "User",

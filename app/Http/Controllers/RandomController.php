@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\LuckyCode;
+use App\WinRandom;
+use Illuminate\Http\Request;
+use DB;
+class RandomController extends Controller
+{
+    public function index(){
+        
+        return view('random.function');
+    }
+    public function random(Request $request){
+        if($request->ajax()){
+        
+        $rand = rand(DB::table('Lucky_codes')->min('id'),DB::table('Lucky_codes')->max('id'));  
+        $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); 
+        $checkLucky = LuckyCode::all()->where('id','=',$rand)->intersect(LuckyCode::whereNotIn('id', $checkWin)->get())->count();
+           
+            while($checkLucky!=1){
+        $rand = rand(DB::table('Lucky_codes')->min('id'),DB::table('Lucky_codes')->max('id'));      
+        $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); 
+        $checkLucky = LuckyCode::all()->where('id','=',$rand)->intersect(LuckyCode::whereNotIn('id', $checkWin)->get())->count();
+            }
+           
+
+        $winRandom = new WinRandom();
+        $winRandom->luckyCode_id = $rand;
+        $winRandom->amount = $request->get('amount');
+        $winRandom->save();   
+        // $winRandom =  WinRandom::find(2);        
+        switch ($winRandom->luckyCodes->accounts->typeDisposits->type) {
+        case "A":
+            $code = 1;
+        break;
+        case "B":
+            $code = 2;
+        break;
+        case "C":
+            $code = 3;
+        break;
+  }
+  $number  = array_map('intval', str_split($winRandom->luckyCodes->idCode));
+                $output= [$number,$code];
+                // $name.='
+                // <p>ຊື່: '.WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.'</p>
+                // <p>ນາມສະກຸນ:'.WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->name.'</p>'
+                
+                // // ;
+                $name='<p>ລາຍ​ຊື່​ຜູ້​ໂຊກ​ດີ: '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname . WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname.'</p>';
+        $data = array('info_data'=>$output,'name'=>$name);
+        echo json_encode($data);
+        }
+    }
+    public function list(){
+        $winingRandom = WinRandom::all()->pluck('luckyCode_id')->toArray();
+        $luckCodes = LuckyCode::all()->intersect(LuckyCode::whereNotIn('id',$winingRandom)->get());
+        return view('luckyCode.index')->with('luckyCodes',$luckCodes)->with('count',$luckCodes->count());
+        
+    }
+    public function win(){
+       return view('random.win')->with('randoms',WinRandom::all());
+    }
+    public function destroy($id){
+        $winRandom = WinRandom::find($id);
+        $winRandom->delete();
+        return back()->with('success','ທ່າ​ນ​ໄດ້​ລຶບ​ລະ​ຫັດ​ຜູ້​ໂຊກ​ດີ​ສຳ​ເລັດ​ແລ້ວ');
+    }
+}

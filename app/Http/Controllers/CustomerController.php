@@ -23,7 +23,7 @@ class CustomerController extends Controller
         $this->validate($request,[
          'fname' =>'required',
          'lname' =>'required',
-         'contact' => 'required',
+         'contact' => 'required|numeric',
          'document_id' => 'required',
          'documentNumber' => 'required|unique:customers',
          'address' => 'required'
@@ -50,7 +50,7 @@ class CustomerController extends Controller
         $this->validate($request,[
             'fname' =>'required',
             'lname' =>'required',
-            'contact' => 'required',
+            'contact' => 'required|numeric',
             'document_id' => 'required',
             'documentNumber' => 'required',
             'address' => 'required'
