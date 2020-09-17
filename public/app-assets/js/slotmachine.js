@@ -176,3 +176,6 @@ var slotMachine = function (el, options, track) {
 
     this.init();
 };
+
+
+

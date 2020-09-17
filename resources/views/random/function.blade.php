@@ -9,23 +9,110 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/bootstrap-extended.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
-    <style>body{font-family:"Phetsarath OT";}</style>
+    <style>
+
+  body {
+  margin: 0;
+  padding:0;
+  font-family: "Phetsarath OT";
+  }
+  .hero-image {
+  background-image:url("../../../app-assets/images/pages/Theme.png");
+  background-color: #cccccc;
+  height: 1080px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  }
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+div.absolute {
+  position: absolute;
+  top: 125px;
+  right: 260px;
+  width: 200px;
+  height: 100px;
+  
+}
+.name-style{
+    font-size:50px;
+    position: absolute;
+    bottom: 9px;
+    right: 200px;
+    width: 680px;
+    height: 100px;
+    font-weight: bold;
+    color: #6F2B8B;
+    
+}
+.spin{
+    position: absolute;
+    top: 142px;
+    right: 0px;
+    width: 200px;
+    height: 100px;
+}
+select{
+    background-color: #6F2B8B;
+    padding:5px;
+    color: #FFCE03;
+    font-size:50px;
+    font-weight: bold;
+    border:1px solid #6F2B8B;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+.f{
+    color: #FFCE03;  
+}
+option{
+    color:yellow;
+}
+.list{
+    position: absolute;
+    top: 280px;
+    right: 0px;
+    width: 700px;
+    height: 520px;
+    color:white;
+    font-size:24px;
+    overflow: auto;
+}
+.count{
+    position: absolute;
+    top: 225px;
+    right: 290px;
+    color: #FFCE03; 
+    font-size:26px;
+    font-weight: bold;
+}
+    </style>
+
 </head>
 
 <body>
 
-
-
-        
-    <div class="container">
-    <div class="col-3 float-right">
-                    <select  id="amount" class="form-control">
-                      <option value="1000000">ລາງ​ວັນ {{number_format(1000000)}} ກີບ</option>
-                      <option value="5000000">ລາງ​ວັນ {{number_format(5000000)}} ກີບ</option>
-                      <option value="30000000">ລາງ​ວັນ {{number_format(30000000)}} ກີບ</option>
-                      <option value="50000000">ລາງ​ວັນ {{number_format(50000000)}} ກີບ</option>
+    <div class="hero-image">
+    <div class="col-2 absolute">
+                    <select  id="amount" >
+                      <option value="1000000">{{number_format(1000000)}} ກີບ</option>
+                      <option value="5000000">{{number_format(5000000)}} ກີບ</option>
+                      <option value="30000000">{{number_format(30000000)}} ກີບ</option>
+                      <option value="50000000">{{number_format(50000000)}} ກີບ</option>
                     </select>
                     </div>
+                    <div class="list colJ-3 ">
+  
+                   </div>  
+                   <p class="count"></p> 
                 <div class="slotwrapper" id="example2">
                     <ul>
                         <li>A</li>
@@ -119,25 +206,33 @@
                
                 </div>
                 <div>
-                 
-                    <button type="button" class="btn btn-success btn-lg" id="btn-example2">Start Spin!</button>
-                    <div class="inputid d-flex justify-content-around" style="margin-top: 15px">
-
-
-</div>                  
+                    <div class="spin">
+                    <button type="button" class="btn btn-light btn-lg float-right" id="btn-example2"><b>ເລີ່ມ​ໝຸນ</b></button>
+                    </div>
+                    <div class="name name-style">
+                   
+                   </div>            
+     </div>
      </div>
            
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../../../app-assets/js/slotmachine.min.js"></script>
-
+    <script src="../../../app-assets/js/jquery.cookie.js"></script>
+    <script src="../../../app-assets/js/list.js"></script>
     <script type="text/javascript">
-
+    var list = new cookieList("MyItems");
+    $('.list').html(list.items());
+    $('#amount').click(function() {
+    list.clear();
+    });
         $('#btn-example2').click(function() {
-          $('.inputid').empty();
+            
+          $('.name').empty();
             sound.play();
             var amount = $('#amount').val();
+            
             $.ajax({
                 url:'{{ route('random.random')}}',
                 method:'GET',
@@ -163,8 +258,16 @@
                     ding.play(); // Play ding after each number is stopped
                 },
                   onFinish: function() {
+                   
                     sound.pause(); // To stop the looping sound is pause it
-                    $('.inputid').html(data.name);
+                    var list = new cookieList("MyItems");
+                    list.remove(''); 
+                    var jay =data.list.toString();
+                    list.add(jay); 
+                    $('.list').html(list.items());
+                    $('.name').html(data.name);
+                    $('.count').html(list.items().length);
+                    
                 }
             });
                 }

@@ -29,7 +29,7 @@ class RandomController extends Controller
         $winRandom->luckyCode_id = $rand;
         $winRandom->amount = $request->get('amount');
         $winRandom->save();   
-        // $winRandom =  WinRandom::find(2);        
+        // $winRandom =  WinRandom::find(10);        
         switch ($winRandom->luckyCodes->accounts->typeDisposits->type) {
         case "A":
             $code = 1;
@@ -41,15 +41,12 @@ class RandomController extends Controller
             $code = 3;
         break;
   }
-  $number  = array_map('intval', str_split($winRandom->luckyCodes->idCode));
-                $output= [$number,$code];
-                // $name.='
-                // <p>ຊື່: '.WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.'</p>
-                // <p>ນາມສະກຸນ:'.WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->name.'</p>'
-                
-                // // ;
-                $name='<p>ລາຍ​ຊື່​ຜູ້​ໂຊກ​ດີ: '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname . WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname.'</p>';
-        $data = array('info_data'=>$output,'name'=>$name);
+    $number  = array_map('intval', str_split($winRandom->luckyCodes->idCode));
+    $output= [$number,$code];
+    $name=WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.' '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname;
+    $code = $winRandom->luckyCodes->accounts->typeDisposits->type .$winRandom->luckyCodes->idCode;
+    $list = '<p><span class="f">'.$code.'</span><span class="float-right">'.$name.'</span> </p>';
+        $data = array('info_data'=>$output,'name'=>$name,'list'=>$list);
         echo json_encode($data);
         }
     }

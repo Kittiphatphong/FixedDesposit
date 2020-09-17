@@ -10661,7 +10661,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 
-.colJ-4,.colJ2-4, .colJ-2, .colJ2-2, .colJ-12, .colJ-sm-8 {
+.colJ-3,.colJ-4,.colJ2-4, .colJ-2, .colJ2-2, .colJ-12, .colJ-sm-8 {
   position : relative;
   width : 100%;
   padding-right : 10px;
@@ -10674,6 +10674,13 @@ a.text-dark:hover, a.text-dark:focus {
       -ms-flex : 0 0 33.33333%;
           flex : 0 0 33.33333%;
   max-width : 32.858%;
+}
+.colJ-3 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 33.33333%;
+      -ms-flex : 0 0 33.33333%;
+          flex : 0 0 33.33333%;
+  max-width : 29.858%;
 }
 .colJ2-4 {
   -webkit-box-flex : 0;
