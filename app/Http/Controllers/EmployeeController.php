@@ -22,8 +22,6 @@ class EmployeeController extends Controller
         $accounts = Account::all()->pluck('employee_id')->toArray();
         $employees = Employee::all()->intersect(Employee::whereIn('id', $accounts)->get());
         return view('employee.report')->with('employees',$employees);
-
-     
     }
     public function search(Request $request){
         $start = $request->start;

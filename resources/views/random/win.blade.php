@@ -31,7 +31,7 @@
                                                         <th>ຊື່​ບັນ​ຊີ</th> 
                                                         <th>ເບີ​ໂທ</th>
                                                         <th>ຈຳ​ນວນ​ເງິນ</th>    
-                                                        <th></th>                                                                                             
+                                                        @if(Auth::user()->can('DeleteWinRandom'))<th></th>@endIf                                                                                              
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -43,11 +43,13 @@
                                                 <td>{{$random->luckyCodes->accounts->customers->fname}} {{$random->luckyCodes->accounts->customers->lname}}</td>
                                                 <td>{{$random->luckyCodes->accounts->customers->contact}}</td>
                                                 <td>{{number_format($random->amount)}} ກີບ</td>
-                                                <td><form action="{{route('random.destroy',$random->id)}}"  method="post" class="delete_form">
+                                                @if(Auth::user()->can('DeleteWinRandom'))<td><form action="{{route('random.destroy',$random->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link ml-0 pl-0"><span class="fa fa-trash"></span> </button>
                                                         </form>
+                                                    
                                                 </td>
+                                                @endIf    
                                                 </tr>
                                                 @endForeach
                                                 </tbody>

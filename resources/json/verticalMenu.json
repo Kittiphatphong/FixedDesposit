@@ -59,23 +59,23 @@
             "url": "",
             "name": "Random",
             "icon": "fa fa-random",
-            "permission" : "User",
+            "permission" : "Random",
             "submenu": [
                 {
                     "url": "random-index",
                     "name": "Function",
-                    "permissionSub" : "User"
+                    "permissionSub" : "Random"
                 },
                 {
                     "url": "random-list",
                     "name": "List",
-                    "permissionSub" : "User"
+                    "permissionSub" : "Random"
 
                 },
                 {
                     "url": "random-win",
                     "name": "Winning random",
-                    "permissionSub" : "User"
+                    "permissionSub" : "WinRandom"
 
                 }
 

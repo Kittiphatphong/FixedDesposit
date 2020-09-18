@@ -8,6 +8,7 @@ use App\Account;
 use App\TypeDisposit;
 use App\Employee;
 use App\LuckyCode;
+use App\WinRandom;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -122,7 +123,13 @@ class AccountController extends Controller
         return redirect()->route('lucky.show');
     }
     public function destroy($id){
+        $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray();
         $account = Account::find($id);
+        $checkLuckyCode =LuckyCode::all()->where('account_id','=',$id)
+        ->intersect(LuckyCode::whereIn('id',$checkWin)->get())->count();
+        if($checkLuckyCode>0){
+            return back()->with('warning','ທ່າ​ນ​ບໍ່​ສາ​ມາດ​ລຶບ​ບັນ​ຊີ​ທີ​ຖືກ​ລາງ​ວັນ​ໄດ້');
+        }
         $account->delete();
         return back()->with('success','ທ່ານໄດ້​ລືບ​ບັນ​ຊີ​ລູກ​ຄ້າ​ສຳ​ເລັດ​ແລ້ວ');
     }
