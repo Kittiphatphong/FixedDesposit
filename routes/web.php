@@ -131,6 +131,7 @@ Route::group(['middleware' => ['permission:Random']], function () {
 Route::get('random-index','RandomController@index')->name('random.index');
 Route::get('random-random','RandomController@random')->name('random.random');
 Route::get('random-list','RandomController@list')->name('random.list');
+Route::get('random-view/{id}','RandomController@view')->name('random.view');
 });
 Route::get('random-win','RandomController@win')->name('random.win')->middleware('permission:WinRandom');
 Route::post('random-destroy/{id}','RandomController@destroy')->name('random.destroy')->middleware('permission:DeleteWinRandom');

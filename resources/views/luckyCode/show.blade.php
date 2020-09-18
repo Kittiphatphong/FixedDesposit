@@ -149,7 +149,7 @@
 </div>
 <div class="ml-5 col-12">
 <p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
-<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year")ປີ@endif @if($account->typeDisposits->yearOrMonth == "month")ເດືອນ@endif</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}@if($account->typeDisposits->yearOrMonth == "year") ປີ @endif @if($account->typeDisposits->yearOrMonth == "month") ເດືອນ @endif</p>
 <p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>
 <p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</p>
 <p class="btn btn-j btn-lg colJ-2 text-right font pl-0">ເຖິງວັນ​ທີ:</p>
@@ -273,7 +273,7 @@
 </div>
 <div class="ml-5 col-12">
 <p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
-<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year")ປີ@endif @if($account->typeDisposits->yearOrMonth == "month")ເດືອນ@endif</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year") ປີ @endif @if($account->typeDisposits->yearOrMonth == "month") ເດືອນ @endif</p>
 <p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>
 <p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</p>
 <p class="btn btn-j btn-lg colJ-2 text-right font pl-0">ເຖິງວັນ​ທີ:</p>
@@ -397,7 +397,7 @@
 </div>
 <div class="ml-5 col-12">
 <p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
-<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year")ປີ@endif @if($account->typeDisposits->yearOrMonth == "month")ເດືອນ@endif</p>
+<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year") ປີ @endif @if($account->typeDisposits->yearOrMonth == "month") ເດືອນ @endif</p>
 <p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>
 <p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</p>
 

@@ -37,7 +37,12 @@
                                                 <tbody>
                                                 @foreach($types as $type)
                                                 <tr>
-                                                        <th>{{$type->period}} @if($type->yearOrMonth == "year")ປີ@endif @if($type->yearOrMonth == "month")ເດືອນ@endif</th>
+                                                        <th>{{$type->period}} @if($type->yearOrMonth == "year")
+                                                        ປີ
+                                                        @endif 
+                                                        @if($type->yearOrMonth == "month")
+                                                        ເດືອນ
+                                                        @endif</th>
                                                         <th>{{number_format($type->money,0)}} ກີບ</th>
                                                         <th>{{$type->ticket}} ລະ​ຫັດ</th>
                                                         <th>{{$type->type}}</th>

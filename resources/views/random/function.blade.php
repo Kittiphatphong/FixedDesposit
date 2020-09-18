@@ -94,6 +94,13 @@ option{
     font-size:26px;
     font-weight: bold;
 }
+.colJ-9 {
+  -webkit-box-flex : 0;
+  -webkit-flex : 0 0 33.33333%;
+      -ms-flex : 0 0 33.33333%;
+          flex : 0 0 33.33333%;
+  max-width : 29.858%;
+}
     </style>
 
 </head>
@@ -109,7 +116,7 @@ option{
                       <option value="50000000">{{number_format(50000000)}} ກີບ</option>
                     </select>
                     </div>
-                    <div class="list colJ-3 ">
+                    <div class="list colJ-9">
   
                    </div>  
                    <p class="count"></p> 

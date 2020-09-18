@@ -31,7 +31,7 @@
                                                         <th>ຊື່​ບັນ​ຊີ</th> 
                                                         <th>ເບີ​ໂທ</th>
                                                         <th>ຈຳ​ນວນ​ເງິນ</th>    
-                                                        @if(Auth::user()->can('DeleteWinRandom'))<th></th>@endIf                                                                                              
+                                                        <th></th>                                                                                         
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -43,11 +43,14 @@
                                                 <td>{{$random->luckyCodes->accounts->customers->fname}} {{$random->luckyCodes->accounts->customers->lname}}</td>
                                                 <td>{{$random->luckyCodes->accounts->customers->contact}}</td>
                                                 <td>{{number_format($random->amount)}} ກີບ</td>
-                                                @if(Auth::user()->can('DeleteWinRandom'))<td><form action="{{route('random.destroy',$random->id)}}"  method="post" class="delete_form">
+                                                <td>
+                                                 <div class="d-flex justify-content-start">
+                                                 @if(Auth::user()->can('Random'))<a href="{{route('random.view',$random->id)}}" class="btn btn-link ml-0 pl-0" value="" ><span class="fa fa-eye"></span></a>@endif
+                                                 @if(Auth::user()->can('DeleteWinRandom'))<form action="{{route('random.destroy',$random->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link ml-0 pl-0"><span class="fa fa-trash"></span> </button>
                                                         </form>
-                                                    
+                                                        </div>  
                                                 </td>
                                                 @endIf    
                                                 </tr>

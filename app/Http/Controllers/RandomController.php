@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\LuckyCode;
 use App\WinRandom;
+use App\Customer;
 use Illuminate\Http\Request;
 use DB;
 class RandomController extends Controller
@@ -67,5 +68,11 @@ class RandomController extends Controller
         $winRandom = WinRandom::find($id);
         $winRandom->delete();
         return back()->with('success','ທ່າ​ນ​ໄດ້​ລຶບ​ລະ​ຫັດ​ຜູ້​ໂຊກ​ດີ​ສຳ​ເລັດ​ແລ້ວ');
+    }
+    public function view($id){
+        $data = WinRandom::find($id);
+        $idCustomer=$data->luckyCodes->accounts->customers->id; 
+        $customer = Customer::find($idCustomer);
+        return view('random.view')->with('win',$data)->with('customer',$customer);
     }
 }
