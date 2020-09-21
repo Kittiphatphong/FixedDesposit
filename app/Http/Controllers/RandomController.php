@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\LuckyCode;
 use App\WinRandom;
 use App\Customer;
+use App\Account;
 use Illuminate\Http\Request;
 use DB;
 class RandomController extends Controller
@@ -72,7 +73,13 @@ class RandomController extends Controller
     public function view($id){
         $data = WinRandom::find($id);
         $idCustomer=$data->luckyCodes->accounts->customers->id; 
+        $idAccount= $data->luckyCodes->accounts->id;
         $customer = Customer::find($idCustomer);
-        return view('random.view')->with('win',$data)->with('customer',$customer);
+        $account = Account::find($idAccount);
+        $percent = round(($account->luckyCodes->count()*100) / LuckyCode::all()->count(),2);    
+        return view('random.view')->with('win',$data)
+        ->with('customer',$customer)
+        ->with('account',$account)
+        ->with('percent',$percent);
     }
 }

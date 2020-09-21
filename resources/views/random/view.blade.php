@@ -31,11 +31,10 @@
     right: 0;
     top: 0;
 }
-.profile-head h5{
-    color: #333;
-}
 .profile-head h6{
-    color: #0062cc;
+    font-size:14px;
+    color: #6F2B8B;
+    font-weight:bold;
 }
 .profile-edit-btn{
     border: none;
@@ -65,21 +64,21 @@
 }
 .profile-head .nav-tabs .nav-link.active{
     border: none;
-    border-bottom:2px solid #0062cc;
+    border-bottom:2px solid #6F2B8B;
 }
 .profile-work{
     padding: 14%;
     margin-top: -15%;
 }
 .profile-work p{
-    font-size: 12px;
-    color: #818182;
+    font-size:ເໝ໋າະpx;
+    color: black;
     font-weight: 600;
     margin-top: 10%;
 }
 .profile-work a{
     text-decoration: none;
-    color: #495057;
+    color: #FFCE03;
     font-weight: 600;
     font-size: 14px;
 }
@@ -88,10 +87,11 @@
 }
 .profile-tab label{
     font-weight: 600;
+    font-size:14px;
 }
 .profile-tab p{
     font-weight: 600;
-    color: #0062cc;
+    color: #6F2B8B;
 }
 </style>
 
@@ -101,19 +101,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="{{asset('images/pages/maintenance.png') }}" alt=""/>
                      
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                                    <h5>
+                                    <h6>
                                         ບັນ​ຊີ: {{$win->luckyCodes->accounts->customers->fname}} {{$win->luckyCodes->accounts->customers->lname}}
-                                    </h5>
+                                    </h6>
                                     <h6>
                                         ເລກ​ບັນ​ຊີ: {{$win->luckyCodes->accounts->idAccount}}
                                     </h6>
                                     <p class="proile-rating">ລະ​ຫັດ​ທີ່​ຖືກ : <span>{{$win->luckyCodes->accounts->typeDisposits->type}}{{$win->luckyCodes->idCode}}</span></p>
+                                    <p class="proile-rating">ເປີ​ເຊັນ​ທີ​ຈະ​ຖືກ​ຂອງ​ບັນ​ຊີ : <span>{{$percent}} %</span></p>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ຂໍ້​ມູນ​ລູກ​ຄ້າ</a>
@@ -128,12 +129,10 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="">Website Link</a><br/>
-                         
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br/>
-                      
+                            <p>ບັນ​ຊີ​ລູກ​ຄ້າ​ທັງ​ໝົດ {{$customer->accounts->count()}} ບັນ​ຊີ</p>
+                            @foreach($customer->accounts as $account)
+                            <a href="{{route('lucky.view',$account->id)}}">{{$account->idAccount}}</a><br><br>
+                            @endForeach
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -192,7 +191,7 @@
                                                 <label>ລະ​ຫັດ​ຊິງ​ໂຊກ​ທັງ​ໝົດ</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$customer->accounts->luckyCodes}}</p>
+                                                <p>{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}} - {{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</p>
                                             </div>
                                         </div>
                             </div>
