@@ -59,6 +59,7 @@ class CustomerController extends Controller
             'fname' =>$request->get('fname'),
             'lname' =>$request->get('lname'),
             'contact' => $request->get('contact'),
+            'document_id' => $request->get('document_id'),
             'documentNumber' => $request->get('documentNumber'),
             'address' => $request->get('address'),
        ]); 
