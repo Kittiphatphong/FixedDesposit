@@ -258,7 +258,8 @@ option{
                    
                    $('#example2 ul').playSpin({
                   endNum: [num0, num1,num2 ,num3 ,num4 ,num5, num6,num7],
-                  time: 569,
+                //   time: 569,
+                time: 1,
               
                   stopSeq: 'leftToRight',
                   onEnd: function() {

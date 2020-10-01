@@ -18,40 +18,55 @@ class RandomController extends Controller
         return view('random.function');
     }
     public function random(Request $request){
-        if($request->ajax()){
-        
-        $rand = rand(DB::table('Lucky_codes')->min('id'),DB::table('Lucky_codes')->max('id'));  
-        $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); 
-        $checkLucky = LuckyCode::all()->where('id','=',$rand)->intersect(LuckyCode::whereNotIn('id', $checkWin)->get())->count();
-           
-            while($checkLucky!=1){
-        $rand = rand(DB::table('Lucky_codes')->min('id'),DB::table('Lucky_codes')->max('id'));      
-        $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); 
-        $checkLucky = LuckyCode::all()->where('id','=',$rand)->intersect(LuckyCode::whereNotIn('id', $checkWin)->get())->count();
-            }
-           
+        if($request->ajax()){           
+            $checkCustomer = DB::table('accounts')
+            ->join('lucky_codes', 'accounts.id', '=', 'lucky_codes.account_id')
+            ->join('customers','customers.id','=','accounts.customer_id')
+            ->join('win_randoms','lucky_codes.id','=','win_randoms.luckyCode_id')
+            ->select('customers.id')
+            ->where('win_randoms.amount','=',1000000)
+            ->groupBy('customers.id')
+            ->havingRaw('count(customers.id) >= ?', [3])
+            ->pluck('customers.id')->toArray();
+            $getLuckyCode = DB::table('lucky_codes')
+            ->join('accounts', 'accounts.id', '=', 'lucky_codes.account_id')
+            ->join('customers','customers.id','=','accounts.customer_id')
+            ->select('lucky_codes.id')
+            ->whereIn('customers.id',$checkCustomer)
+            ->pluck('lucky_codes.id')->toArray();
+            $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); //! check lucky code
+                $allCancel = array_merge($getLuckyCode,$checkWin);
+                $rand = LuckyCode::all()
+                ->intersect(LuckyCode::whereNotIn('id', $allCancel)->get())
+                ->random()->id;
+        if($rand!=null){
+            $winRandom = new WinRandom();
+            $winRandom->luckyCode_id = $rand;
+            $winRandom->amount = $request->get('amount');
+            $winRandom->save();   
+            // $winRandom =  WinRandom::find();        
+            switch ($winRandom->luckyCodes->accounts->typeDisposits->type) {
+            case "A":
+                $code = 1;
+            break;
+            case "B":
+                $code = 2;
+            break;
+            case "C":
+                $code = 3;
+            break;
+      }
+        $number  = array_map('intval', str_split($winRandom->luckyCodes->idCode));
+        $output= [$number,$code];
+        $name=WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.' '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname;
+        $code = $winRandom->luckyCodes->accounts->typeDisposits->type .$winRandom->luckyCodes->idCode;
+        $list = '<p><span class="f">'.$code.'</span><span class="float-right">'.$name.'</span> </p>';
+        }else{
+            $output= [1,1,1,1,1,1,1,1];
+            $name="N/A";
+            $list = '<p><span class="f">-</span><span class="float-right">-</span> </p>';
+        }
 
-        $winRandom = new WinRandom();
-        $winRandom->luckyCode_id = $rand;
-        $winRandom->amount = $request->get('amount');
-        $winRandom->save();   
-        // $winRandom =  WinRandom::find(10);        
-        switch ($winRandom->luckyCodes->accounts->typeDisposits->type) {
-        case "A":
-            $code = 1;
-        break;
-        case "B":
-            $code = 2;
-        break;
-        case "C":
-            $code = 3;
-        break;
-  }
-    $number  = array_map('intval', str_split($winRandom->luckyCodes->idCode));
-    $output= [$number,$code];
-    $name=WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.' '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname;
-    $code = $winRandom->luckyCodes->accounts->typeDisposits->type .$winRandom->luckyCodes->idCode;
-    $list = '<p><span class="f">'.$code.'</span><span class="float-right">'.$name.'</span> </p>';
         $data = array('info_data'=>$output,'name'=>$name,'list'=>$list);
         echo json_encode($data);
         }

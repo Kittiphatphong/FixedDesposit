@@ -7,6 +7,7 @@ use App\Account;
 use DB;
 use App\LuckyCode;
 use PDF;
+use App\WinRandom;
 class LuckyCodeController extends Controller
 {
     public function __construct()
