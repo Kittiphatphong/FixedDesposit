@@ -18,7 +18,8 @@ class RandomController extends Controller
         return view('random.function');
     }
     public function random(Request $request){
-        if($request->ajax()){           
+        if($request->ajax()){     
+            if($request->get('amount')==1000000){      
             $checkCustomer = DB::table('accounts')
             ->join('lucky_codes', 'accounts.id', '=', 'lucky_codes.account_id')
             ->join('customers','customers.id','=','accounts.customer_id')
@@ -35,11 +36,15 @@ class RandomController extends Controller
             ->whereIn('customers.id',$checkCustomer)
             ->pluck('lucky_codes.id')->toArray();
             $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); //! check lucky code
-                $allCancel = array_merge($getLuckyCode,$checkWin);
-                $rand = LuckyCode::all()
-                ->intersect(LuckyCode::whereNotIn('id', $allCancel)->get())
-                ->random()->id;
-        if($rand!=null){
+            $allCancel = array_merge($getLuckyCode,$checkWin);
+            $rand = LuckyCode::all()
+            ->intersect(LuckyCode::whereNotIn('id', $allCancel)->get())
+            ->random()->id;
+        // if($rand->isEmpty()){
+        //     $output= [1,1,1,1,1,1,1,1];
+        //     $name="N/A";
+        //     $list = '<p><span class="f">-</span><span class="float-right">-</span> </p>';
+        // }else{
             $winRandom = new WinRandom();
             $winRandom->luckyCode_id = $rand;
             $winRandom->amount = $request->get('amount');
@@ -61,15 +66,44 @@ class RandomController extends Controller
         $name=WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.' '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname;
         $code = $winRandom->luckyCodes->accounts->typeDisposits->type .$winRandom->luckyCodes->idCode;
         $list = '<p><span class="f">'.$code.'</span><span class="float-right">'.$name.'</span> </p>';
-        }else{
-            $output= [1,1,1,1,1,1,1,1];
-            $name="N/A";
-            $list = '<p><span class="f">-</span><span class="float-right">-</span> </p>';
-        }
+        // }
 
         $data = array('info_data'=>$output,'name'=>$name,'list'=>$list);
         echo json_encode($data);
         }
+    }
+    //! else for check value
+    if($request->get('amount')!=1000000){ 
+        $checkWin = WinRandom::all()->pluck('luckyCode_id')->toArray(); //! check lucky code
+            $rand = LuckyCode::all()
+            ->intersect(LuckyCode::whereNotIn('id',  $checkWin)->get())
+            ->random()->id;
+   
+        $winRandom = new WinRandom();
+        $winRandom->luckyCode_id = $rand;
+        $winRandom->amount = $request->get('amount');
+        $winRandom->save();          
+        switch ($winRandom->luckyCodes->accounts->typeDisposits->type) {
+        case "A":
+            $code = 1;
+        break;
+        case "B":
+            $code = 2;
+        break;
+        case "C":
+            $code = 3;
+        break;
+  }
+    $number  = array_map('intval', str_split($winRandom->luckyCodes->idCode));
+    $output= [$number,$code];
+    $name=WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->fname.' '. WinRandom::find($winRandom->id)->luckyCodes->accounts->customers->lname;
+    $code = $winRandom->luckyCodes->accounts->typeDisposits->type .$winRandom->luckyCodes->idCode;
+    $list = '<p><span class="f">'.$code.'</span><span class="float-right">'.$name.'</span> </p>';
+    
+
+    $data = array('info_data'=>$output,'name'=>$name,'list'=>$list);
+    echo json_encode($data);
+    }
     }
     public function list(){
         $winingRandom = WinRandom::all()->pluck('luckyCode_id')->toArray();

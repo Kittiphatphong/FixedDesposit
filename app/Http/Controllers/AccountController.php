@@ -97,7 +97,7 @@ class AccountController extends Controller
             'typeDisposit_id'=>$request->get('typeDisposit_id'),
             'employee_id' => $request->get('employee_id')
         ]);
-        
+        if($request->get('check') != "on"){
         //! generate Id
         $idAccount = DB::table('accounts')->max('id');
         $account = Account::find($idAccount);
@@ -120,6 +120,7 @@ class AccountController extends Controller
 
         $account->generate = 1;
         $account->save();
+    }
         return redirect()->route('lucky.show');
     }
     public function destroy($id){

@@ -64,10 +64,18 @@
                       <span>ດອກ​ເບ້ຍ</span>
                     </div>
                                           <div class="col-md-8">
+                                          <div class="form-check disabled">
+                  <input class="form-check-input" type="checkbox" name="check" >
+                    <label class="form-check-label">
+                      ຮັບ​ດອກ​ເບ້ຍ​ແບບ​ພິ​ເສດ
+                   </label>
+                    </div>
                                               <input type="number" class="form-control" name="interest" placeholder="ຈຳ​ນວນ​ດອກ​ເບ້ຍ %/ ປີ" value="{{old('interest',$account->interest)}}">
+                                          
                                           </div>
                                       </div>
                                   </div>
+                   
 
                 <div class="col-12">
                                       <div class="form-group row">

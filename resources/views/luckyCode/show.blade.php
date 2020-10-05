@@ -230,11 +230,11 @@
 </div>
 <div class="col-12">
 <p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}</p>
+<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>
 </div>
 <div class="col-12">
 <p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</p>
+<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>
 </div>
 
       </div>
@@ -354,11 +354,11 @@
 </div>
 <div class="col-12">
 <p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}</p>
+<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>
 </div>
 <div class="col-12">
 <p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</p>
+<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>
 </div>
 
       </div>
@@ -479,11 +479,11 @@
 </div>
 <div class="col-12">
 <p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}</p>
+<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>
 </div>
 <div class="col-12">
 <p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</p>
+<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>
 </div>
 
       </div>
