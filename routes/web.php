@@ -14,7 +14,7 @@
 
 
 // Route url
-Route::get('/', 'DashboardController@dashboardAnalytics');
+Route::get('/', 'HomeController@index');
 // locale Route
 Route::get('lang/{locale}',[LanguageController::class,'swap']);
 Auth::routes(['register' => false]);

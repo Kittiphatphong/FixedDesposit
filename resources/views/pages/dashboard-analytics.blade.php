@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Dashboard Analytics')
+@section('title', 'NCM')
 
 @section('vendor-style')
 <!-- vendor css files -->
