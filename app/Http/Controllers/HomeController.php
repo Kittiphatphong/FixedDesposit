@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Customer;
+use App\Account;
+use App\LuckyCode;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')
+        ->with('customers',Customer::all())
+        ->with('accounts',Account::all())
+        ->with('luckyCodes',LuckyCode::all())
+        ;
     }
 }

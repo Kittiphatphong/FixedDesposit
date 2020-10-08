@@ -7,7 +7,7 @@ $configData = Helper::applClasses();
  
   <div class="navbar-header">
     <ul class="nav navbar-nav flex-row">
-      <li class="nav-item mr-auto"><a class="navbar-brand" href="dashboard-analytics">
+      <li class="nav-item mr-auto"><a class="navbar-brand" href="{{route('home')}}">
           <img class="round"
                     src="{{asset('images/logo/logoncf.png') }}" alt="avatar" height="60"
                     width="60" />

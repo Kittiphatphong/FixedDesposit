@@ -99,11 +99,11 @@ table, td, th {
     @for($i=1; $i<=12 ;$i++)
     <tr class="text-center">
       <th scope="row" >{{$i}}</th>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}</td>
       <td class="text-right">{{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(1))
-      * \Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))))}}</td>
+      * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}</td>
       <td></td>
     </tr>
     @endfor
@@ -133,11 +133,11 @@ table, td, th {
     @for($i=13; $i<=24 ;$i++)
     <tr class="text-center">
       <th scope="row" >{{$i}}</th>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}</td>
       <td class="text-right">{{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->addYears(1)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(2))
-      * \Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))))}}</td>
+      * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}</td>
       <td></td>
     </tr>
     @endfor
@@ -167,11 +167,11 @@ table, td, th {
     @for($i=25; $i<=36 ;$i++)
     <tr class="text-center">
       <th scope="row" >{{$i}}</th>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}</td>
       <td class="text-right">{{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->addYears(2)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(3))
-      * \Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))))}}</td>
+      * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}</td>
       <td></td>
     </tr>
     @endfor
@@ -202,11 +202,11 @@ table, td, th {
     @for($i=1; $i<=12 ;$i++)
     <tr class="text-center">
       <th scope="row" >{{$i}}</th>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}</td>
       <td class="text-right">{{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(1))
-      * \Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))))}}</td>
+      * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}</td>
       <td></td>
     </tr>
     @endfor
@@ -236,11 +236,11 @@ table, td, th {
     @for($i=13; $i<=24 ;$i++)
     <tr class="text-center">
       <th scope="row" >{{$i}}</th>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}</td>
       <td class="text-right">{{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->addYears(1)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(2))
-      * \Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))))}}</td>
+      * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}</td>
       <td></td>
     </tr>
     @endfor
@@ -271,11 +271,11 @@ table, td, th {
     @for($i=1; $i<=12 ;$i++)
     <tr class="text-center">
       <th scope="row" >{{$i}}</th>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i)->format('d.m.Y')}}</td>
-      <td>{{\Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+      <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}</td>
       <td class="text-right">{{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(1))
-      * \Carbon\Carbon::create($account->start)->addMonths($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonths($i))))}}</td>
+      * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}</td>
       <td></td>
     </tr>
     @endfor
