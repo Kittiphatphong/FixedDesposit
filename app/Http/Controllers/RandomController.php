@@ -7,6 +7,8 @@ use App\Customer;
 use App\Account;
 use Illuminate\Http\Request;
 use DB;
+use App\Exports\WinExport;
+use Maatwebsite\Excel\Facades\Excel;
 class RandomController extends Controller
 {
     public function __construct()
@@ -131,4 +133,9 @@ class RandomController extends Controller
         ->with('account',$account)
         ->with('percent',$percent);
     }
+    public function exportWin() 
+{
+    return Excel::download(new WinExport, 'WinRandom.xlsx');
+    
+}
 }

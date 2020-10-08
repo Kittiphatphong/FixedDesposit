@@ -17,10 +17,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title"><b>ລະ​ຫັດຜູ້​ໂຊກ​ດີ</b></h4>
-                                    <h4 class="float-right bg-primary p-1 text-white rounded"><b> ທັງ​ໝົດ {{$randoms->count()}} ລະ​ຫັດ​ ({{number_format($randoms->sum('amount'))}})</b></h4>
+                                    <h6 class="float-right bg-primary p-1 text-white rounded"><b> ທັງ​ໝົດ {{$randoms->count()}} ລະ​ຫັດ​ ({{number_format($randoms->sum('amount'))}})</b></h6>                                  
                                 </div>
                                 <div class="card-content">
-                                    <div class="card-body">         
+                                    <div class="card-body">  
+                                    <a href="{{route('random.exportWin')}}" class="float-left"><span class="fa fa-download" style="font-size:40px"></span></a> 
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>

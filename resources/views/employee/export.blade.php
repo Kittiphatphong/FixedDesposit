@@ -1,6 +1,4 @@
 
-
-                   
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
