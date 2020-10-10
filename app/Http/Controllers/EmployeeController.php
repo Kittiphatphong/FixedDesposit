@@ -30,7 +30,7 @@ class EmployeeController extends Controller
         ->join('employees', 'employees.id', '=', 'accounts.employee_id')
         ->WhereBetween('accounts.start',[$start,$end])
         ->select('accounts.employee_id','employees.fname','employees.lname','employees.nname','employees.company','employees.department','employees.position','employees.contact',
-         DB::raw('SUM(amount) as amount'),DB::raw('count(amount) as customer'))
+         DB::raw('SUM(amount) as amount'),DB::raw('count(amount) as customer'),DB::raw('SUM(oldAmount) as oldAmount'))
         ->groupBy('accounts.employee_id','employees.fname','employees.lname','employees.nname','employees.company','employees.department','employees.position','employees.contact')
         ->get();
         return view('employee.search')
@@ -110,6 +110,20 @@ class EmployeeController extends Controller
     $employee = Employee::find($id);
     $employee->delete();
     return back()->with('success','ທ່າ​ນໄດ້​ລຶບ​ພະ​ນັກ​ງານ​ສຳ​ເລັດ');
+    }
+
+    public function editOldAmount(Request $request){
+    $account = Account::find($request->get('id'));
+    $oldAmount=round(str_replace(',','',$request->get('oldAmount')));
+    if($oldAmount>0 && $oldAmount<999){
+        return back()->with('warning','jay');
+    }
+    if(round($oldAmount) > round($account->amount)){
+        return back()->with('warning','ຈຳ​ນວນ​ເງີນ​ຝາກ​ເກົ່າ​ຫຼາຍ​ກົ່ວ​ເງີນ​ຝາກ​ປະ​ຈຸ​ບັນ');
+    }
+    $account->oldAmount = $oldAmount;
+    $account->save();
+    return back()->with('success','ທ່າ​ນ​ໄດ້​ໃສ່​ຈຳ​ນວນ​ເງີນ​ຝາກ​ເກົ່າ​ສຳ​ເລັດ');
     }
 
     public function export() 

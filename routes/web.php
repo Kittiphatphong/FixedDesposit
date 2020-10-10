@@ -74,7 +74,11 @@ Route::group(['middleware' => ['permission:EditEmployee']], function () {
 Route::get('employee-edit/{id}','EmployeeController@edit')->name('employee.edit');
 Route::post('employee-update/{id}','EmployeeController@update')->name('employee.update');
 });
-Route::post('employee-destroy/{id}','EmployeeController@destroy')->name('employee.destroy')->middleware('permission:DeleteEmployee');
+Route::group(['middleware' => ['permission:DeleteEmployee']], function () {
+Route::post('employee-destroy/{id}','EmployeeController@destroy')->name('employee.destroy');
+Route::get('oldAmount','EmployeeController@editOldAmount')->name('oldAmount');
+;
+});
 
 // !Lucky code
 Route::group(['middleware' => ['permission:ShowAccount']], function () {

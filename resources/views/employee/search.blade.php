@@ -50,9 +50,12 @@
                                             <table class="table add-rows table-striped table-bordered">
                                             
                                                 <thead>
-                                                <tr><th colspan="8" class="text-center">​ວັນ​ທີ {{\Carbon\Carbon::parse($start)->format('d.m.Y')}} ເຖີງ​ວັນ​ທີ {{\Carbon\Carbon::parse($end)->format('d.m.Y')}}</th></tr>
+                                                <tr><th colspan="11" class="text-center">​ວັນ​ທີ {{\Carbon\Carbon::parse($start)->format('d.m.Y')}} ເຖີງ​ວັນ​ທີ {{\Carbon\Carbon::parse($end)->format('d.m.Y')}}</th></tr>
                                                     <tr>
                                                         <th>ຈຳ​ນວນ​ເງີນ</th>
+                                                        <th>ຈຳ​ນວນ​ເງີນເກົ່າ</th>
+                                                        <th>ຍອດ​ເງີນ​ທັງ​ໝົດ</th>
+                                                        <th>ເງີນ​ເປີ​ເຊັນ</th>
                                                         <th>ຈ/ນ ລູກ​ຄ້າ</th>
                                                         <th>​ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
                                                         <th>ບໍ​ລິ​ສັດ</th>
@@ -66,7 +69,10 @@
                                                @foreach($employees as $employee)
                                                 <tr>
                                                         <th>{{number_format($employee->amount)}}</th>
-                                                        <th>{{$employee->customer}}</th> 
+                                                        <th>{{number_format($employee->oldAmount)}}</th>
+                                                        <th>{{number_format($employee->amount - $employee->oldAmount)}}</th>
+                                                        <th>{{number_format(($employee->amount-$employee->oldAmount)*0.5/100)}}</th>
+                                                        <th>{{$employee->customer}}</th>                                   
                                                         <th>​{{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</th>
                                                         <th>{{$employee->company}}</th>
                                                         <th>{{$employee->department}}</th>

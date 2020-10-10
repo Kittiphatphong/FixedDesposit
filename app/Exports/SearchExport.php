@@ -21,12 +21,14 @@ class SearchExport implements FromView
         ->join('employees', 'employees.id', '=', 'accounts.employee_id')
         ->WhereBetween('accounts.start',[$this->start,$this->end])
         ->select('accounts.employee_id','employees.fname','employees.lname','employees.nname','employees.company','employees.department','employees.position','employees.contact',
-         DB::raw('SUM(amount) as amount'),DB::raw('count(amount) as customer'))
+         DB::raw('SUM(amount) as amount'),DB::raw('count(amount) as customer'),DB::raw('SUM(oldAmount) as oldAmount'))
         ->groupBy('accounts.employee_id','employees.fname','employees.lname','employees.nname','employees.company','employees.department','employees.position','employees.contact')
         ->get();
         return view('employee.searchExport')
         ->with('employees',$employees)
         ->with('start',$this->start)
         ->with('end', $this->end);
+
+        
     }
 }
