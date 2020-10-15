@@ -10,6 +10,6 @@ class WinExport implements FromView
 {
     public function view(): View
     {
-        return view('random.exportWin')->with('randoms',WinRandom::all());
+        return view('random.exportWin')->with('randoms',WinRandom::all()->where('status','=',1));
     }
 }

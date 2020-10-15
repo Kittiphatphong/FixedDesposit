@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Exports\WinExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Auth;
 class RandomController extends Controller
 {
     public function __construct()
@@ -114,11 +115,14 @@ class RandomController extends Controller
         
     }
     public function win(){
-       return view('random.win')->with('randoms',WinRandom::all());
+       return view('random.win')->with('randoms',WinRandom::all()->where('status','=',1));
     }
     public function destroy($id){
         $winRandom = WinRandom::find($id);
-        $winRandom->delete();
+        // $winRandom->delete();
+        $winRandom->status = 0;
+        $winRandom->user_id = Auth::user()->id;
+        $winRandom->save();
         return back()->with('success','ທ່າ​ນ​ໄດ້​ລຶບ​ລະ​ຫັດ​ຜູ້​ໂຊກ​ດີ​ສຳ​ເລັດ​ແລ້ວ');
     }
     public function view($id){
