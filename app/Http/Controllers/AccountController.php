@@ -18,7 +18,7 @@ class AccountController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index(){
         return view('deposit.account')->with('accounts',Account::all());
     }
@@ -45,7 +45,7 @@ class AccountController extends Controller
             'interest' => 'required|numeric',
             'amount' => 'required',
             'amountWord' => 'required',
-              
+
         ]);
         $account = Account::find($id);
         $amount=round(str_replace(',','',$request->get('amount')));
@@ -62,7 +62,7 @@ class AccountController extends Controller
             'employee_id' => $request->get('employee_id')
         ]);
         return redirect()->route('account.index')->with('success','ທ່າ​ນ​ໄດ້​ແກ້​ໄຂ​ຂໍ້​ມູນ​ບັນ​ຊີ​ລູກ​ຄ້າ​ສຳ​ເລັດ');
-            
+
     }
     public function store(Request $request,$id){
         $this->validate($request,[
@@ -70,13 +70,13 @@ class AccountController extends Controller
             'start' => 'required|date',
             'interest' => 'required|numeric',
             'amount' => 'required',
-            'amountWord' => 'required'  
+            'amountWord' => 'required'
         ]);
         // //! Create Account
         $start = Carbon::create($request->get('start'));
         $type = TypeDisposit::find($request->get('typeDisposit_id'));
         if($type->yearOrMonth =="year"){
-        $end =  $start->addYear($type->period)->toDateString();   
+        $end =  $start->addYear($type->period)->toDateString();
         }else{
         $end =  $start->addMonth($type->period)->toDateString();
         }
@@ -97,30 +97,30 @@ class AccountController extends Controller
             'typeDisposit_id'=>$request->get('typeDisposit_id'),
             'employee_id' => $request->get('employee_id')
         ]);
-        if($request->get('check') != "on"){
-        //! generate Id
-        $idAccount = DB::table('accounts')->max('id');
-        $account = Account::find($idAccount);
-        //! validation account is generated 
-        if($account->generate==1){
-            return back()->with('warning','This account is generated');
-        }
-        
-        $luckyCodeAmount = ROUND($account->amount / $account->typeDisposits->money - 0.5)* $account->typeDisposits->ticket;
-        //! LOOP LUCKY CODE 
-        for($i=0;$i<$luckyCodeAmount;$i++){
-           LuckyCode::create([
-            'account_id' => $account->id
-           ]);
-           $idLuckyCode = DB::table('lucky_codes')->max('id');
-           $LuckyCode = LuckyCode::find($idLuckyCode);
-           $LuckyCode->idCode = 1000000 + $idLuckyCode;
-           $LuckyCode->save();
-        }
-
-        $account->generate = 1;
-        $account->save();
-    }
+//        if($request->get('check') != "on"){
+//        //! generate Id
+//        $idAccount = DB::table('accounts')->max('id');
+//        $account = Account::find($idAccount);
+//        //! validation account is generated
+//        if($account->generate==1){
+//            return back()->with('warning','This account is generated');
+//        }
+//
+//        $luckyCodeAmount = ROUND($account->amount / $account->typeDisposits->money - 0.5)* $account->typeDisposits->ticket;
+//        //! LOOP LUCKY CODE
+//        for($i=0;$i<$luckyCodeAmount;$i++){
+//           LuckyCode::create([
+//            'account_id' => $account->id
+//           ]);
+//           $idLuckyCode = DB::table('lucky_codes')->max('id');
+//           $LuckyCode = LuckyCode::find($idLuckyCode);
+//           $LuckyCode->idCode = 1000000 + $idLuckyCode;
+//           $LuckyCode->save();
+//        }
+//
+//        $account->generate = 1;
+//        $account->save();
+//    }
         return redirect()->route('lucky.show');
     }
     public function destroy($id){
@@ -136,7 +136,7 @@ class AccountController extends Controller
     }
     public function show($id){
         $account = Account::find($id);
-     
+
         return view('deposit.showAccount')->with('account',$account);
     }
 }

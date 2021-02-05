@@ -10699,39 +10699,39 @@ a.text-dark:hover, a.text-dark:focus {
 }
 .colJ-sm-8 {
   -webkit-box-flex : 0;
-  -webkit-flex : 0 0 66.66667%;
-      -ms-flex : 0 0 66.66667%;
-          flex : 0 0 66.66667%;
-  max-width : 62.15667%;
+  -webkit-flex : 0 0 95.45667%;
+  -ms-flex : 0 0 95.45667%;
+  flex : 0 0 95.45667%;
+  max-width : 95.45667%;
 }
 
 
 
 
 
-.checkbox-xl .custom-control-label::before, 
+.checkbox-xl .custom-control-label::before,
 .checkbox-xl .custom-control-label::after {
   top: 1.2rem;
   width: 3.85rem;
   height: 3.85rem;
-  
-} 
+
+}
 
 .checkbox-xl .custom-control-label {
   padding-top: 23px;
   padding-left: 40px;
-  
+
 
 }
 .custom-checkbox .custom-control-input:checked + .custom-control-label:after {
 
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  
+
   background-color: #f3c90c!important;
   border:1px solid #f3c90c;
   opacity:1;
-  
+
 }
 
 

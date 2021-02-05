@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/components.css">
     <!-- <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/dark-layout.css"> -->
     <!--  finished -->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">  
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -45,22 +45,36 @@
     <style>body{font-family:"Phetsarath OT";
                 zoom:0.67;
 }
+      .colJ-3,.colJ-4,.colJ2-4, .colJ-2, .colJ2-2, .colJ-12, .colJ-sm-8 {
+        position : relative;
+        width : 100%;
+        padding-right : 10px;
+        padding-left : 14px;
+      }
+      .colJ-sm-8 {
+        -webkit-box-flex : 0;
+        -webkit-flex : 0 0 95.45667%;
+        -ms-flex : 0 0 95.45667%;
+        flex : 0 0 95.45667%;
+        max-width : 95.45667%;
+      }
+
     .containerJ{
- 
+
         padding:0;
         margin:auto;
         width:20%;
-        
-        
+
+
     }
     .bgS{
-        
+
         background-image:url("../../../app-assets/images/pages/bgStaff.png");
         height: 2510px;
         width: 1785px;
     }
     .bgC{
-        
+
         background-image:url("../../../app-assets/images/pages/bgCustomer.png");
         height: 2510px;
         width: 1785px;
@@ -96,20 +110,20 @@
         border:7px solid white;
     }
     .marginT{
-        margin-top:500px;  
+        margin-top:500px;
     }
     .marginJ{
-        margin-top:585px;  
+        margin-top:585px;
         left:210px;
     }
-    
-    
-    
-    @media print { 
-               .no-print { 
-                  visibility: hidden; 
-               } 
-            } 
+
+
+
+    @media print {
+               .no-print {
+                  visibility: hidden;
+               }
+            }
     </style>
 </head>
 <!-- END: Head-->
@@ -176,12 +190,12 @@
       <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>
 
 <ul class="list-unstyled m-0">
-                                            <li class="d-inline-block col-6">                              
+                                            <li class="d-inline-block col-6">
                                             <div class="custom-control custom-checkbox checkbox-xl">
                                             <input type="checkbox" class="custom-control-input " @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") checked @endIf>
                                             <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</label>
                                             </div>
-                                               
+
                                             </li>
                                             <li class="d-inline-block mr-0">
                                             <div class="custom-control custom-checkbox checkbox-xl">
@@ -214,35 +228,35 @@
                                 </ul>
       </div>
     </div>
-  </div> 
-  <div class="col-sm-4 ml-0">
-    <div class="heightJ pl-2 ">
-      <div class="card-body pl-0 pr-0">
-       
-      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>
-<p class="btn btn-white  col-6 text-left font">09.09.2020</p>
+  </div>
+{{--  <div class="col-sm-4 ml-0">--}}
+{{--    <div class="heightJ pl-2 ">--}}
+{{--      <div class="card-body pl-0 pr-0">--}}
+
+{{--      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">09.09.2020</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">30.04.2021</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>--}}
+{{--</div>--}}
+
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </div>--}}
 </div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>
-<p class="btn btn-white  col-6 text-left font">30.04.2021</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>
 </div>
 
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-       
 
 <!-- Page 1.1 -->
 
@@ -300,12 +314,12 @@
       <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>
 
 <ul class="list-unstyled m-0">
-                                            <li class="d-inline-block col-6">                              
+                                            <li class="d-inline-block col-6">
                                             <div class="custom-control custom-checkbox checkbox-xl">
                                             <input type="checkbox" class="custom-control-input " @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") checked @endIf>
                                             <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</label>
                                             </div>
-                                               
+
                                             </li>
                                             <li class="d-inline-block mr-0">
                                             <div class="custom-control custom-checkbox checkbox-xl">
@@ -338,170 +352,170 @@
                                 </ul>
       </div>
     </div>
-  </div> 
-  <div class="col-sm-4 ml-0">
-    <div class="heightJ pl-2 ">
-      <div class="card-body pl-0 pr-0">
-       
-      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>
-<p class="btn btn-white  col-6 text-left font">09.09.2020</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>
-<p class="btn btn-white  col-6 text-left font">30.04.2021</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>
-</div>
-
-      </div>
-    </div>
   </div>
+{{--  <div class="col-sm-4 ml-0">--}}
+{{--    <div class="heightJ pl-2 ">--}}
+{{--      <div class="card-body pl-0 pr-0">--}}
+
+{{--      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">09.09.2020</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">30.04.2021</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>--}}
+{{--</div>--}}
+
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </div>--}}
 </div>
 </div>
 
 <!-- page2 -->
 
 
-<div class="containerJ bgS round ">
-<div class="d-flex justify-content-between">
-  <p></p>
-</div>
+{{--<div class="containerJ bgS round ">--}}
+{{--<div class="d-flex justify-content-between">--}}
+{{--  <p></p>--}}
+{{--</div>--}}
 
-<div class="ml-5 col-12 marginT">
-<p class="btn btn-j btn-lg  colJ2-2 text-right font">ຊື່​ບັນ​ຊີ:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->fname}} {{$account->customers->lname}}</p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ເລກ​ບັນ​ຊີ:</p>
-<p class="btn btn-white btn btn-lg col-9 text-left font">{{$account->idAccount}}</p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ທີ່ຢູ່:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font ml-0 mr-0 pl-0 pr-0">{{$account->customers->documents->type}}:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->documentNumber}}</p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>
-<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->contact}}</p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>
-<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year") ປີ @endif @if($account->typeDisposits->yearOrMonth == "month") ເດືອນ @endif</p>
-<p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>
-<p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</p>
+{{--<div class="ml-5 col-12 marginT">--}}
+{{--<p class="btn btn-j btn-lg  colJ2-2 text-right font">ຊື່​ບັນ​ຊີ:</p>--}}
+{{--<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->fname}} {{$account->customers->lname}}</p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg colJ2-2 text-right font">ເລກ​ບັນ​ຊີ:</p>--}}
+{{--<p class="btn btn-white btn btn-lg col-9 text-left font">{{$account->idAccount}}</p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg colJ2-2 text-right font">ທີ່ຢູ່:</p>--}}
+{{--<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->address}}</p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg colJ2-2 text-right font ml-0 mr-0 pl-0 pr-0">{{$account->customers->documents->type}}:</p>--}}
+{{--<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->documentNumber}}</p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg colJ2-2 text-right font">ເບີ​ໂທ​ລະ​ສັບ:</p>--}}
+{{--<p class="btn btn-white btn-lg col-9 text-left font">{{$account->customers->contact}}</p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg colJ2-2 text-right font">ໄລ​ຍະ​ເງິນຝາກ​</p>--}}
+{{--<p class="btn btn-white btn-lg col-2 text-left font">{{$account->typeDisposits->period}}  @if($account->typeDisposits->yearOrMonth == "year") ປີ @endif @if($account->typeDisposits->yearOrMonth == "month") ເດືອນ @endif</p>--}}
+{{--<p class="btn btn-j btn-lg colJ-2 text-right font">ເລີ່ມວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</p>--}}
 
-<p class="btn btn-j btn-lg colJ-2 text-right font pl-0">ເຖິງວັນ​ທີ:</p>
-<p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->end)->format('d.m.Y')}}</p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg colJ2-2 text-right font">ອັດ​ຕາ​ດອກ​ເບ້ຍ:</p>
-<p class="btn btn-white btn-lg col-4 text-left font">{{$account->interest}} % ​<span class="float-right"><b>ຕໍ່​ປີ</b></span> </p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24 ">ຈຳ​ນວນ​ເງິນ:</p>
-<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{number_format($account->amount)}} </b>​<span class="float-right"><b>ກີບ</b></span></p>
-</div>
-<div class="ml-5 col-12">
-<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24">ເປັນ​ໂຕ​ໜັງ​ສື:</p>
-<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{$account->amountWord}}</b> </p>
-</div>
-<br><br>
+{{--<p class="btn btn-j btn-lg colJ-2 text-right font pl-0">ເຖິງວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white btn-lg col-2 text-left font">{{ \Carbon\Carbon::parse($account->end)->format('d.m.Y')}}</p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg colJ2-2 text-right font">ອັດ​ຕາ​ດອກ​ເບ້ຍ:</p>--}}
+{{--<p class="btn btn-white btn-lg col-4 text-left font">{{$account->interest}} % ​<span class="float-right"><b>ຕໍ່​ປີ</b></span> </p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24 ">ຈຳ​ນວນ​ເງິນ:</p>--}}
+{{--<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{number_format($account->amount)}} </b>​<span class="float-right"><b>ກີບ</b></span></p>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12">--}}
+{{--<p class="btn btn-j btn-lg  colJ2-2 text-right fontHead24">ເປັນ​ໂຕ​ໜັງ​ສື:</p>--}}
+{{--<p class="btn btn-white btn-lg col-6 text-left fontHead24b"><b>{{$account->amountWord}}</b> </p>--}}
+{{--</div>--}}
+{{--<br><br>--}}
 
-<div class="row ml-5">
-  <div class="colJ-sm-8">
-    <div class="heightJ">
-      <div class="card-body">
-      <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>
+{{--<div class="row ml-5">--}}
+{{--  <div class="colJ-sm-8">--}}
+{{--    <div class="heightJ">--}}
+{{--      <div class="card-body">--}}
+{{--      <p class="fontHead24 text-center pt-2"><b>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</b></p> <br>--}}
 
-<ul class="list-unstyled m-0">
-                                            <li class="d-inline-block col-6">                              
-                                            <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input " @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") checked @endIf>
-                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</label>
-                                            </div>
-                                               
-                                            </li>
-                                            <li class="d-inline-block mr-0">
-                                            <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ") checked @endIf>
-                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</label>
-                                            </li>
-                                        </ul><br>
-                                <ul class="list-unstyled mb-0">
-                                            <li class="d-inline-block col-6">
-                                            <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ") checked @endIf>
-                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</label>
-                                            </li>
-                                            <li class="d-inline-block mr-0">
-                                            <div class="custom-control custom-checkbox checkbox-xl" >
-                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") checked @endIf>
-                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</label>
-                                </ul><br>
-                                <ul class="list-unstyled mb-0">
-                                            <li class="d-inline-block col-6">
-                                            <div class="custom-control custom-checkbox checkbox-xl" >
-                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ") checked @endIf>
-                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</label>
-                                            </li>
-                                            <li class="d-inline-block mr-0 ">
-                                            <div class="custom-control custom-checkbox checkbox-xl"X >
-                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ") checked @endIf>
-                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ12ເດືອນ</label>
-                                            </li>
-                                </ul>
-      </div>
-    </div>
-  </div> 
-  <div class="col-sm-4 ml-0">
-    <div class="heightJ pl-2 ">
-      <div class="card-body pl-0 pr-0">
-       
-      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>
-<p class="btn btn-white  col-6 text-left font">09.09.2020</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>
-<p class="btn btn-white  col-6 text-left font">30.04.2021</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>
-</div>
-<div class="col-12">
-<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>
-<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>
-</div>
+{{--<ul class="list-unstyled m-0">--}}
+{{--                                            <li class="d-inline-block col-6">--}}
+{{--                                            <div class="custom-control custom-checkbox checkbox-xl">--}}
+{{--                                            <input type="checkbox" class="custom-control-input " @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") checked @endIf>--}}
+{{--                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</label>--}}
+{{--                                            </div>--}}
 
-      </div>
-    </div>
-  </div>
-</div>
-<div class="ml-5 col-12 marginJ">
+{{--                                            </li>--}}
+{{--                                            <li class="d-inline-block mr-0">--}}
+{{--                                            <div class="custom-control custom-checkbox checkbox-xl">--}}
+{{--                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ") checked @endIf>--}}
+{{--                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</label>--}}
+{{--                                            </li>--}}
+{{--                                        </ul><br>--}}
+{{--                                <ul class="list-unstyled mb-0">--}}
+{{--                                            <li class="d-inline-block col-6">--}}
+{{--                                            <div class="custom-control custom-checkbox checkbox-xl">--}}
+{{--                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ") checked @endIf>--}}
+{{--                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</label>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="d-inline-block mr-0">--}}
+{{--                                            <div class="custom-control custom-checkbox checkbox-xl" >--}}
+{{--                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") checked @endIf>--}}
+{{--                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</label>--}}
+{{--                                </ul><br>--}}
+{{--                                <ul class="list-unstyled mb-0">--}}
+{{--                                            <li class="d-inline-block col-6">--}}
+{{--                                            <div class="custom-control custom-checkbox checkbox-xl" >--}}
+{{--                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ") checked @endIf>--}}
+{{--                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</label>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="d-inline-block mr-0 ">--}}
+{{--                                            <div class="custom-control custom-checkbox checkbox-xl"X >--}}
+{{--                                            <input type="checkbox" class="custom-control-input" @if($account->receiveInterest =="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ") checked @endIf>--}}
+{{--                                            <label class="custom-control-label text-white font" >ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ12ເດືອນ</label>--}}
+{{--                                            </li>--}}
+{{--                                </ul>--}}
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </div>--}}
+{{--  <div class="col-sm-4 ml-0">--}}
+{{--    <div class="heightJ pl-2 ">--}}
+{{--      <div class="card-body pl-0 pr-0">--}}
+{{--       --}}
+{{--      <p class="fontHead24  pt-2"><b>ເລກ​ໝາຍ​ເງິນຝາກລຸ້ນໂຊກ</b></p><br>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font">ວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">09.09.2020</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font">ເຖິງວັນ​ທີ:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">30.04.2021</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font pr-0">ເລກໝາຍ​:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}}@endif</p>--}}
+{{--</div>--}}
+{{--<div class="col-12">--}}
+{{--<p class="btn btn-j  colJ2-4 text-right font pr-0">ເຖິງ​ເລກໝາຍ​:</p>--}}
+{{--<p class="btn btn-white  col-6 text-left font">@if($account->luckyCodes->count()<=0) N/A @else{{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}@endIf</p>--}}
+{{--</div>--}}
 
-<p class="col-9 text-left font ">@if($account->employees->id == 1) @else<b>{{$account->employees->fname}} {{$account->employees->lname}} @endif</b></p>
-</div>
-</div>
-          </div>
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </div>--}}
+{{--</div>--}}
+{{--<div class="ml-5 col-12 marginJ">--}}
+
+{{--<p class="col-9 text-left font ">@if($account->employees->id == 1) @else<b>{{$account->employees->fname}} {{$account->employees->lname}} @endif</b></p>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--          </div>--}}
 
 
 
     <!-- BEGIN: Vendor JS-->
     <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
-    
+
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->

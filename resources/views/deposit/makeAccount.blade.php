@@ -4,7 +4,7 @@
 <section id="add-row" >
                     <div class="row ">
                         <div class="col-12">
-                        
+
                             <div class="card">
               <div class="card-header">
                   <h4 class="card-title">​​<b>{{isset($check)?'ແກ້​ໄຂ​ຂໍ້​ມູນ​ບັນ​ຊີ​ລູກ​ຄ້າ':'ເປີດ​ບັນ​ຊີ​ໃໝ່'}}</b></h4>
@@ -64,18 +64,18 @@
                       <span>ດອກ​ເບ້ຍ</span>
                     </div>
                                           <div class="col-md-8">
-                                          <div class="form-check disabled">
-                  <input class="form-check-input" type="checkbox" name="check" >
-                    <label class="form-check-label">
-                      ຮັບ​ດອກ​ເບ້ຍ​ແບບ​ພິ​ເສດ
-                   </label>
-                    </div>
+{{--                                          <div class="form-check disabled">--}}
+{{--                  <input class="form-check-input" type="checkbox" name="check" >--}}
+{{--                    <label class="form-check-label">--}}
+{{--                      ຮັບ​ດອກ​ເບ້ຍ​ແບບ​ພິ​ເສດ--}}
+{{--                   </label>--}}
+{{--                    </div>--}}
                                               <input type="number" class="form-control" name="interest" placeholder="ຈຳ​ນວນ​ດອກ​ເບ້ຍ %/ ປີ" value="{{old('interest',$account->interest)}}">
-                                          
+
                                           </div>
                                       </div>
                                   </div>
-                   
+
 
                 <div class="col-12">
                                       <div class="form-group row">
@@ -84,7 +84,7 @@
                     </div>
                                           <div class="col-md-8">
                                               <input type="text" class="form-control" name="amount" placeholder="ຈຳ​ນວນ​ເງີນ​ຝາກເປັນ​ໂຕ​ເລກ" id="firstNumber" onkeyup="format(this)" value="{{old('amount',$account->amount)}}">
-                                         
+
                                           </div>
                                       </div>
                                   </div>
@@ -104,13 +104,13 @@
                       <span>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</span>
                     </div>
                                           <div class="col-md-8">
-                                          <select class="form-control" name="receiveInterest">                          
+                                          <select class="form-control" name="receiveInterest">
 		                                  <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 3 ເດືອນ</option>
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</option> 
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 6 ເດືອນ</option>
                                           <option value="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​ລ່ວງ​ໜ້າ​ທຸກ 12 ເດືອນ</option>
                                           <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ທຸກເດືອນ</option>
                                           <option value="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ທຸກປີ</option>
-                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</option>                                                  
+                                          <option value="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ" @if(old('receiveInterest',$account->receiveInterest)=="ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ") selected @endif>ຮັບ​ດອກ​ເບ້ຍ​​ເມື່ອ​ຄົບ​ກຳ​ນົດ</option>
 		                                  </select>
                                           </div>
                                       </div>
@@ -121,8 +121,8 @@
                       <span>ພະ​ນັກ​ງານ​ແນະ​ນຳ</span>
                     </div>
                                           <div class="col-md-8">
-                                          <select class="select2 form-control" name="employee_id">  
-                                          @foreach($employees as $employee)                        
+                                          <select class="select2 form-control" name="employee_id">
+                                          @foreach($employees as $employee)
 		                                  <option value="{{$employee->id}}" @if(old('employee_id',$account->employee_id)==$employee->id) selected @endif>{{$employee->company}} - {{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</option>
                                           @endForeach
                                           </select>
@@ -160,11 +160,11 @@
     <script>
 
     function format(input) {
-  var nStr = input.value + '';  
+  var nStr = input.value + '';
   nStr = nStr.replace(/\,/g, "");
   x = nStr.split('.');
   x1 = x[0];
-  x2 = x.length > 1 ? '.' + x[1] : '';  
+  x2 = x.length > 1 ? '.' + x[1] : '';
   var rgx = /(\d+)(\d{3})/;
   while (rgx.test(x1)) {
     x1 = x1.replace(rgx, '$1' + ',' + '$2');
