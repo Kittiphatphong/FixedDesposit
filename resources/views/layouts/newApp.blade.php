@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/components.css">
     <!-- <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/dark-layout.css"> -->
     <!--  finished -->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">  
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -42,7 +42,16 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
     <!-- END: Custom CSS-->
-    <style>body{font-family:"Phetsarath OT";}</style>
+    <style>
+      @font-face {
+        font-family: 'Lao_Classic3';
+        src: url("/assets/Lao_Classic3.ttf");
+      }
+      body{
+        font-family: Lao_Classic3;
+        font-size: 2rem;
+      }
+    </style>
 </head>
 <!-- END: Head-->
 
@@ -244,8 +253,8 @@
             @if(Session()->has('warning'))
                         <div class="alert alert-danger">
                             {{Session()->get('warning')}}
-                        </div>    
-            @endif 
+                        </div>
+            @endif
             <div class="content-body">
                 <!-- users edit start -->
                 @yield('content')
@@ -272,7 +281,7 @@
 
     <!-- BEGIN: Vendor JS-->
     <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
-    
+
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->

@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -22,23 +29,23 @@
                                     <h4 class="float-right bg-primary p-1 text-white rounded"><b> ທັງ​ໝົດ {{$count}} ລະ​ຫັດ​ </b></h4>
                                 </div>
                                 <div class="card-content">
-                                    <div class="card-body">         
+                                    <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>ມື້</th>
-                                                        <th>ລະ​ຫັດ​ຊຽງ​ໂຊກ</th>   
-                                                        <th>ເລກ​ບັນ​ຊີ</th> 
-                                                        <th>ຊື່​ບັນ​ຊີ</th> 
-                                                        <th>ເບີ​ໂທ</th>                                                                                                 
+                                                        <th>ລະ​ຫັດ​ຊຽງ​ໂຊກ</th>
+                                                        <th>ເລກ​ບັນ​ຊີ</th>
+                                                        <th>ຊື່​ບັນ​ຊີ</th>
+                                                        <th>ເບີ​ໂທ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($luckyCodes->sortBy('idCode') as $luckyCode)
                                                 <tr>
                                                         <th>{{\Carbon\Carbon::parse($luckyCode->accounts->start)->format('d.m.Y')}}</th>
-                                                        <th>{{$luckyCode->accounts->typeDisposits->type}}{{$luckyCode->idCode}}</th>   
+                                                        <th>{{$luckyCode->accounts->typeDisposits->type}}{{$luckyCode->idCode}}</th>
                                                         <th>{{$luckyCode->accounts->idAccount}}</th>
                                                         <th>{{$luckyCode->accounts->customers->fname}} {{$luckyCode->accounts->customers->lname}}</th>
                                                         <th>{{$luckyCode->accounts->customers->contact}}</th>

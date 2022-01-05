@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -39,7 +46,7 @@
                                                 <tr>
                                                         <th>{{$type->period}} @if($type->yearOrMonth == "year")
                                                         ປີ
-                                                        @endif 
+                                                        @endif
                                                         @if($type->yearOrMonth == "month")
                                                         ເດືອນ
                                                         @endif</th>
@@ -53,7 +60,7 @@
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endIf
-                                                        </th>                                                   
+                                                        </th>
                                                      </tr>
                                                 @endForeach
                                                 </tbody>

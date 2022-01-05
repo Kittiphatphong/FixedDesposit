@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -25,21 +32,21 @@
                                     <form action="{{route('employee.search')}}" method="get" >
                                         <div class="row">
                                         <div class="col d-flex">
-                                        <b>ແຕ່​</b> 
+                                        <b>ແຕ່​</b>
                                         <input type="date" id="normal" class="form-control" name="start" required/ value="{{isset($start)?$start:\App\Account::all()->min('start')}}">
-                                        </div> 
+                                        </div>
                                         <div class="col d-flex">
-                                        <b>ຫາ:</b> 
+                                        <b>ຫາ:</b>
                                         <input type="date" id="scaled" class="form-control" name="end" required/ value="{{isset($end)?$end:\Carbon\Carbon::now()->format('Y-m-d')}}">
                                         </div>
                                         <div class="col">
                                         <input type="submit" value="ຄົ້ນ​ຫາ" class="btn btn btn-primary">
                                         </div>
-                                             
+
                                         </div>
                                         </form>
                                         <br>
-                                        <a href="{{route('employee.export')}}" class="float-left"><span class="fa fa-download" style="font-size:40px"></span></a> 
+                                        <a href="{{route('employee.export')}}" class="float-left"><span class="fa fa-download" style="font-size:40px"></span></a>
                                         <br>
                                         <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
@@ -54,8 +61,8 @@
                                                         <th>ບໍ​ລິ​ສັດ</th>
                                                         <th>ພະ​ແໜກ</th>
                                                         <th>ຕຳ​ແໜ່ງ</th>
-                                                        <th>ເບີ​ໂທ​ລະ​ສັບ</th>    
-                                                        <th></th>                    
+                                                        <th>ເບີ​ໂທ​ລະ​ສັບ</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

@@ -6,15 +6,23 @@
 <!-- vendor css files -->
 @endsection
 @section('page-style')
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
 <div class="row justify-content-center pt-5">
         <div class="col-md-12">
             <div class="card">
-                
+
                 <div class="card-body">
                 <h2><b>ແກ້​ໄຂ​ຂໍ້​ມູນ​ຜູ້​ໃຊ້​ລະ​ບົບ</b></h2>
                 <form method="POST" action="{{route('user.update',$users->id)}}">
@@ -26,7 +34,7 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{$users->name}}" required autocomplete="name" autofocus>
 
-                    
+
                             </div>
                         </div>
 
@@ -42,9 +50,9 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">ລະ​ຫັດ​ຜ່າ​ນ</label>
 
                             <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password"> 
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
                             </div>
-                    
+
                         </div>
 
                         <div class="form-group row">
@@ -66,7 +74,7 @@
                             </div>
                         </div>
                     </form>
-                    
+
             </div>
         </div>
     </div>

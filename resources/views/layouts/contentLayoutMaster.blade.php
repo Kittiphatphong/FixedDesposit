@@ -7,6 +7,16 @@
     data-textdirection="{{ env('MIX_CONTENT_DIRECTION') === 'rtl' ? 'rtl' : 'ltr' }}">
 
 <head>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -15,7 +25,7 @@
     <title>@yield('title')</title>
     <link rel="shortcut icon" type="image/x-icon" href="images/logo/favicon.ico">
 
-    
+
 
     <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
@@ -39,7 +49,7 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/components.css">
     <!-- <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/dark-layout.css"> -->
     <!--  finished -->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">  
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -49,10 +59,11 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
     <!-- END: Custom CSS-->
-    
+
     {{-- Include core + vendor Styles --}}
+
     @include('panels/styles')
-    
+
 </head>
 
 {{-- {!! Helper::applClasses() !!} --}}

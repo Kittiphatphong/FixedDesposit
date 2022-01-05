@@ -11,7 +11,16 @@
     <!-- END: Vendor CSS-->
 @endsection
 @section('page-style')
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 
 <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
@@ -95,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- <div class="row">
                     <div class="col-lg-4 col-12">
                             <div class="card">

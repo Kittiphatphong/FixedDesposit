@@ -7,8 +7,16 @@
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
 @endsection
 @section('page-style')
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -39,14 +47,14 @@
                                                 <th>{{$user->id}}</th>
                                                 <th>{{$user->name}}</th>
                                                 <th>{{$user->email}}</th>
-                                                <td>@foreach($user->roles as $role) [{{$role->name}}] @endforeach</td>                                               
+                                                <td>@foreach($user->roles as $role) [{{$role->name}}] @endforeach</td>
                                                         <th class="d-flex justify-content-start">
                                                         @if(Auth::user()->can('EditUser'))<a href="{{route('user.edit',$user->id)}}" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-pencil"></span></a>@endIf
                                                         <form action="{{route('user.destroy',$user->id)}}"  method="post" class="delete_form">
                                                         {{ csrf_field()}}
                                                         @if(Auth::user()->can('DeleteUser'))<button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endIf
-                                                        </th>                                                   
+                                                        </th>
                                                      </tr>
                                                     @endforeach
                                                 </tbody>

@@ -10,7 +10,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }  
+    }
      public function index(){
         return view('role.index')->with('roles',Role::all());
     }
@@ -26,16 +26,18 @@ class RoleController extends Controller
         $role = Role::find($id);
         return view('role.permission')->with('role',$role)
         ->with('permissions',Permission::all());
-     
+
     }
     public function storePermission(Request $request, $id){
+
+      dd('jay');
         $role = Role::find($id);
         $givePermission = $request->get('permission');
         $revokePermission = Permission::all()->pluck('name')->toArray();
         $role->revokePermissionTo($revokePermission);
         $role->givePermissionTo($givePermission);
         return redirect()->route('role.index')->with('success','ທ່າ​ນ​ໄດ້​ກຳ​ນົດ​ສິດ​ສຳ​ເລັດ​ແລ້ວ');
-    
+
     }
 
 }

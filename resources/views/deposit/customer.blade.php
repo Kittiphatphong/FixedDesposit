@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -32,8 +39,8 @@
                                                         <th>ບັນ​ຊີ</th>
                                                         <th>ສຳ​ເນົາ​ຕິດ​ຄັດ</th>
                                                         <th>ເບີ​ໂທ</th>
-                                                        <th>ທີ່​ຢູ່</th> 
-                                                        <th></th>                                                 
+                                                        <th>ທີ່​ຢູ່</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -47,7 +54,7 @@
                                                 </th>
                                                 <th>{{$customer->documents->type}}:{{$customer->documentNumber}}</th>
                                                 <th>{{$customer->contact}}</th>
-                                                <th>{{$customer->address}}</th>                                                                         
+                                                <th>{{$customer->address}}</th>
                                                 <th class="d-flex justify-content-start">
                                                         @if(Auth::user()->can('AddAccount'))<a href="{{route('account.create',$customer->id)}}" class="btn btn-link ml-0 pl-0" value=""><span class="fa fa-money"></span></a>@endIf
                                                         @if(Auth::user()->can('EditCustomer'))<a href="{{route('customer.edit',$customer->id)}}" class="btn btn-link" value=""><span class="fa fa-pencil"></span></a>@endif
@@ -56,9 +63,9 @@
                                                         <!-- <input type="hidden" name="_method" value="DELETE"> -->
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endIf
-                                                        </th>                                                  
+                                                        </th>
                                                      </tr>
-                                                 @endForeach   
+                                                 @endForeach
                                                 </tbody>
                                             </table>
                                         </div>

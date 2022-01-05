@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<style>body{font-family:"Phetsarath OT";}
-
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 </style>
 @endsection
 
@@ -20,7 +27,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title"><b>​ພະ​ນັກ​ງານ​ບໍ​ລິ​ສັດ</b></h4>
-                                    
+
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -28,16 +35,16 @@
                                         <div class="row">
                                         <div class="col">
                                         <input type="date" id="normal" class="form-control" name="start" required/ value="{{isset($start)?$start:\App\Account::all()->min('start')}}">
-                                        </div> 
+                                        </div>
                                         <div class="col">
                                         <input type="date" id="scaled" class="form-control" name="end" required/ value="{{isset($end)?$end:\Carbon\Carbon::now()->format('Y-m-d')}}">
                                         </div>
-                                        
+
                                         <div class="col">
                                         <input type="submit" value="ຄົ້ນ​ຫາ" class="btn btn btn-primary">
-                                        </div>  
-                                        <p><b>ຍອດ​ລວມ: {{number_format($employees->sum('amount'))}} ກີບ</b></p>                                              
-                                        </div>                             
+                                        </div>
+                                        <p><b>ຍອດ​ລວມ: {{number_format($employees->sum('amount'))}} ກີບ</b></p>
+                                        </div>
                                         </form>
                                         <br>
                                         <form action="{{route('employee.query')}}" method="get">
@@ -46,9 +53,9 @@
                                                         <button type="submit" class="float-left btn btn-primary btn-sm"> <span class="fa fa-download"></span></button>
                                                         </form>
                                         <br>
-                                        <div class="table-responsive">                                                       
+                                        <div class="table-responsive">
                                             <table class="table add-rows table-striped table-bordered">
-                                            
+
                                                 <thead>
                                                 <tr><th colspan="11" class="text-center">​ວັນ​ທີ {{\Carbon\Carbon::parse($start)->format('d.m.Y')}} ເຖີງ​ວັນ​ທີ {{\Carbon\Carbon::parse($end)->format('d.m.Y')}}</th></tr>
                                                     <tr>
@@ -72,16 +79,16 @@
                                                         <th>{{number_format($employee->oldAmount)}}</th>
                                                         <th>{{number_format($employee->amount - $employee->oldAmount)}}</th>
                                                         <th>{{number_format(($employee->amount-$employee->oldAmount)*0.5/100)}}</th>
-                                                        <th>{{$employee->customer}}</th>                                   
+                                                        <th>{{$employee->customer}}</th>
                                                         <th>​{{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</th>
                                                         <th>{{$employee->company}}</th>
                                                         <th>{{$employee->department}}</th>
                                                         <th>{{$employee->position}}</th>
-                                                        <th>{{$employee->contact}}</th>     
+                                                        <th>{{$employee->contact}}</th>
                                                         <th><form action="{{route('employee.view',$employee->employee_id)}}" method="get">
                                                         <input type="hidden" name="start" value="{{$start}}">
                                                         <input type="hidden" name="end" value="{{$end}}">
-                                                        <button type="submit" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-eye"></span></button></th>   
+                                                        <button type="submit" class="btn btn-link pl-0 ml-0" value=""><span class="fa fa-eye"></span></button></th>
                                                         </form>
                                                      </tr>
                                                 @endForeach

@@ -1,10 +1,11 @@
 @php
 $configData = Helper::applClasses();
 @endphp
+
 <div
   class="main-menu menu-fixed {{($configData['theme'] === 'light') ? "menu-light" : "menu-dark"}} menu-accordion menu-shadow"
   data-scroll-to-active="true">
- 
+
   <div class="navbar-header">
     <ul class="nav navbar-nav flex-row">
       <li class="nav-item mr-auto"><a class="navbar-brand" href="{{route('home')}}">
@@ -55,14 +56,14 @@ $configData = Helper::applClasses();
         @endif
         @endif
       </li>
-      
+
       @endif
-     
+
       @endforeach
       @endif
       {{-- Foreach menu item ends --}}
     </ul>
-    @endAuth  
+    @endAuth
   </div>
 </div>
 <!-- END: Main Menu-->

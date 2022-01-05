@@ -7,9 +7,16 @@
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-    <style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -63,7 +70,7 @@
                     </div>
                                           <div class="col-md-8">
                                           @foreach($documents as $document)
-                                          <input type="radio" id="male" name="document_id" value="{{$document->id}}" 
+                                          <input type="radio" id="male" name="document_id" value="{{$document->id}}"
                                           @if($document->id==1) checked @endif
                                           @if(old('document_id',$customer->document_id)==$document->id) checked @else unchecked @endif>
                                           <label for="">{{$document->type}}</label><br>

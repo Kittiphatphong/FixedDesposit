@@ -7,9 +7,16 @@
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-    <style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -25,8 +32,8 @@
                       <form class="form form-horizontal" action="{{route('document.store')}}"  method="post">
                       @csrf
                           <div class="form-body">
-                              <div class="row">                   
-           
+                              <div class="row">
+
                                   <div class="col-12">
                                       <div class="form-group row">
                                           <div class="col-md-4">
@@ -37,7 +44,7 @@
                                           </div>
                                       </div>
                                   </div>
-         
+
                 <div class="col-md-8 offset-md-4">
                                       <button type="submit" class="btn btn-primary mr-1 mb-1">ເພີ່​ມ</button>
                                       <button type="reset" class="btn btn-outline-warning mr-1 mb-1">​ເລີ້​ມ​ໃໝ່</button>

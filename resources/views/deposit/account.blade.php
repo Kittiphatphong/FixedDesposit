@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -36,11 +43,11 @@
                                                         <th>ມື້​ຝາກ​</th>
                                                         <th>ດອກ​ເບ້ຍ</th>
                                                         <th>ຈຳ​ນວນ​ເງີນ</th>
-                                                        <th>ເປັນ​ໂຕ​ໜັງ​ສື</th> 
+                                                        <th>ເປັນ​ໂຕ​ໜັງ​ສື</th>
                                                         <th>ຮູບ​ແບບ​ການ​ຮັບ​ດອກ​ເບ້ຍ</th>
-                                                        <th>ເລກ​ໝາຍລຸ້ນ​ໂຊກ</th> 
-                                                        <th>ພະ​ນັກ​ງານ​ແນະ​ນຳ</th> 
-                                                        <th>%ລາງ​ວັນ</th>                                               
+                                                        <th>ເລກ​ໝາຍລຸ້ນ​ໂຊກ</th>
+                                                        <th>ພະ​ນັກ​ງານ​ແນະ​ນຳ</th>
+                                                        <th>%ລາງ​ວັນ</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -50,19 +57,19 @@
                                                         <th>{{$account->idAccount}}</th>
                                                         <th>{{$account->customers->fname}} {{$account->customers->lname}}</th>
                                                         <th>{{$account->typeDisposits->period}} @if($account->typeDisposits->yearOrMonth=="year")
-                                                        ປີ 
-                                                        @else 
-                                                        ເດືອນ 
+                                                        ປີ
+                                                        @else
+                                                        ເດືອນ
                                                         @endIf​
                                                         </th>
                                                         <th>{{ \Carbon\Carbon::parse($account->start)->format('d.m.Y')}}</th>
                                                         <th>{{$account->interest}} %</th>
                                                         <th>{{number_format($account->amount)}}</th>
-                                                        <th>{{$account->amountWord}}</th> 
+                                                        <th>{{$account->amountWord}}</th>
                                                         <th>{{$account->receiveInterest}}</th>
-                                                        <th>{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}} - {{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</th> 
+                                                        <th>{{$account->typeDisposits->type}}{{$account->luckyCodes->min('idCode')}} - {{$account->typeDisposits->type}}{{$account->luckyCodes->max('idCode')}}</th>
                                                         <th>{{$account->employees->fname}} {{$account->employees->lname}}</th>
-                                                        <th>{{round(($account->luckyCodes->count() *100) / \App\LuckyCode::all()->count(),2)}} %</th>                                                       
+                                                        <th>{{round(($account->luckyCodes->count() *100) / \App\LuckyCode::all()->count(),2)}} %</th>
                                                         <th class="d-flex justify-content-start">
                                                         @if(Auth::user()->can('ShowAccount'))<a href="{{route('lucky.view',$account->id)}}" class="btn btn-link ml-0 pl-0" value="" ><span class="fa fa-eye"></span></a>@endIF
                                                         @if(Auth::user()->can('EditAccount'))<a href="{{route('account.edit',$account->id)}}" class="btn btn-link" value="" ><span class="fa fa-pencil"></span></a>@endIf
@@ -70,9 +77,9 @@
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endif
-                                                        </th>                                                   
+                                                        </th>
                                                      </tr>
-                                                @endforeach  
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

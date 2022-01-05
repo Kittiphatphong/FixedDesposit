@@ -5,9 +5,16 @@
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/charts/apexcharts.css')) }}">
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-    <style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -61,7 +68,7 @@
                       <span>ບໍ​ລິດ​ສັດ</span>
                     </div>
                                           <div class="col-md-8">
-                                          <select class="form-control" name="company">                          
+                                          <select class="form-control" name="company">
 		                                  <option value="NCF" @if(old('company',$employee->company=="NCF")) selected @endIF>NCF</option>
                                           <option value="NCC" @if(old('company',$employee->company=="NCC")) selected @endIF>NCC</option>
                                           </select>

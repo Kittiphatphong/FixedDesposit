@@ -7,9 +7,16 @@
 
 @endsection
 @section('page-style')
-<!-- Page css files -->
-<link rel="stylesheet" type="text/css" href="../../..app-assets/fonts/Phetsarath OT.ttf">
-<style>body{font-family:"Phetsarath OT";}</style>
+  <style>
+    @font-face {
+      font-family: 'Lao_Classic3';
+      src: url("/assets/Lao_Classic3.ttf");
+    }
+    body{
+      font-family: Lao_Classic3;
+      font-size: 1.5rem;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -41,7 +48,7 @@
                                                 <tbody>
                                                 @foreach($employees as $employee)
                                                 <tr>
-                                                
+
                                                         <th>{{$employee->id}}</th>
                                                         <th>​{{$employee->fname}} {{$employee->lname}} ({{$employee->nname}})</th>
                                                         <th>{{$employee->company}}</th>
@@ -57,7 +64,7 @@
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-link"><span class="fa fa-trash"></span> </button>
                                                         </form>@endIF
-                                                        </th>                                                   
+                                                        </th>
                                                      </tr>
                                                 @endForeach
                                                 </tbody>

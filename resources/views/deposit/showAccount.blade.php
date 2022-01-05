@@ -82,6 +82,64 @@ table, td, th {
 <div class="containerJ bgS round ">
 <br><br><br>
 <b><u><h1 class="text-center">ຕາຕະລາງ ຄິດໄລອັດຕາດອກເບ້ຍ ເງິນຝາກມີກຳນົດ</h1></u></b>
+@if($account->typeDisposits->yearOrMonth=="month")
+  <!-- table 1 -->
+    <table>
+      <thead>
+      <tr><th colspan="6" class="text-center table-primary"><b>ປີທີ 1</b></th></tr>
+      <tr class="text-center">
+        <td><b>ງວດທີ</b></td>
+        <td><b>ວັນທີ</b></td>
+        <td><b>ວັນທີຄິດໄລ່ດອກເບ້ຍ</b></td>
+        <td><b>ຈຳນວນມື້</b></td>
+        <td><b>ຈຳນວນເງິນ</b></td>
+        <td><b>ລາຍເຊັນຜູ້ຮັບ</b></td>
+      </tr>
+      </thead>
+      <tbody>
+      @for($i=1; $i<=$account->typeDisposits->period ;$i++)
+        <tr class="text-center">
+          <th scope="row" >{{$i}}</th>
+          <td>
+            @if($i == 1)
+              {{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->addDay(1)->format('d.m.Y')}}
+            @else
+              {{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->format('d.m.Y')}}
+            @endif
+
+          </td>
+          <td>{{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i)->format('d.m.Y')}}</td>
+          <td>
+            @if($i == 1)
+            {{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))-1}}
+            @else
+              {{\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))}}
+            @endif
+          </td>
+          <td class="text-right">
+            @if($i == 1)
+              {{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(1))
+            * (\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))-1)))}}
+            @else
+              {{number_format(round(($account->amount*($account->interest/100))/ \Carbon\Carbon::create($account->start)->diffInDays(\Carbon\Carbon::create($account->start)->addYears(1))
+              * \Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i-1)->diffInDays(\Carbon\Carbon::create($account->start)->addMonthsNoOverflow($i))))}}
+            @endif
+
+
+          </td>
+          <td></td>
+        </tr>
+      @endfor
+      <tr class="table-dark">
+        <td colspan="3" class=text-center><b>ລວມ</b></td>
+        <td class="text-center"><b>{{(\Carbon\Carbon::create($account->start)->diffInDays(\Carbon\Carbon::create($account->start)->addMonth($account->typeDisposits->period))-1)}} ມື້</b></td>
+        <td class="text-right"><b>{{number_format(($account->amount*($account->interest/100)*$account->typeDisposits->period/12))}}</b></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+@endif
+
 @if($account->typeDisposits->period==3 && $account->typeDisposits->yearOrMonth=="year")
 <!-- table 1 -->
 <table>
